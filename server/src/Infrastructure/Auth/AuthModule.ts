@@ -13,6 +13,8 @@ import { EncryptionAdapter } from '../Adapter/EncryptionAdapter';
 import { LoginController } from './Controller/LoginController';
 import { LoginCommandHandler } from 'src/Application/Auth/Command/LoginCommandHandler';
 import { TokenStrategy } from './Strategy/TokenStrategy';
+import { UserCompagnyRepository } from '../User/Repository/UserCompagnyRepository';
+import { UserCompagny } from 'src/Domain/User/UserCompagny.entity';
 
 @Module({
   imports: [
@@ -24,12 +26,13 @@ import { TokenStrategy } from './Strategy/TokenStrategy';
       },
     }),
     PassportModule.register({ defaultStrategy: 'bearer' }),
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([User, UserCompagny]),
   ],
   controllers: [RegisterController, LoginController],
   providers: [
     { provide: 'IEncryptionAdapter', useClass: EncryptionAdapter },
     { provide: 'IUserRepository', useClass: UserRepository },
+    { provide: 'IUserCompagnyRepository', useClass: UserCompagnyRepository },
     RegisterCommandHandler,
     LoginCommandHandler,
     CanUserRegister,

@@ -6,6 +6,7 @@ export class AuthenticatedView {
     public readonly lastName: string,
     public readonly email: string,
     public readonly apiToken: string,
+    public readonly role?: string,
     public readonly compagny?: CompagnyView,
   ) {}
 }

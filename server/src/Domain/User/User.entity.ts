@@ -37,4 +37,8 @@ export class User {
   constructor(user: Partial<User>) {
     Object.assign(this, user);
   }
+
+  public updateCurrentCompagny = (compagny: Compagny): void => {
+    this.currentCompagny = compagny;
+  };
 }

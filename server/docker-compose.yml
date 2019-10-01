@@ -1,0 +1,42 @@
+version: '3'
+
+volumes:
+  database: {}
+
+services:
+  router:
+    build: ./docker/router
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    networks:
+      default:
+        aliases:
+          - api.topflop.local
+    labels:
+      - 'traefik.enable=false'
+
+  database:
+    build: ./docker/postgres
+    labels:
+      - 'traefik.enable=false'
+    ports:
+      - '5432:5432'
+    volumes:
+      - '.:/var/www:cached'
+      - 'database:/var/lib/postgresql/data'
+
+  api:
+    build: ./docker/node
+    depends_on:
+      - 'database'
+    volumes:
+      - '.:/var/www:cached'
+    labels:
+      - 'traefik.port=3000'
+      - 'traefik.frontend.entryPoints=https'
+      - 'traefik.frontend.rule=Host:api.topflop.local'
+    ports:
+      - 3000:3000

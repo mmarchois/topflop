@@ -1,5 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { User } from '../User/User.entity';
+import { Compagny } from '../Compagny/Compagny.entity';
 
 @Entity()
 export class Quote {
@@ -17,6 +18,9 @@ export class Quote {
 
   @ManyToOne(type => User, { nullable: false })
   public addedBy: User;
+
+  @ManyToOne(type => Compagny, { nullable: false })
+  public compagny: Compagny;
 
   constructor(quote: Partial<Quote>) {
     Object.assign(this, quote);

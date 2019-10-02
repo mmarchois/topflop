@@ -22,7 +22,6 @@ export class CreateCompagnyCommandHandler {
     command: CreateCompagnyCommand,
   ): Promise<CompagnyView> => {
     const { name, user } = command;
-
     const compagny = await this.compagnyRepository.save(new Compagny({ name }));
 
     await this.commandBus.execute(
@@ -33,6 +32,6 @@ export class CreateCompagnyCommandHandler {
       new ChangeCurrentCompagnyCommand(user, compagny),
     );
 
-    return changeCurrentView.currentCompagny;
+    return changeCurrentView.compagny;
   };
 }

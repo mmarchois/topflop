@@ -68,6 +68,7 @@ export class UserCompagnyRepository implements IUserCompagnyRepository {
         'compagny.id',
         'compagny.name',
         'userCompagny.role',
+        'user.id',
         'user.firstName',
         'user.lastName',
         'user.email',

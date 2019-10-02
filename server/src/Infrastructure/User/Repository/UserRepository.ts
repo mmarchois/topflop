@@ -38,6 +38,14 @@ export class UserRepository implements IUserRepository {
       .getOne();
   };
 
+  public findOneById = async (id: string): Promise<User | null> => {
+    return await this.repository
+      .createQueryBuilder('user')
+      .select(['user.id', 'user.firstName', 'user.lastName'])
+      .where('user.id = :id', { id })
+      .getOne();
+  };
+
   public save = async (user: User): Promise<User> => {
     return await this.repository.save(user);
   };

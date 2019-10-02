@@ -14,6 +14,8 @@ import { IsAdminOfCompagny } from 'src/Domain/User/IsAdminOfCompagny';
 import { CreateUserController } from './Controller/CreateUserController';
 import { CreateUserCommandHandler } from 'src/Application/User/Command/CreateUserCommandHandler';
 import { EncryptionAdapter } from '../Adapter/EncryptionAdapter';
+import { GetUsersByCompagnyController } from './Controller/GetUsersByCompagnyController';
+import { GetUsersByCompagnyQueryHandler } from 'src/Application/User/Query/GetUsersByCompagnyQueryHandler';
 
 @Module({
   imports: [
@@ -21,7 +23,7 @@ import { EncryptionAdapter } from '../Adapter/EncryptionAdapter';
     AuthModule,
     TypeOrmModule.forFeature([User, UserCompagny]),
   ],
-  controllers: [CreateUserController],
+  controllers: [CreateUserController, GetUsersByCompagnyController],
   providers: [
     { provide: 'IUserRepository', useClass: UserRepository },
     { provide: 'IUserCompagnyRepository', useClass: UserCompagnyRepository },
@@ -32,6 +34,7 @@ import { EncryptionAdapter } from '../Adapter/EncryptionAdapter';
     IsMemberOfCompagny,
     IsAdminOfCompagny,
     CreateUserCommandHandler,
+    GetUsersByCompagnyQueryHandler,
   ],
 })
 export class UserModule {}

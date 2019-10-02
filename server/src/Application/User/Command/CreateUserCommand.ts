@@ -25,5 +25,4 @@ export class CreateUserCommand implements ICommand {
   public role: string;
 
   public user: User;
-  public compagny: Compagny;
 }

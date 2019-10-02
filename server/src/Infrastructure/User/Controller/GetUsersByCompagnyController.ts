@@ -2,45 +2,44 @@ import { ApiBearerAuth, ApiUseTags, ApiOperation } from '@nestjs/swagger';
 import {
   Controller,
   UseGuards,
-  Post,
   Inject,
-  Body,
+  Get,
   BadRequestException,
+  Query,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { LoggedUser } from 'src/Infrastructure/User/Decorator/LoggedUser';
-import { ICommandBusAdapter } from 'src/Application/Adapter/ICommandBusAdapter';
 import { User } from 'src/Domain/User/User.entity';
 import { IQueryBusAdapter } from 'src/Application/Adapter/IQueryBusAdapter';
-import { CreateUserCommand } from 'src/Application/User/Command/CreateUserCommand';
+import { UserFiltersDto } from './Dto/UserFiltersDto';
+import { GetUsersByCompagnyQuery } from 'src/Application/User/Query/GetUsersByCompagnyQuery';
+import { Pagination } from 'src/Application/Common/Pagination';
 import { UserView } from 'src/Application/User/View/UserView';
 
 @ApiBearerAuth()
 @Controller('users/me/current-compagny')
 @ApiUseTags('User')
 @UseGuards(AuthGuard())
-export class CreateUserController {
+export class GetUsersByCompagnyController {
   constructor(
-    @Inject('ICommandBusAdapter')
-    private readonly commandBus: ICommandBusAdapter,
     @Inject('IQueryBusAdapter')
     private readonly queryBus: IQueryBusAdapter,
   ) {}
 
   @ApiOperation({
-    title: 'Create a user in the current logged user compagny',
+    title: 'Get users from the logged user compagny',
   })
-  @Post('/users')
+  @Get('users')
   public async index(
-    @Body() command: CreateUserCommand,
+    @Query() filters: UserFiltersDto,
     @LoggedUser() user: User,
-  ): Promise<UserView> {
+  ): Promise<Pagination<UserView>> {
     if (!user.currentCompagny) {
       throw new BadRequestException();
     }
 
-    command.user = user;
-
-    return await this.commandBus.execute(command);
+    return await this.queryBus.execute(
+      new GetUsersByCompagnyQuery(user, filters),
+    );
   }
 }

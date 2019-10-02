@@ -7,14 +7,14 @@ export class UserView {
   public readonly lastName: string;
   public readonly email: string;
   public readonly role?: string;
-  public readonly compagny?: CompagnyView;
+  public readonly currentCompagny?: CompagnyView;
 
   constructor(user: User, compagny?: Compagny, role?: string) {
     this.firstName = user.firstName;
     this.lastName = user.lastName;
     this.email = user.email;
     this.role = role;
-    this.compagny = compagny
+    this.currentCompagny = compagny
       ? new CompagnyView(compagny.id, compagny.name)
       : null;
   }

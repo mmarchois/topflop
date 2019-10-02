@@ -5,6 +5,8 @@ import { UserCompagny } from 'src/Domain/User/UserCompagny.entity';
 import { IUserCompagnyRepository } from 'src/Domain/User/Repository/IUserCompagnyRepository';
 import { User } from 'src/Domain/User/User.entity';
 import { Compagny } from 'src/Domain/Compagny/Compagny.entity';
+import { UserFiltersDto } from '../Controller/Dto/UserFiltersDto';
+import { MAX_ITEMS_PER_PAGE } from 'src/Application/Common/Pagination';
 
 @Injectable()
 export class UserCompagnyRepository implements IUserCompagnyRepository {
@@ -54,5 +56,29 @@ export class UserCompagnyRepository implements IUserCompagnyRepository {
       .where('user.email = :email', { email })
       .andWhere('userCompagny.compagny = :compagny', { compagny: compagny.id })
       .getOne();
+  };
+
+  public findByCompagnyAndFilters = async (
+    compagny: Compagny,
+    filters: UserFiltersDto,
+  ): Promise<[UserCompagny[], number]> => {
+    return await this.repository
+      .createQueryBuilder('userCompagny')
+      .select([
+        'compagny.id',
+        'compagny.name',
+        'userCompagny.role',
+        'user.firstName',
+        'user.lastName',
+        'user.email',
+      ])
+      .innerJoin('userCompagny.user', 'user')
+      .innerJoin('userCompagny.compagny', 'compagny')
+      .where('userCompagny.compagny = :compagny', { compagny: compagny.id })
+      .orderBy('user.lastName', 'ASC')
+      .addOrderBy('user.firstName', 'ASC')
+      .limit(MAX_ITEMS_PER_PAGE)
+      .offset((filters.page - 1) * MAX_ITEMS_PER_PAGE)
+      .getManyAndCount();
   };
 }

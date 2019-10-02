@@ -1,6 +1,7 @@
 import { UserCompagny } from '../UserCompagny.entity';
 import { User } from '../User.entity';
 import { Compagny } from 'src/Domain/Compagny/Compagny.entity';
+import { UserFiltersDto } from 'src/Infrastructure/User/Controller/Dto/UserFiltersDto';
 
 export interface IUserCompagnyRepository {
   save(userCompagny: UserCompagny): Promise<UserCompagny>;
@@ -17,4 +18,8 @@ export interface IUserCompagnyRepository {
     email: string,
     compagny: Compagny,
   ): Promise<UserCompagny>;
+  findByCompagnyAndFilters(
+    compagny: Compagny,
+    filters: UserFiltersDto,
+  ): Promise<[UserCompagny[], number]>;
 }

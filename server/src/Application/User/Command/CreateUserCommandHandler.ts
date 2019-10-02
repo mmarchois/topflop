@@ -27,7 +27,8 @@ export class CreateUserCommandHandler {
   ) {}
 
   public execute = async (command: CreateUserCommand): Promise<UserView> => {
-    const { email, firstName, lastName, user, role, compagny } = command;
+    const { email, firstName, lastName, user, role } = command;
+    const compagny = user.currentCompagny;
 
     if (
       false === (await this.isAdminOfCompagny.isSatisfiedBy(user, compagny))

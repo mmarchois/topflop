@@ -33,6 +33,6 @@ export class CreateCompagnyCommandHandler {
       new ChangeCurrentCompagnyCommand(user, compagny),
     );
 
-    return changeCurrentView.compagny;
+    return changeCurrentView.currentCompagny;
   };
 }

@@ -4,9 +4,9 @@ import { LoginCommand } from './LoginCommand';
 import { IUserRepository } from 'src/Domain/User/Repository/IUserRepository';
 import { IEncryptionAdapter } from 'src/Application/Adapter/IEncryptionAdapter';
 import { User } from 'src/Domain/User/User.entity';
-import { AuthenticatedView } from '../View/AuthenticatedView';
-import { CompagnyView } from 'src/Application/Compagny/View/CompagnyView';
 import { IUserCompagnyRepository } from 'src/Domain/User/Repository/IUserCompagnyRepository';
+import { UserView } from 'src/Application/User/View/UserView';
+import { AuthenticatedView } from '../View/AuthenticatedView';
 
 @CommandHandler(LoginCommand)
 export class LoginCommandHandler {
@@ -32,26 +32,21 @@ export class LoginCommandHandler {
     }
 
     const { currentCompagny } = user;
-    let compagnyView = null;
     let role = null;
 
     if (currentCompagny) {
+      // Used to retrieve the user role in this compagny
       const userCompagny = await this.userCompagnyRepository.findOneByUserAndCompagny(
         user,
         currentCompagny,
       );
 
       role = userCompagny.role;
-      compagnyView = new CompagnyView(currentCompagny.id, currentCompagny.name);
     }
 
     return new AuthenticatedView(
-      user.firstName,
-      user.lastName,
-      user.email,
+      new UserView(user, currentCompagny, role),
       user.apiToken,
-      role,
-      compagnyView,
     );
   };
 }

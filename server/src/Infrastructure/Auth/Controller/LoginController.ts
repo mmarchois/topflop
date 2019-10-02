@@ -1,8 +1,8 @@
 import { Post, Controller, Body, Inject } from '@nestjs/common';
 import { ApiUseTags } from '@nestjs/swagger';
 import { ICommandBusAdapter } from 'src/Application/Adapter/ICommandBusAdapter';
-import { AuthenticatedView } from 'src/Application/Auth/View/AuthenticatedView';
 import { LoginCommand } from 'src/Application/Auth/Command/LoginCommand';
+import { AuthenticatedView } from 'src/Application/Auth/View/AuthenticatedView';
 
 @Controller('login')
 @ApiUseTags('Auth')

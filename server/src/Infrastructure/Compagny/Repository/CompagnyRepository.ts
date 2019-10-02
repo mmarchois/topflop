@@ -14,4 +14,11 @@ export class CompagnyRepository implements ICompagnyRepository {
   public save = async (compagny: Compagny): Promise<Compagny> => {
     return await this.repository.save(compagny);
   };
+
+  public findOneById = async (id: string): Promise<Compagny> => {
+    return await this.repository
+      .createQueryBuilder('compagny')
+      .where('compagny.id = :id', { id })
+      .getOne();
+  };
 }

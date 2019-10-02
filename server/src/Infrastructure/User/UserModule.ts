@@ -10,6 +10,10 @@ import { UserCompagnyRepository } from './Repository/UserCompagnyRepository';
 import { ChangeCurrentCompagnyCommandHandler } from 'src/Application/User/Command/ChangeCurrentCompagnyCommandHandler';
 import { CreateUserCompagnyCommandHandler } from 'src/Application/User/Command/CreateUserCompagnyCommandHandler';
 import { IsMemberOfCompagny } from 'src/Domain/User/IsMemberOfCompagny';
+import { IsAdminOfCompagny } from 'src/Domain/User/IsAdminOfCompagny';
+import { CreateUserController } from './Controller/CreateUserController';
+import { CreateUserCommandHandler } from 'src/Application/User/Command/CreateUserCommandHandler';
+import { EncryptionAdapter } from '../Adapter/EncryptionAdapter';
 
 @Module({
   imports: [
@@ -17,14 +21,17 @@ import { IsMemberOfCompagny } from 'src/Domain/User/IsMemberOfCompagny';
     AuthModule,
     TypeOrmModule.forFeature([User, UserCompagny]),
   ],
-  controllers: [],
+  controllers: [CreateUserController],
   providers: [
     { provide: 'IUserRepository', useClass: UserRepository },
     { provide: 'IUserCompagnyRepository', useClass: UserCompagnyRepository },
+    { provide: 'IEncryptionAdapter', useClass: EncryptionAdapter },
     GetUserByApiTokenHandler,
     ChangeCurrentCompagnyCommandHandler,
     CreateUserCompagnyCommandHandler,
     IsMemberOfCompagny,
+    IsAdminOfCompagny,
+    CreateUserCommandHandler,
   ],
 })
 export class UserModule {}

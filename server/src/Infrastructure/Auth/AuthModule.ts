@@ -21,9 +21,6 @@ import { UserCompagny } from 'src/Domain/User/UserCompagny.entity';
     BusModule,
     JwtModule.register({
       secretOrPrivateKey: process.env.JWT_SECRET_KEY,
-      signOptions: {
-        expiresIn: process.env.JWT_EXPIRES,
-      },
     }),
     PassportModule.register({ defaultStrategy: 'bearer' }),
     TypeOrmModule.forFeature([User, UserCompagny]),

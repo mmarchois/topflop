@@ -5,6 +5,7 @@ import { CanUserRegister } from 'src/Domain/User/CanUserRegister';
 import { IUserRepository } from 'src/Domain/User/Repository/IUserRepository';
 import { IEncryptionAdapter } from 'src/Application/Adapter/IEncryptionAdapter';
 import { User } from 'src/Domain/User/User.entity';
+import { UserView } from 'src/Application/User/View/UserView';
 import { AuthenticatedView } from '../View/AuthenticatedView';
 
 @CommandHandler(RegisterCommand)
@@ -27,9 +28,7 @@ export class RegisterCommandHandler {
     }
 
     const encryptedPassword = this.encryptionAdapter.hash(password);
-    const apiToken = this.encryptionAdapter.hash(
-      email + encryptedPassword + Date.now().toString(),
-    );
+    const apiToken = this.encryptionAdapter.hash(email + Date.now().toString());
 
     const user = new User({
       firstName,
@@ -41,6 +40,6 @@ export class RegisterCommandHandler {
 
     await this.userRepository.save(user);
 
-    return new AuthenticatedView(firstName, lastName, email, apiToken, null);
+    return new AuthenticatedView(new UserView(user), apiToken);
   };
 }

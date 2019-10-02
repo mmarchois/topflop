@@ -28,4 +28,31 @@ export class UserCompagnyRepository implements IUserCompagnyRepository {
       .andWhere('userCompagny.compagny = :compagny', { compagny: compagny.id })
       .getOne();
   };
+
+  public findOneByUserAndCompagnyAndRole = async (
+    user: User,
+    compagny: Compagny,
+    role: string,
+  ): Promise<UserCompagny> => {
+    return await this.repository
+      .createQueryBuilder('userCompagny')
+      .select(['userCompagny.id'])
+      .where('userCompagny.user = :user', { user: user.id })
+      .andWhere('userCompagny.compagny = :compagny', { compagny: compagny.id })
+      .andWhere('userCompagny.role = :role', { role })
+      .getOne();
+  };
+
+  public findOneByEmailAndCompagny = async (
+    email: string,
+    compagny: Compagny,
+  ): Promise<UserCompagny> => {
+    return await this.repository
+      .createQueryBuilder('userCompagny')
+      .select(['userCompagny.id'])
+      .innerJoin('userCompagny.user', 'user')
+      .where('user.email = :email', { email })
+      .andWhere('userCompagny.compagny = :compagny', { compagny: compagny.id })
+      .getOne();
+  };
 }

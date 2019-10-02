@@ -6,6 +6,7 @@ import { Compagny } from 'src/Domain/Compagny/Compagny.entity';
 import { CompagnyRepository } from './Repository/CompagnyRepository';
 import { CreateCompagnyCommandHandler } from 'src/Application/Compagny/Command/CreateCompagnyCommandHandler';
 import { CreateCompagnyController } from './Controller/CreateCompagnyController';
+import { GetCompagnyByIdQueryHandler } from 'src/Application/Compagny/Query/GetCompagnyByIdQueryHandler';
 
 @Module({
   imports: [BusModule, AuthModule, TypeOrmModule.forFeature([Compagny])],
@@ -13,6 +14,7 @@ import { CreateCompagnyController } from './Controller/CreateCompagnyController'
   providers: [
     { provide: 'ICompagnyRepository', useClass: CompagnyRepository },
     CreateCompagnyCommandHandler,
+    GetCompagnyByIdQueryHandler,
   ],
 })
 export class CompagnyModule {}

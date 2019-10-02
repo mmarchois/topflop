@@ -1,12 +1,8 @@
-import { CompagnyView } from 'src/Application/Compagny/View/CompagnyView';
+import { UserView } from 'src/Application/User/View/UserView';
 
 export class AuthenticatedView {
   constructor(
-    public readonly firstName: string,
-    public readonly lastName: string,
-    public readonly email: string,
+    public readonly user: UserView,
     public readonly apiToken: string,
-    public readonly role?: string,
-    public readonly compagny?: CompagnyView,
   ) {}
 }

@@ -8,4 +8,13 @@ export interface IUserCompagnyRepository {
     user: User,
     compagny: Compagny,
   ): Promise<UserCompagny>;
+  findOneByUserAndCompagnyAndRole(
+    user: User,
+    compagny: Compagny,
+    role: string,
+  ): Promise<UserCompagny>;
+  findOneByEmailAndCompagny(
+    email: string,
+    compagny: Compagny,
+  ): Promise<UserCompagny>;
 }

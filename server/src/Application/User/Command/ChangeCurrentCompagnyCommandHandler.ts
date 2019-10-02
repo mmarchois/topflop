@@ -1,11 +1,10 @@
 import { CommandHandler } from '@nestjs/cqrs';
 import { Inject, ForbiddenException } from '@nestjs/common';
 import { ChangeCurrentCompagnyCommand } from './ChangeCurrentCompagnyCommand';
-import { CompagnyView } from 'src/Application/Compagny/View/CompagnyView';
 import { IUserRepository } from 'src/Domain/User/Repository/IUserRepository';
 import { IsMemberOfCompagny } from 'src/Domain/User/IsMemberOfCompagny';
 import { IUserCompagnyRepository } from 'src/Domain/User/Repository/IUserCompagnyRepository';
-import { ChangeCurrentCompagnyView } from '../View/ChangeCurrentCompagnyView';
+import { UserView } from '../View/UserView';
 
 @CommandHandler(ChangeCurrentCompagnyCommand)
 export class ChangeCurrentCompagnyCommandHandler {
@@ -19,7 +18,7 @@ export class ChangeCurrentCompagnyCommandHandler {
 
   public execute = async (
     command: ChangeCurrentCompagnyCommand,
-  ): Promise<ChangeCurrentCompagnyView> => {
+  ): Promise<UserView> => {
     const { user, compagny } = command;
 
     if (
@@ -28,6 +27,7 @@ export class ChangeCurrentCompagnyCommandHandler {
       throw new ForbiddenException('not.member.of.compagny');
     }
 
+    // Used to retrieve the user role in this compagny
     const userCompagny = await this.userCompagnyRepository.findOneByUserAndCompagny(
       user,
       compagny,
@@ -36,9 +36,6 @@ export class ChangeCurrentCompagnyCommandHandler {
     user.updateCurrentCompagny(compagny);
     await this.repository.save(user);
 
-    return new ChangeCurrentCompagnyView(
-      userCompagny.role,
-      new CompagnyView(compagny.id, compagny.name),
-    );
+    return new UserView(user, compagny, userCompagny.role);
   };
 }

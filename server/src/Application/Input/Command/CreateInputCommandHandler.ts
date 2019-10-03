@@ -1,26 +1,26 @@
 import { CommandHandler } from '@nestjs/cqrs';
-import { CreateQuoteCommand } from './CreateQuoteCommand';
-import { IQuoteRepository } from 'src/Domain/Input/Repository/IQuoteRepository';
 import { Inject, BadRequestException } from '@nestjs/common';
 import { IsMemberOfCompagny } from 'src/Domain/User/IsMemberOfCompagny';
 import { IUserRepository } from 'src/Domain/User/Repository/IUserRepository';
 import { User } from 'src/Domain/User/User.entity';
-import { Quote } from 'src/Domain/Input/Quote.entity';
-import { QuoteView } from '../View/QuoteView';
+import { CreateInputCommand } from './CreateInputCommand';
+import { IInputRepository } from 'src/Domain/Input/Repository/IInputRepository';
+import { Input } from 'src/Domain/Input/Input.entity';
+import { InputView } from '../View/InputView';
 import { UsernameView } from 'src/Application/User/View/UsernameView';
 
-@CommandHandler(CreateQuoteCommand)
-export class CreateQuoteCommandHandler {
+@CommandHandler(CreateInputCommand)
+export class CreateInputCommandHandler {
   constructor(
-    @Inject('IQuoteRepository')
-    private readonly repository: IQuoteRepository,
+    @Inject('IInputRepository')
+    private readonly repository: IInputRepository,
     @Inject('IUserRepository')
     private readonly userRepository: IUserRepository,
     private readonly isMemberOfCompagny: IsMemberOfCompagny,
   ) {}
 
-  public execute = async (command: CreateQuoteCommand): Promise<QuoteView> => {
-    const { user, sentence, authorId } = command;
+  public execute = async (command: CreateInputCommand): Promise<InputView> => {
+    const { user, type, authorId } = command;
     const compagny = user.currentCompagny;
 
     const author = await this.userRepository.findOneById(authorId);
@@ -34,19 +34,19 @@ export class CreateQuoteCommandHandler {
       throw new BadRequestException('user.not.member.of.compagny');
     }
 
-    const quote = await this.repository.save(
-      new Quote({
-        sentence,
-        compagny,
+    const input = await this.repository.save(
+      new Input({
+        type,
         author,
+        compagny,
         addedBy: user,
       }),
     );
 
-    return new QuoteView(
-      quote.id,
-      sentence,
-      quote.createdAt,
+    return new InputView(
+      input.id,
+      type,
+      input.createdAt,
       new UsernameView(author.firstName, author.lastName),
     );
   };

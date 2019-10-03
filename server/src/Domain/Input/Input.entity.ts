@@ -13,7 +13,7 @@ export class Input {
   public id: string;
 
   @Column({ type: 'enum', enum: InputType, nullable: false })
-  public type: InputType;
+  public type: string;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   public createdAt: Date;

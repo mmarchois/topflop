@@ -13,6 +13,10 @@ import { UserRepository } from '../User/Repository/UserRepository';
 import { User } from 'src/Domain/User/User.entity';
 import { UserCompagnyRepository } from '../User/Repository/UserCompagnyRepository';
 import { UserCompagny } from 'src/Domain/User/UserCompagny.entity';
+import { GetQuotesByCompagnyController } from './Controller/GetQuotesByCompagnyController';
+import { GetQuotesByCompagnyQueryHandler } from 'src/Application/Input/Query/GetQuotesByCompagnyQueryHandler';
+import { CreateInputController } from './Controller/CreateInputController';
+import { CreateInputCommandHandler } from 'src/Application/Input/Command/CreateInputCommandHandler';
 
 @Module({
   imports: [
@@ -20,7 +24,11 @@ import { UserCompagny } from 'src/Domain/User/UserCompagny.entity';
     AuthModule,
     TypeOrmModule.forFeature([Input, Quote, User, UserCompagny]),
   ],
-  controllers: [CreateQuoteController],
+  controllers: [
+    CreateQuoteController,
+    GetQuotesByCompagnyController,
+    CreateInputController,
+  ],
   providers: [
     { provide: 'IQuoteRepository', useClass: QuoteRepository },
     { provide: 'IInputRepository', useClass: InputRepository },
@@ -28,6 +36,8 @@ import { UserCompagny } from 'src/Domain/User/UserCompagny.entity';
     { provide: 'IUserRepository', useClass: UserRepository },
     IsMemberOfCompagny,
     CreateQuoteCommandHandler,
+    GetQuotesByCompagnyQueryHandler,
+    CreateInputCommandHandler,
   ],
 })
 export class InputModule {}

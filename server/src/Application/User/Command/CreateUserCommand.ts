@@ -1,6 +1,5 @@
 import { ICommand } from 'src/Application/ICommand';
 import { User } from 'src/Domain/User/User.entity';
-import { Compagny } from 'src/Domain/Compagny/Compagny.entity';
 import { ApiModelProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsEmail, IsEnum } from 'class-validator';
 import { UserRole } from 'src/Domain/User/UserCompagny.entity';

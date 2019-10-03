@@ -17,6 +17,8 @@ import { GetQuotesByCompagnyController } from './Controller/GetQuotesByCompagnyC
 import { GetQuotesByCompagnyQueryHandler } from 'src/Application/Input/Query/GetQuotesByCompagnyQueryHandler';
 import { CreateInputController } from './Controller/CreateInputController';
 import { CreateInputCommandHandler } from 'src/Application/Input/Command/CreateInputCommandHandler';
+import { GetInputsByCompagnyController } from './Controller/GetInputsByCompagnyController';
+import { GetInputsByCompagnyQueryHandler } from 'src/Application/Input/Query/GetInputsByCompagnyQueryHandler';
 
 @Module({
   imports: [
@@ -28,6 +30,7 @@ import { CreateInputCommandHandler } from 'src/Application/Input/Command/CreateI
     CreateQuoteController,
     GetQuotesByCompagnyController,
     CreateInputController,
+    GetInputsByCompagnyController,
   ],
   providers: [
     { provide: 'IQuoteRepository', useClass: QuoteRepository },
@@ -38,6 +41,7 @@ import { CreateInputCommandHandler } from 'src/Application/Input/Command/CreateI
     CreateQuoteCommandHandler,
     GetQuotesByCompagnyQueryHandler,
     CreateInputCommandHandler,
+    GetInputsByCompagnyQueryHandler,
   ],
 })
 export class InputModule {}

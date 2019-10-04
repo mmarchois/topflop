@@ -1,19 +1,19 @@
-import * as Cookies from 'js-cookie';
+import Cookies from 'js-cookie';
 
 export const TOKEN_KEY = 'topflop_token';
 
 export class TokenStorage {
-  public static save = (token: string): void => {
+  static save = token => {
     Cookies.set(TOKEN_KEY, token, {
       secure: true,
     });
   };
 
-  public static get = () => {
+  static get = () => {
     return Cookies.get(TOKEN_KEY);
   };
 
-  public static remove = (): void => {
+  static remove = () => {
     Cookies.remove(TOKEN_KEY);
   };
 }

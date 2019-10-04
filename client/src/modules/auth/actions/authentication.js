@@ -6,53 +6,43 @@ import {
   AUTH_AUTHENTICATION_LOGOUT,
   AUTH_AUTHENTICATION_USER,
 } from '../constants/authentication';
-import {
-  IAuthenticationErrorAction,
-  IAuthenticationResetAction,
-  IAuthenticationLogoutAction,
-  IAuthenticationLoadingAction,
-  IAuthenticatedAction,
-  IAuthenticationUserAction,
-} from '../types/authentication';
-import { User } from '../../user/models/User';
-import Error from '../../common/models/Error';
 import { TokenStorage } from '../../../libraries/tokenStorage';
 
-export const authenticated = (authenticated: boolean): IAuthenticatedAction => {
+export const authenticated = authenticated => {
   return {
     type: AUTH_AUTHENTICATION_AUTHENTICATED,
     authenticated,
   };
 };
 
-export const user = (user: User): IAuthenticationUserAction => {
+export const user = user => {
   return {
     type: AUTH_AUTHENTICATION_USER,
     user,
   };
 };
 
-export const loading = (loading: boolean): IAuthenticationLoadingAction => {
+export const loading = loading => {
   return {
     type: AUTH_AUTHENTICATION_LOADING,
     loading,
   };
 };
 
-export const errors = (errors: Error[]): IAuthenticationErrorAction => {
+export const errors = errors => {
   return {
     type: AUTH_AUTHENTICATION_ERROR,
     errors,
   };
 };
 
-export const reset = (): IAuthenticationResetAction => {
+export const reset = () => {
   return {
     type: AUTH_AUTHENTICATION_RESET,
   };
 };
 
-export const logout = (): IAuthenticationLogoutAction => {
+export const logout = () => {
   TokenStorage.remove();
 
   return {

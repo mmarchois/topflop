@@ -4,13 +4,14 @@ import { PersistGate } from 'redux-persist/es/integration/react';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import configureStore from './store';
+import Routes from './routes';
 
 const { store, persistor } = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      Hello
+      <Routes />
     </PersistGate>
   </Provider>,
   document.getElementById('root'),

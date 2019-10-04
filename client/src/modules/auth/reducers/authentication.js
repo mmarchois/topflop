@@ -6,22 +6,15 @@ import {
   AUTH_AUTHENTICATION_USER,
   AUTH_AUTHENTICATION_LOGOUT,
 } from '../constants/authentication';
-import {
-  AuthenticationActionTypes,
-  IAuthenticationState,
-} from '../types/authentication';
 
-const initialState: IAuthenticationState = {
+const initialState = {
   loading: false,
   authenticated: false,
   errors: [],
   user: null,
 };
 
-export const authenticationReducers = (
-  state = initialState,
-  action: AuthenticationActionTypes,
-): IAuthenticationState => {
+export const authenticationReducers = (state = initialState, action) => {
   switch (action.type) {
     case AUTH_AUTHENTICATION_LOADING:
       return {

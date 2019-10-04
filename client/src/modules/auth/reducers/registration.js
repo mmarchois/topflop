@@ -1,22 +1,15 @@
 import {
-  RegistrationActionTypes,
-  IRegistrationState,
-} from '../types/registration';
-import {
   AUTH_REGISTRATION_LOADING,
   AUTH_REGISTRATION_ERROR,
   AUTH_REGISTRATION_RESET,
 } from '../constants/registration';
 
-const initialState: IRegistrationState = {
+const initialState = {
   loading: false,
   errors: [],
 };
 
-export const registrationReducers = (
-  state = initialState,
-  action: RegistrationActionTypes,
-): IRegistrationState => {
+export const registrationReducers = (state = initialState, action) => {
   switch (action.type) {
     case AUTH_REGISTRATION_LOADING:
       return {

@@ -1,7 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const HomeView = () => {
-  return <div>Bienvenue sur la Home page !</div>;
+  return (
+    <>
+      Bienvenue sur la Home page !
+      <br />
+      <Link to={'/register'}>S'inscrire</Link>
+    </>
+  );
 };
 
 export default HomeView;

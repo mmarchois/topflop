@@ -7,7 +7,7 @@ const Nav = () => {
       <div className="container">
         <ul className="navbar-nav" id="menu">
           <li className="nav-item">
-            <Link className="nav-link " to={'/'}>
+            <Link className="nav-link " to={'/dashboard'}>
               <span className="nav-icon">
                 <i className="icon fe fe-home"></i>
               </span>

@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import configureStore from './store';
 import Routes from './routes';
+import './i18n';
 
 const { store, persistor } = configureStore();
 

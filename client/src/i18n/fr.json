@@ -1,0 +1,43 @@
+{
+  "translation": {
+    "form": {
+      "buttons": {
+        "save": "Sauvegarder"
+      },
+      "errors": {
+        "requiredField": "Ce champs est requis.",
+        "invalidEmail": "Cette adresse e-mail n'est pas valide."
+      }
+    },
+    "auth": {
+      "authentication": {
+        "login": "Se connecter",
+        "introduction": "Te revoilà, saisis ton adresse e-mail et ton mot de passe.",
+        "failure": {
+          "title": "Ton adresse email ou mot de passe est incorrect."
+        },
+        "form": {
+          "email": "Adresse e-mail",
+          "password": "Mot de passe",
+          "submit": "Se connecter"
+        }
+      },
+      "registration": {
+        "title": "Créer un compte",
+        "introduction": "Créez votre compte client pour utiliser dès maintenant Topflop",
+        "form": {
+          "firstName": "Prénom",
+          "lastName": "Nom",
+          "email": "Adresse e-mail",
+          "password": "Mot de passe",
+          "confirmPassword": "Confirmez votre mot de passe",
+          "errors": {
+            "invalidPasswords": "Les mots de passe doivent être identiques."
+          }
+        }
+      }
+    },
+
+    "navigation": {}
+  }
+}

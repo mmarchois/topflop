@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Loadable from 'react-loadable';
-import Layout from '../modules/common/components/Layout';
+import Layout from '../modules/common/components/Layout/Layout';
 import LoadingComponent from '../modules/common/components/LoadingComponent';
 
 const AsyncHome = Loadable({

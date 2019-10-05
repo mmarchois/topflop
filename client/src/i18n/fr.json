@@ -37,7 +37,14 @@
         }
       }
     },
-    "navigation": {},
+    "header": {
+      "navigation": {
+        "logout": "Se déconnecter",
+        "changeCompagny": "Changer de société",
+        "profile": "Mon profil"
+      }
+    },
+
     "footer": {
       "source": "Code source",
       "twitter": "Twitter",

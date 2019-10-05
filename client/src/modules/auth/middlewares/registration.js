@@ -1,5 +1,7 @@
 import { loading, errors } from '../actions/registration';
-import { authenticated, user } from '../actions/authentication';
+import { authenticated, user as loggedUser } from '../actions/authentication';
+import { TokenStorage } from '../../../libraries/tokenStorage';
+import LoggedUser from '../../user/models/LoggedUser';
 
 export const registration = payload => {
   return async (dispatch, getState, axios) => {
@@ -7,10 +9,11 @@ export const registration = payload => {
 
     try {
       const response = await axios.post('register', payload);
-      console.log(response);
+      const { user, apiToken } = response.data;
 
-      //dispatch(user(response.data));
-      //dispatch(authenticated(true));
+      TokenStorage.save(apiToken);
+      dispatch(loggedUser(new LoggedUser(user)));
+      dispatch(authenticated(true));
     } catch (e) {
       dispatch(errors(['']));
     } finally {

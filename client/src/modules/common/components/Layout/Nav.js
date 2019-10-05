@@ -17,7 +17,7 @@ const Nav = () => {
           <li className="nav-item">
             <Link className="nav-link" to={'/'}>
               <span className="nav-icon">
-                <i className="icon fe fe-file"></i>
+                <i className="icon fe fe-thumbs-up"></i>
               </span>
               <span className="nav-text">Tops</span>
             </Link>
@@ -25,7 +25,7 @@ const Nav = () => {
           <li className="nav-item">
             <Link className="nav-link" to={'/'}>
               <span className="nav-icon">
-                <i className="icon fe fe-pie-chart"></i>
+                <i className="icon fe fe-thumbs-down"></i>
               </span>
               <span className="nav-text">Flops</span>
             </Link>
@@ -33,7 +33,7 @@ const Nav = () => {
           <li className="nav-item">
             <Link className="nav-link" to={'/'}>
               <span className="nav-icon">
-                <i className="icon fe fe-sliders"></i>
+                <i className="icon fe fe-type"></i>
               </span>
               <span className="nav-text">Quotes </span>
             </Link>

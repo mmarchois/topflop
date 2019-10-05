@@ -22,7 +22,7 @@ class RegistrationView extends Component {
   };
 
   render() {
-    const { loading, authenticated } = this.props.registration;
+    const { registration, authenticated } = this.props;
 
     if (true === authenticated) {
       return <Redirect to={'/'} />;
@@ -32,7 +32,10 @@ class RegistrationView extends Component {
       <>
         <h1>{i18n.t('auth.registration.title')}</h1>
         <p>{i18n.t('auth.registration.introduction')}</p>
-        <RegistrationForm onSubmit={this.handleSubmit} loading={loading} />
+        <RegistrationForm
+          onSubmit={this.handleSubmit}
+          loading={registration.loading}
+        />
       </>
     );
   }

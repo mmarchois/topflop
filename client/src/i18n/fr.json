@@ -11,7 +11,7 @@
     },
     "auth": {
       "authentication": {
-        "login": "Se connecter",
+        "title": "Se connecter",
         "introduction": "Te revoilà, saisis ton adresse e-mail et ton mot de passe.",
         "failure": {
           "title": "Ton adresse email ou mot de passe est incorrect."
@@ -24,20 +24,24 @@
       },
       "registration": {
         "title": "Créer un compte",
-        "introduction": "Créez votre compte client pour utiliser dès maintenant Topflop",
+        "introduction": "Créer ton compte dès maintenant pour utiliser Topflop",
         "form": {
           "firstName": "Prénom",
           "lastName": "Nom",
           "email": "Adresse e-mail",
           "password": "Mot de passe",
-          "confirmPassword": "Confirmez votre mot de passe",
+          "confirmPassword": "Confirme ton mot de passe",
           "errors": {
             "invalidPasswords": "Les mots de passe doivent être identiques."
           }
         }
       }
     },
-
-    "navigation": {}
+    "navigation": {},
+    "footer": {
+      "source": "Code source",
+      "twitter": "Twitter",
+      "madeBy": "Développé par"
+    }
   }
 }

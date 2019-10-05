@@ -3,7 +3,7 @@ import { TokenStorage } from './tokenStorage';
 import { logout } from '../modules/auth/actions/authentication';
 
 // todo : use env
-const API_URL = 'http://api.topflop.local';
+const API_URL = 'https://api.topflop.local';
 
 export const client = axios.create({
   baseURL: API_URL,

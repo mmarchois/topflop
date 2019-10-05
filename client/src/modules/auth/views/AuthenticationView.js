@@ -30,7 +30,7 @@ class AuthenticationView extends Component {
 
     return (
       <>
-        <h1>{i18n.t('auth.authentication.login')}</h1>
+        <h1>{i18n.t('auth.authentication.title')}</h1>
         <p>{i18n.t('auth.authentication.introduction')}</p>
         <AuthenticationForm onSubmit={this.handleSubmit} loading={loading} />
       </>

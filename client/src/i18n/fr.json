@@ -46,6 +46,9 @@
         "name": "Nom de l'entreprise"
       }
     },
+    "quotes": {
+      "title": "Quotes"
+    },
     "header": {
       "navigation": {
         "logout": "Se déconnecter",

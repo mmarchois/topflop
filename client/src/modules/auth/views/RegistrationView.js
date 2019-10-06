@@ -25,7 +25,7 @@ class RegistrationView extends Component {
     const { registration, authenticated } = this.props;
 
     if (true === authenticated) {
-      return <Redirect to={'/'} />;
+      return <Redirect to={'/dashboard'} />;
     }
 
     return (

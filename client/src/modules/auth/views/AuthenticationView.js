@@ -25,7 +25,7 @@ class AuthenticationView extends Component {
     const { loading, authenticated } = this.props.authentication;
 
     if (true === authenticated) {
-      return <Redirect to={'/'} />;
+      return <Redirect to={'/dashboard'} />;
     }
 
     return (

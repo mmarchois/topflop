@@ -25,8 +25,13 @@ const AsyncRegistration = Loadable({
   loading: LoadingComponent,
 });
 
-const AsyncCompagny = Loadable({
+const AsyncAddCompagny = Loadable({
   loader: () => import('../modules/compagny/views/AddCompagnyView'),
+  loading: LoadingComponent,
+});
+
+const AsyncListQuote = Loadable({
+  loader: () => import('../modules/quotes/views/ListQuoteView'),
   loading: LoadingComponent,
 });
 
@@ -47,9 +52,11 @@ const Routes = () => (
         <SecuredRoute
           exact={true}
           path="/compagny/add"
-          component={AsyncCompagny}
+          component={AsyncAddCompagny}
           compagnyRoute={true}
         />
+
+        <SecuredRoute exact={true} path="/quotes" component={AsyncListQuote} />
 
         {/* 404 Page */}
       </Switch>

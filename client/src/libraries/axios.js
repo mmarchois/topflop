@@ -2,8 +2,7 @@ import axios from 'axios';
 import { TokenStorage } from './tokenStorage';
 import { logout } from '../modules/auth/actions/authentication';
 
-// todo : use env
-const API_URL = 'https://api.topflop.local';
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const client = axios.create({
   baseURL: API_URL,

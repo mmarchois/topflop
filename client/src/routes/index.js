@@ -25,6 +25,11 @@ const AsyncRegistration = Loadable({
   loading: LoadingComponent,
 });
 
+const AsyncCompagny = Loadable({
+  loader: () => import('../modules/compagny/views/AddCompagnyView'),
+  loading: LoadingComponent,
+});
+
 const Routes = () => (
   <BrowserRouter>
     <Layout>
@@ -37,6 +42,13 @@ const Routes = () => (
           exact={true}
           path="/dashboard"
           component={AsyncDashboard}
+        />
+
+        <SecuredRoute
+          exact={true}
+          path="/compagny/add"
+          component={AsyncCompagny}
+          compagnyRoute={true}
         />
 
         {/* 404 Page */}

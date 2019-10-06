@@ -5,7 +5,7 @@ export const TOKEN_KEY = 'topflop_token';
 export class TokenStorage {
   static save = token => {
     Cookies.set(TOKEN_KEY, token, {
-      secure: true,
+      secure: process.env.NODE_ENV === 'production',
     });
   };
 

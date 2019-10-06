@@ -37,6 +37,15 @@
         }
       }
     },
+    "compagny": {
+      "add": {
+        "title": "Créér une entreprise",
+        "introduction": "Créér une entreprise et invite tes salariés à rejoindre l'application"
+      },
+      "form": {
+        "name": "Nom de l'entreprise"
+      }
+    },
     "header": {
       "navigation": {
         "logout": "Se déconnecter",
@@ -44,7 +53,6 @@
         "profile": "Mon profil"
       }
     },
-
     "footer": {
       "source": "Code source",
       "twitter": "Twitter",

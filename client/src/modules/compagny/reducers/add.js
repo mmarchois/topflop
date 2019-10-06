@@ -12,7 +12,7 @@ const initialState = {
 };
 
 export const addReducers = (state = initialState, action) => {
-  switch (action.payload) {
+  switch (action.type) {
     case COMPAGNY_ADD_LOADING:
       return {
         ...state,

@@ -35,7 +35,7 @@ export class GetUsersByCompagnyController {
     @LoggedUser() user: User,
   ): Promise<Pagination<UserView>> {
     if (!user.currentCompagny) {
-      throw new BadRequestException();
+      throw new BadRequestException('user.has.not.compagny');
     }
 
     return await this.queryBus.execute(

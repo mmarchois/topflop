@@ -33,7 +33,7 @@ export class UserRepository implements IUserRepository {
     return await this.repository
       .createQueryBuilder('user')
       .select(['user.id', 'currentCompagny.id', 'currentCompagny.name'])
-      .innerJoin('user.currentCompagny', 'currentCompagny')
+      .leftJoin('user.currentCompagny', 'currentCompagny')
       .where('user.apiToken = :apiToken', { apiToken })
       .getOne();
   };

@@ -36,7 +36,7 @@ export class CreateUserController {
     @LoggedUser() user: User,
   ): Promise<UserView> {
     if (!user.currentCompagny) {
-      throw new BadRequestException();
+      throw new BadRequestException('user.has.not.compagny');
     }
 
     command.user = user;

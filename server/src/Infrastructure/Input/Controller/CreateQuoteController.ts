@@ -31,7 +31,7 @@ export class CreateQuoteController {
     @LoggedUser() user: User,
   ): Promise<QuoteView> {
     if (!user.currentCompagny) {
-      throw new BadRequestException();
+      throw new BadRequestException('user.has.not.compagny');
     }
 
     command.user = user;

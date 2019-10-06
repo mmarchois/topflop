@@ -31,7 +31,7 @@ export class CreateInputController {
     @LoggedUser() user: User,
   ): Promise<InputView> {
     if (!user.currentCompagny) {
-      throw new BadRequestException();
+      throw new BadRequestException('user.has.not.compagny');
     }
 
     command.user = user;

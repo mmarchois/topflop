@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 const SecuredRoute = props => {
-  const { authentication, compagnyRoute } = props;
+  const { authentication, compagnyRoute, isAdmin } = props;
   const { user, authenticated } = authentication;
 
   if (!authenticated) {
@@ -13,6 +13,10 @@ const SecuredRoute = props => {
 
   if (!compagnyRoute && !user.compagny) {
     return <Redirect to="/compagny/add" />;
+  }
+
+  if (isAdmin && 'admin' !== user.role) {
+    return <Redirect to="/dashboard" />;
   }
 
   return <Route {...props} />;

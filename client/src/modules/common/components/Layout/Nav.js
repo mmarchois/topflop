@@ -41,6 +41,15 @@ const Nav = () => {
               <span className="nav-text">{t('quote.title')}</span>
             </Link>
           </li>
+
+          <li className="nav-item">
+            <Link className="nav-link" to={'/users'}>
+              <span className="nav-icon">
+                <i className="icon fe fe-type"></i>
+              </span>
+              <span className="nav-text">{t('user.title')}</span>
+            </Link>
+          </li>
         </ul>
       </div>
     </div>

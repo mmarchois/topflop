@@ -56,6 +56,22 @@
         "introduction": "Ajoute la quote de ton collègue !"
       }
     },
+    "user": {
+      "role": {
+        "admin": "Administrateur",
+        "user": "Employé"
+      },
+      "title": "Utilisateurs",
+      "add": {
+        "title": "Ajouter un utilisateur",
+        "introduction": "Rajoute un utilisateur pour qu'il ait accès à l'application !"
+      },
+      "list": {
+        "name": "Nom / prénom",
+        "email": "Email",
+        "role": "Role"
+      }
+    },
     "header": {
       "navigation": {
         "logout": "Se déconnecter",

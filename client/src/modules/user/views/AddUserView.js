@@ -5,50 +5,50 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import i18n from '../../../i18n';
 import { reset } from '../actions/add';
-import { addCompagny } from '../middlewares/add';
-import CompagnyForm from '../components/form/CompagnyForm';
+import { addUser } from '../middlewares/add';
+import UserForm from '../components/form/UserForm';
 
-class AddCompagnyView extends Component {
+class AddUserView extends Component {
   componentWillUnmount = () => {
     this.props.reset();
   };
 
   handleSubmit = values => {
-    this.props.addCompagny(values);
+    this.props.addUser(values);
   };
 
   render = () => {
     const { loading, payload } = this.props.add;
 
     if (payload) {
-      return <Redirect to={'/users/add'} />;
+      return <Redirect to={'/users'} />;
     }
 
     return (
       <>
-        <h1>{i18n.t('compagny.add.title')}</h1>
-        <p>{i18n.t('compagny.add.introduction')}</p>
-        <CompagnyForm onSubmit={this.handleSubmit} loading={loading} />
+        <h1>{i18n.t('user.add.title')}</h1>
+        <p>{i18n.t('user.add.introduction')}</p>
+        <UserForm onSubmit={this.handleSubmit} loading={loading} />
       </>
     );
   };
 }
 
-AddCompagnyView.propTypes = {
+AddUserView.propTypes = {
   add: PropTypes.shape({
     loading: PropTypes.bool.isRequired,
     payload: PropTypes.object,
     errors: PropTypes.array,
   }),
   reset: PropTypes.func.isRequired,
-  addCompagny: PropTypes.func.isRequired,
+  addUser: PropTypes.func.isRequired,
 };
 
 export default connect(
   state => ({
-    add: state.compagny.add,
+    add: state.user.add,
   }),
   dispatch => ({
-    ...bindActionCreators({ reset, addCompagny }, dispatch),
+    ...bindActionCreators({ reset, addUser }, dispatch),
   }),
-)(AddCompagnyView);
+)(AddUserView);

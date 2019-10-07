@@ -38,7 +38,7 @@ const Nav = () => {
               <span className="nav-icon">
                 <i className="icon fe fe-type"></i>
               </span>
-              <span className="nav-text">{t('quotes.title')}</span>
+              <span className="nav-text">{t('quote.title')}</span>
             </Link>
           </li>
         </ul>

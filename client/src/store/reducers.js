@@ -2,11 +2,13 @@ import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import auth from '../modules/auth/reducers';
 import compagny from '../modules/compagny/reducers';
-import quotes from '../modules/quotes/reducers';
+import quote from '../modules/quote/reducers';
+import user from '../modules/user/reducers';
 
 export default combineReducers({
   auth,
   compagny,
-  quotes,
+  quote,
+  user,
   form: formReducer,
 });

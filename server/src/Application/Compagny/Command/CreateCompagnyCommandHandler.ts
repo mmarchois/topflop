@@ -1,5 +1,5 @@
 import { CommandHandler, ICommandBus } from '@nestjs/cqrs';
-import { Inject } from '@nestjs/common';
+import { Inject, BadRequestException } from '@nestjs/common';
 import { CreateCompagnyCommand } from './CreateCompagnyCommand';
 import { ICompagnyRepository } from 'src/Domain/Compagny/Repository/ICompagnyRepository';
 import { Compagny } from 'src/Domain/Compagny/Compagny.entity';
@@ -22,6 +22,13 @@ export class CreateCompagnyCommandHandler {
     command: CreateCompagnyCommand,
   ): Promise<CompagnyView> => {
     const { name, user } = command;
+
+    if (
+      (await this.compagnyRepository.findOneByName(name)) instanceof Compagny
+    ) {
+      throw new BadRequestException('compagny.already.exist');
+    }
+
     const compagny = await this.compagnyRepository.save(new Compagny({ name }));
 
     await this.commandBus.execute(

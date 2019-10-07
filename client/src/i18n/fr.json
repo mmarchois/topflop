@@ -46,8 +46,15 @@
         "name": "Nom de l'entreprise"
       }
     },
-    "quotes": {
-      "title": "Quotes"
+    "quote": {
+      "title": "Quotes",
+      "form": {
+        "sentence": "Phrase"
+      },
+      "add": {
+        "title": "Ajouter une quote",
+        "introduction": "Ajoute la quote de ton collègue !"
+      }
     },
     "header": {
       "navigation": {

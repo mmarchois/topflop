@@ -5,33 +5,38 @@ import Layout from '../modules/common/components/Layout/Layout';
 import LoadingComponent from '../modules/common/components/LoadingComponent';
 import SecuredRoute from '../modules/common/components/SecuredRoute';
 
-const AsyncHome = Loadable({
+const Home = Loadable({
   loader: () => import('../modules/common/views/HomeView'),
   loading: LoadingComponent,
 });
 
-const AsyncDashboard = Loadable({
+const Dashboard = Loadable({
   loader: () => import('../modules/common/views/DashboardView'),
   loading: LoadingComponent,
 });
 
-const AsyncAuthentication = Loadable({
+const Authentication = Loadable({
   loader: () => import('../modules/auth/views/AuthenticationView'),
   loading: LoadingComponent,
 });
 
-const AsyncRegistration = Loadable({
+const Registration = Loadable({
   loader: () => import('../modules/auth/views/RegistrationView'),
   loading: LoadingComponent,
 });
 
-const AsyncAddCompagny = Loadable({
+const AddCompagny = Loadable({
   loader: () => import('../modules/compagny/views/AddCompagnyView'),
   loading: LoadingComponent,
 });
 
-const AsyncListQuote = Loadable({
-  loader: () => import('../modules/quotes/views/ListQuoteView'),
+const ListQuote = Loadable({
+  loader: () => import('../modules/quote/views/ListQuoteView'),
+  loading: LoadingComponent,
+});
+
+const AddQuote = Loadable({
+  loader: () => import('../modules/quote/views/AddQuoteView'),
   loading: LoadingComponent,
 });
 
@@ -39,24 +44,21 @@ const Routes = () => (
   <BrowserRouter>
     <Layout>
       <Switch>
-        <Route exact={true} path="/" component={AsyncHome} />
-        <Route exact={true} path="/login" component={AsyncAuthentication} />
-        <Route exact={true} path="/register" component={AsyncRegistration} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/login" component={Authentication} />
+        <Route exact path="/register" component={Registration} />
+
+        <SecuredRoute exact path="/dashboard" component={Dashboard} />
 
         <SecuredRoute
-          exact={true}
-          path="/dashboard"
-          component={AsyncDashboard}
-        />
-
-        <SecuredRoute
-          exact={true}
+          exact
           path="/compagny/add"
-          component={AsyncAddCompagny}
+          component={AddCompagny}
           compagnyRoute={true}
         />
 
-        <SecuredRoute exact={true} path="/quotes" component={AsyncListQuote} />
+        <SecuredRoute exact path="/quotes" component={ListQuote} />
+        <SecuredRoute exact path="/quotes/add" component={AddQuote} />
 
         {/* 404 Page */}
       </Switch>

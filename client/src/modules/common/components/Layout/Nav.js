@@ -18,19 +18,19 @@ const Nav = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to={'/'}>
+            <Link className="nav-link" to={'/inputs/top'}>
               <span className="nav-icon">
                 <i className="icon fe fe-thumbs-up"></i>
               </span>
-              <span className="nav-text">Tops</span>
+              <span className="nav-text">{t('input.type.top')}</span>
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to={'/'}>
+            <Link className="nav-link" to={'/inputs/flop'}>
               <span className="nav-icon">
                 <i className="icon fe fe-thumbs-down"></i>
               </span>
-              <span className="nav-text">Flops</span>
+              <span className="nav-text">{t('input.type.flop')}</span>
             </Link>
           </li>
           <li className="nav-item">
@@ -45,7 +45,7 @@ const Nav = () => {
           <li className="nav-item">
             <Link className="nav-link" to={'/users'}>
               <span className="nav-icon">
-                <i className="icon fe fe-type"></i>
+                <i className="icon fe fe-users"></i>
               </span>
               <span className="nav-text">{t('user.title')}</span>
             </Link>

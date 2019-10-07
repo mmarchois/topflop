@@ -40,6 +40,11 @@ const AddQuote = Loadable({
   loading: LoadingComponent,
 });
 
+const ListInput = Loadable({
+  loader: () => import('../modules/input/views/ListInputsView'),
+  loading: LoadingComponent,
+});
+
 const ListUser = Loadable({
   loader: () => import('../modules/user/views/ListUsersView'),
   loading: LoadingComponent,
@@ -79,6 +84,13 @@ const Routes = () => (
         {/* USERS */}
         <SecuredRoute exact path="/users/:page([0-9]*)?" component={ListUser} />
         <SecuredRoute isAdmin exact path="/users/add" component={AddUser} />
+
+        {/* INPUTS */}
+        <SecuredRoute
+          exact
+          path="/inputs/:type(flop|top)"
+          component={ListInput}
+        />
 
         {/* 404 Page */}
       </Switch>

@@ -26,7 +26,7 @@ class Header extends React.Component {
               alt="TopFlop"
               className="d-none d-md-block navbar-brand-logo"
             />
-            TopFlop.io
+            TopFlop
           </Link>
           {true === authenticated && (
             <ul className="nav navbar-menu align-items-center order-1 order-lg-2">

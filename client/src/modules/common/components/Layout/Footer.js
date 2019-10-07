@@ -13,30 +13,16 @@ const Footer = () => {
                 <div className="col-auto">
                   <ul className="list-inline list-inline-dots mb-0">
                     <li className="list-inline-item">
-                      {i18n.t('footer.madeBy')}{' '}
-                      <Link to={'https://fairness.coop'} target="_blank">
-                        Mathieu MARCHOIS
-                      </Link>
-                    </li>
-                    <li className="list-inline-item">
-                      <a
-                        href="https://twitter.com/mmarchois"
-                        className="btn btn-outline-primary btn-sm"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <i className="icon fe fe-twitter"></i>
-                        {i18n.t('footer.twitter')}
-                      </a>
+                      {i18n.t('footer.opensource')}
                     </li>
                     <li className="list-inline-item">
                       <a
                         href="https://github.com/mmarchois/topflop"
-                        className="btn btn-outline-primary btn-sm"
+                        className="btn btn-sm btn-outline-primary"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <i className="icon fe fe-github"></i>
+                        <i className="icon fe fe-github mr-2"></i>
                         {i18n.t('footer.source')}
                       </a>
                     </li>

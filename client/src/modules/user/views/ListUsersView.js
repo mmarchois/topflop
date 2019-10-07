@@ -17,6 +17,15 @@ class ListUsersView extends Component {
     this.props.reset();
   };
 
+  componentWillReceiveProps(nextProps) {
+    const currentPage = this.props.match.params.page;
+    const nextPage = nextProps.match.params.page;
+
+    if (currentPage !== nextPage) {
+      nextProps.listUsers(nextPage);
+    }
+  }
+
   render = () => {
     const { payload, totalItems, pageCount } = this.props.list;
     const { page } = this.props.match.params;

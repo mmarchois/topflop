@@ -72,6 +72,12 @@
         "role": "Role"
       }
     },
+    "input": {
+      "type": {
+        "flop": "Flop",
+        "top": "Top"
+      }
+    },
     "header": {
       "navigation": {
         "logout": "Se déconnecter",
@@ -82,7 +88,7 @@
     "footer": {
       "source": "Code source",
       "twitter": "Twitter",
-      "madeBy": "Développé par"
+      "opensource": "TopFlop est une application open-source, pour contribuer"
     }
   }
 }

@@ -9,8 +9,17 @@ import i18n from '../../../i18n';
 
 class ListQuoteView extends Component {
   componentDidMount = () => {
-    this.props.listQuotes(1);
+    this.props.listQuotes(this.props.match.params.page);
   };
+
+  componentWillReceiveProps(nextProps) {
+    const currentPage = this.props.match.params.page;
+    const nextPage = nextProps.match.params.page;
+
+    if (currentPage !== nextPage) {
+      nextProps.listQuotes(nextPage);
+    }
+  }
 
   componentWillUnmount = () => {
     this.props.reset();

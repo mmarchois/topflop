@@ -18,7 +18,9 @@ export const listReducers = (state = initialState, action) => {
     case QUOTES_LIST_SUCCESS:
       return {
         ...state,
-        payload: action.payload,
+        payload: action.payload.items,
+        pageCount: action.payload.pageCount,
+        totalItems: action.payload.totalItems,
       };
     case QUOTES_LIST_LOADING:
       return {

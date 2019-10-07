@@ -41,7 +41,8 @@ class Header extends React.Component {
                     <span>{`${user.firstName} ${user.lastName}`}</span>
                     {user.compagny && (
                       <span className="text-muted d-block mt-1 text-h6">
-                        {user.compagny.name} - {user.role}
+                        {user.compagny.name} -{' '}
+                        {i18n.t(`user.role.${user.role}`)}
                       </span>
                     )}
                   </span>

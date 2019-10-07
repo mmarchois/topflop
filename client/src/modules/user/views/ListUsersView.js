@@ -6,6 +6,7 @@ import { reset } from '../actions/list';
 import { bindActionCreators } from 'redux';
 import UserRow from '../components/UserRow';
 import i18n from '../../../i18n';
+import Pagination from '../../common/components/Pagination';
 
 class ListUsersView extends Component {
   componentDidMount = () => {
@@ -17,25 +18,37 @@ class ListUsersView extends Component {
   };
 
   render = () => {
-    const { payload } = this.props.list;
+    const { payload, totalItems, pageCount } = this.props.list;
+    const { page } = this.props.match.params;
 
     return (
-      <div className="table-responsive">
-        <table className="table card-table table-striped table-vcenter">
-          <thead>
-            <tr>
-              <th>{i18n.t('user.list.name')}</th>
-              <th>{i18n.t('user.list.email')}</th>
-              <th>{i18n.t('user.list.role')}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {payload.map(user => {
-              return <UserRow key={user.id} user={user} />;
-            })}
-          </tbody>
-        </table>
-      </div>
+      <>
+        <h1>
+          {i18n.t('user.title')} ({totalItems})
+        </h1>
+
+        <div className="table-responsive">
+          <table className="table card-table table-striped table-vcenter">
+            <thead>
+              <tr>
+                <th>{i18n.t('user.list.name')}</th>
+                <th>{i18n.t('user.list.email')}</th>
+                <th>{i18n.t('user.list.role')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {payload.map(user => {
+                return <UserRow key={user.id} user={user} />;
+              })}
+            </tbody>
+          </table>
+        </div>
+        <Pagination
+          pageCount={pageCount}
+          page={page ? page : 1}
+          baseUrl={'/users'}
+        />
+      </>
     );
   };
 }

@@ -1,6 +1,6 @@
 import { loading, success, errors } from '../actions/list';
 
-export const listQuotes = page => {
+export const listQuotes = (page = 1) => {
   return async (dispatch, getState, axios) => {
     dispatch(loading(true));
 
@@ -8,8 +8,7 @@ export const listQuotes = page => {
       const response = await axios.get('users/me/current-compagny/quotes', {
         params: { page },
       });
-      const { items } = response.data;
-      dispatch(success(items));
+      dispatch(success(response.data));
     } catch (e) {
       dispatch(errors([]));
     } finally {

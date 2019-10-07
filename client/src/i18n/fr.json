@@ -81,7 +81,10 @@
         "flop": "Flops",
         "top": "Tops"
       },
-      "fromTo": "du {{from}} au {{to}}"
+      "list": {
+        "fromTo": "de la semaine du {{from}} au {{to}}",
+        "add": "Ajouter un {{type}}"
+      }
     },
     "header": {
       "navigation": {

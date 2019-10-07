@@ -7,7 +7,7 @@ import { listInputs } from '../middlewares/list';
 import { reset } from '../actions/list';
 import { bindActionCreators } from 'redux';
 import i18n from '../../../i18n';
-import InputRow from '../components/InputRow';
+import InputChart from '../components/InputChart';
 
 class ListInputsView extends Component {
   componentDidMount = () => {
@@ -33,14 +33,15 @@ class ListInputsView extends Component {
     const current = new Date();
     const fromDate = format(startOfWeek(current), 'dd/M/Y');
     const toDate = format(endOfWeek(current), 'dd/M/Y');
+    const icon = 'top' === type ? 'up' : 'down';
 
     return (
       <>
         <div className="page-header">
           <h1 className="page-title">
-            <i className="icon fe fe-thumbs-up"></i>
+            <i className={`icon fe fe-thumbs-${icon}`}></i>{' '}
             {i18n.t(`input.type.${type}`)}{' '}
-            {i18n.t('input.fromTo', {
+            {i18n.t('input.list.fromTo', {
               from: fromDate,
               to: toDate,
               interpolation: { escapeValue: false },
@@ -50,14 +51,16 @@ class ListInputsView extends Component {
         <div className="row">
           <div className={'col-lg-12'}>
             <div className={'card'}>
-              <Link to={'/users/add'} className="btn btn-outline-primary mb-4">
-                <i className="icon fe fe-plus"></i>
-                {i18n.t('user.list.add')}
-              </Link>
               <div className={'card-body text-wrap p-lg-6'}>
-                {payload.map((input, key) => (
-                  <InputRow key={key} input={input} />
-                ))}
+                <Link
+                  to={'/users/add'}
+                  className="btn btn-outline-primary mb-4"
+                >
+                  <i className="icon fe fe-plus"></i>
+                  {i18n.t('input.list.add', { type })}
+                </Link>
+
+                <InputChart payload={payload} />
               </div>
             </div>
           </div>

@@ -5459,6 +5459,10 @@ a.badge-dark:focus, a.badge-dark.focus {
   background-color: #fff;
   border: 1px solid rgba(0, 40, 100, 0.12);
 }
+.list-group-item {
+  border-bottom: 1px solid rgba(0, 40, 100, 0.12) !important;
+  margin-bottom: 0 ;
+}
 
 .list-group-item:first-child {
   border-top-left-radius: 3px;
@@ -13196,7 +13200,7 @@ a.icon:hover {
   margin: 0 -.75rem;
 }
 
-.nav-tabs .nav-link {
+.nav-link {
   border: 0;
   color: inherit;
   border-bottom: 1px solid transparent;
@@ -13206,12 +13210,12 @@ a.icon:hover {
   padding: 1rem 0;
 }
 
-.nav-tabs .nav-link:hover:not(.disabled) {
+.nav-link:hover:not(.disabled) {
   border-color: #6e7687;
   color: #6e7687;
 }
 
-.nav-tabs .nav-link.active {
+.nav-link.active {
   border-color: #467fcf;
   color: #467fcf;
   background: transparent;

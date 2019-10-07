@@ -14,7 +14,14 @@ $ docker-compose -p topflop up -d
 -   API is available on https://api.topflop.local/
 -   API doc is available on https://api.topflop.local/_doc
 
-### Mobile side
+### App side
+
+```bash
+$ cd client
+$ yarn start
+```
+
+-   App available on http://localhost:3000
 
 ## Technical stack
 
@@ -28,10 +35,9 @@ TopFlop depends on the following technologies:
 -   Docker
 -   PostgreSQL
 
-### Mobile stack
+### App stack
 
--   ReactNative
--   Typescript
+-   React.js
 
 # Contribution
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-const Nav = () => {
+const Nav = props => {
   const { t } = useTranslation();
 
   return (
@@ -10,7 +10,7 @@ const Nav = () => {
       <div className="container">
         <ul className="navbar-nav" id="menu">
           <li className="nav-item">
-            <Link className="nav-link " to={'/dashboard'}>
+            <Link className="nav-link" to={'/dashboard'}>
               <span className="nav-icon">
                 <i className="icon fe fe-home"></i>
               </span>
@@ -36,7 +36,7 @@ const Nav = () => {
           <li className="nav-item">
             <Link className="nav-link" to={'/quotes'}>
               <span className="nav-icon">
-                <i className="icon fe fe-type"></i>
+                <i className="icon fe fe-code"></i>
               </span>
               <span className="nav-text">{t('quote.title')}</span>
             </Link>

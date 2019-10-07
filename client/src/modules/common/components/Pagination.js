@@ -10,10 +10,17 @@ const Pagination = ({ pageCount, page, baseUrl }) => {
   }
 
   return (
-    <ul>
+    <ul className="pagination mt-5">
       {pages.map((item, key) => (
-        <li key={key}>
-          <Link className={page == key + 1 ? 'active' : ''} to={item}>
+        <li className="page-item" key={key}>
+          <Link
+            className={
+              parseInt(page) === key + 1
+                ? 'btn btn-outline-primary'
+                : 'btn btn-primary'
+            }
+            to={item}
+          >
             {key + 1}
           </Link>
         </li>
@@ -24,7 +31,6 @@ const Pagination = ({ pageCount, page, baseUrl }) => {
 
 Pagination.propTypes = {
   pageCount: PropTypes.number.isRequired,
-  page: PropTypes.string.isRequired,
   baseUrl: PropTypes.string.isRequired,
 };
 

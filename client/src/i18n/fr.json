@@ -54,12 +54,15 @@
       "add": {
         "title": "Ajouter une quote",
         "introduction": "Ajoute la quote de ton collègue !"
+      },
+      "list": {
+        "add": "Ajouter une quote"
       }
     },
     "user": {
       "role": {
         "admin": "Administrateur",
-        "user": "Employé"
+        "user": "Utilisateur"
       },
       "title": "Utilisateurs",
       "add": {
@@ -67,6 +70,7 @@
         "introduction": "Rajoute un utilisateur pour qu'il ait accès à l'application !"
       },
       "list": {
+        "add": "Ajouter un utilisateur",
         "name": "Nom / prénom",
         "email": "Email",
         "role": "Role"
@@ -74,9 +78,10 @@
     },
     "input": {
       "type": {
-        "flop": "Flop",
-        "top": "Top"
-      }
+        "flop": "Flops",
+        "top": "Tops"
+      },
+      "fromTo": "du {{from}} au {{to}}"
     },
     "header": {
       "navigation": {

@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { endOfWeek, startOfWeek, format } from 'date-fns';
 import { listInputs } from '../middlewares/list';
 import { reset } from '../actions/list';
 import { bindActionCreators } from 'redux';
 import i18n from '../../../i18n';
+import InputRow from '../components/InputRow';
 
 class ListInputsView extends Component {
   componentDidMount = () => {
@@ -15,29 +18,50 @@ class ListInputsView extends Component {
     this.props.reset();
   };
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate = (prevProps, prevState) => {
     const currentType = this.props.match.params.type;
-    const nextType = nextProps.match.params.type;
+    const prevType = prevProps.match.params.type;
 
-    if (currentType !== nextType) {
-      nextProps.listInputs(nextType);
+    if (currentType !== prevType) {
+      this.props.listInputs(currentType);
     }
-  }
+  };
 
   render = () => {
     const { payload } = this.props.list;
     const { type } = this.props.match.params;
+    const current = new Date();
+    const fromDate = format(startOfWeek(current), 'dd/M/Y');
+    const toDate = format(endOfWeek(current), 'dd/M/Y');
 
     return (
       <>
-        <h1>{i18n.t(`input.type.${type}`)}</h1>
-        <ul>
-          {payload.map(input => (
-            <li key={input.author.lastName}>
-              {input.author.firstName} {input.author.lastName} : {input.counter}
-            </li>
-          ))}
-        </ul>
+        <div className="page-header">
+          <h1 className="page-title">
+            <i className="icon fe fe-thumbs-up"></i>
+            {i18n.t(`input.type.${type}`)}{' '}
+            {i18n.t('input.fromTo', {
+              from: fromDate,
+              to: toDate,
+              interpolation: { escapeValue: false },
+            })}
+          </h1>
+        </div>
+        <div className="row">
+          <div className={'col-lg-12'}>
+            <div className={'card'}>
+              <Link to={'/users/add'} className="btn btn-outline-primary mb-4">
+                <i className="icon fe fe-plus"></i>
+                {i18n.t('user.list.add')}
+              </Link>
+              <div className={'card-body text-wrap p-lg-6'}>
+                {payload.map((input, key) => (
+                  <InputRow key={key} input={input} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </>
     );
   };

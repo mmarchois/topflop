@@ -1,5 +1,6 @@
 import { loading, success, errors } from '../actions/add';
 import Compagny from '../models/Compagny';
+import errorFormater from '../../../utils/errorFormater';
 
 export const addCompagny = payload => {
   return async (dispatch, getState, axios) => {
@@ -9,7 +10,7 @@ export const addCompagny = payload => {
       const response = await axios.post('companies', payload);
       dispatch(success(new Compagny(response.data)));
     } catch (e) {
-      dispatch(errors([]));
+      dispatch(errors(errorFormater(e)));
     } finally {
       dispatch(loading(false));
     }

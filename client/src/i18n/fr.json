@@ -61,6 +61,9 @@
       }
     },
     "user": {
+      "errors": {
+        "registredCompagny": "Ce compte a déjà été ajouté à ta société !"
+      },
       "role": {
         "admin": "Administrateur",
         "user": "Utilisateur"

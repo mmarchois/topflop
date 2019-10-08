@@ -22,7 +22,7 @@ export const success = payload => {
 export const errors = errors => {
   return {
     type: USER_LIST_ERROR,
-    loading,
+    errors,
   };
 };
 

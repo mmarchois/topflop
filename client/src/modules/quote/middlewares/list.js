@@ -1,4 +1,5 @@
 import { loading, success, errors } from '../actions/list';
+import errorFormater from '../../../utils/errorFormater';
 
 export const listQuotes = (page = 1) => {
   return async (dispatch, getState, axios) => {
@@ -10,7 +11,7 @@ export const listQuotes = (page = 1) => {
       });
       dispatch(success(response.data));
     } catch (e) {
-      dispatch(errors([]));
+      dispatch(errors(errorFormater(e)));
     } finally {
       dispatch(loading(false));
     }

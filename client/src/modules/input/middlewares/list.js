@@ -1,5 +1,6 @@
 import { loading, success, errors } from '../actions/list';
 import { endOfWeek, startOfWeek } from 'date-fns';
+import errorFormater from '../../../utils/errorFormater';
 
 export const listInputs = type => {
   return async (dispatch, getState, axios) => {
@@ -16,7 +17,7 @@ export const listInputs = type => {
 
       dispatch(success(response.data));
     } catch (e) {
-      dispatch(errors([]));
+      dispatch(errors(errorFormater(e)));
     } finally {
       dispatch(loading(false));
     }

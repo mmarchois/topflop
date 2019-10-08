@@ -8,6 +8,7 @@ import { bindActionCreators } from 'redux';
 import UserRow from '../components/UserRow';
 import i18n from '../../../i18n';
 import Pagination from '../../common/components/Pagination';
+import ServerErrors from '../../common/components/ServerErrors';
 
 class ListUsersView extends Component {
   componentDidMount = () => {
@@ -43,6 +44,7 @@ class ListUsersView extends Component {
 
         <div className="row">
           <div className={'col-lg-12'}>
+            <ServerErrors errors={[]} />
             <div className={'card'}>
               <div className={'card-body text-wrap p-lg-6'}>
                 {'admin' === role && (

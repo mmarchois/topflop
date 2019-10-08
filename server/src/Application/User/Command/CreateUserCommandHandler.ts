@@ -42,7 +42,7 @@ export class CreateUserCommandHandler {
         compagny,
       )) instanceof UserCompagny
     ) {
-      throw new BadRequestException('user.already.registred.compagny');
+      throw new BadRequestException('user.errors.registredCompagny');
     }
 
     let savedUser = await this.userRepository.findOneByEmail(email);

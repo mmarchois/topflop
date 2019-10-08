@@ -1,4 +1,5 @@
 import { loading, success, errors } from '../actions/add';
+import errorFormater from '../../../utils/errorFormater';
 
 export const addQuote = payload => {
   return async (dispatch, getState, axios) => {
@@ -12,7 +13,7 @@ export const addQuote = payload => {
 
       dispatch(success(response.data));
     } catch (e) {
-      dispatch(errors([]));
+      dispatch(errors(errorFormater(e)));
     } finally {
       dispatch(loading(false));
     }

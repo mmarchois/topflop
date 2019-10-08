@@ -7,6 +7,7 @@ import i18n from '../../../i18n';
 import { reset } from '../actions/add';
 import { addUser } from '../middlewares/add';
 import UserForm from '../components/form/UserForm';
+import ServerErrors from '../../common/components/ServerErrors';
 
 class AddUserView extends Component {
   componentWillUnmount = () => {
@@ -18,7 +19,7 @@ class AddUserView extends Component {
   };
 
   render = () => {
-    const { loading, payload } = this.props.add;
+    const { loading, payload, errors } = this.props.add;
 
     if (payload) {
       return <Redirect to={'/users'} />;
@@ -34,6 +35,7 @@ class AddUserView extends Component {
 
         <div className="row">
           <div className={'col-lg-12'}>
+            <ServerErrors errors={errors} />
             <div className={'card'}>
               <div className={'card-body text-wrap p-lg-6'}>
                 <p>{i18n.t('user.add.introduction')}</p>
@@ -51,7 +53,7 @@ AddUserView.propTypes = {
   add: PropTypes.shape({
     loading: PropTypes.bool.isRequired,
     payload: PropTypes.object,
-    errors: PropTypes.array,
+    errors: PropTypes.array.isRequired,
   }),
   reset: PropTypes.func.isRequired,
   addUser: PropTypes.func.isRequired,

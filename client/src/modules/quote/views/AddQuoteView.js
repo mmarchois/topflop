@@ -14,6 +14,8 @@ class AddQuoteView extends Component {
   };
 
   handleSubmit = values => {
+    values.authorId = this.props.match.params.id;
+
     this.props.addQuote(values);
   };
 
@@ -26,9 +28,22 @@ class AddQuoteView extends Component {
 
     return (
       <>
-        <h1>{i18n.t('quote.add.title')}</h1>
-        <p>{i18n.t('quote.add.introduction')}</p>
-        <QuoteForm loading={loading} onSubmit={this.handleSubmit} />
+        <div className="page-header">
+          <h1 className="page-title">
+            <i className="icon fe fe-code"></i> {i18n.t('quote.add.title')}
+          </h1>
+        </div>
+
+        <div className="row">
+          <div className={'col-lg-12'}>
+            <div className={'card'}>
+              <div className={'card-body text-wrap p-lg-6'}>
+                <p>{i18n.t('quote.add.introduction')}</p>
+                <QuoteForm loading={loading} onSubmit={this.handleSubmit} />
+              </div>
+            </div>
+          </div>
+        </div>
       </>
     );
   };

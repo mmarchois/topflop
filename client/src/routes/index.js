@@ -79,7 +79,7 @@ const Routes = () => (
           path="/quotes/:page([0-9]*)?"
           component={ListQuote}
         />
-        <SecuredRoute exact path="/quotes/add" component={AddQuote} />
+        <SecuredRoute exact path="/users/:id/quotes/add" component={AddQuote} />
 
         {/* USERS */}
         <SecuredRoute exact path="/users/:page([0-9]*)?" component={ListUser} />

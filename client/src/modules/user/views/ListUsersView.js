@@ -60,6 +60,7 @@ class ListUsersView extends Component {
                       <th>{i18n.t('user.list.name')}</th>
                       <th>{i18n.t('user.list.email')}</th>
                       <th>{i18n.t('user.list.role')}</th>
+                      <th>{i18n.t('user.list.actions')}</th>
                     </tr>
                   </thead>
                   <tbody>

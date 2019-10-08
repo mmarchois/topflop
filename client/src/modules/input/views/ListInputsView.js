@@ -52,10 +52,7 @@ class ListInputsView extends Component {
           <div className={'col-lg-12'}>
             <div className={'card'}>
               <div className={'card-body text-wrap p-lg-6'}>
-                <Link
-                  to={'/users/add'}
-                  className="btn btn-outline-primary mb-4"
-                >
+                <Link to={'/users'} className="btn btn-outline-primary mb-4">
                   <i className="icon fe fe-plus"></i>
                   {i18n.t('input.list.add', { type })}
                 </Link>

@@ -17,7 +17,11 @@ const QuoteForm = ({ handleSubmit, loading }) => {
           label={t('quote.form.sentence')}
           name="sentence"
         />
-        <button type="submit" disabled={loading}>
+        <button
+          type="submit"
+          disabled={loading}
+          className={'btn btn-primary ml-auto'}
+        >
           {t('form.buttons.save')}
         </button>
       </form>

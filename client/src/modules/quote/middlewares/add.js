@@ -5,8 +5,12 @@ export const addQuote = payload => {
     dispatch(loading(true));
 
     try {
-      const response = await axios.post('quotes', payload);
-      //dispatch(success(new QUOTES(response.data)));
+      const response = await axios.post(
+        'users/me/current-compagny/quotes',
+        payload,
+      );
+
+      dispatch(success(response.data));
     } catch (e) {
       dispatch(errors([]));
     } finally {

@@ -56,7 +56,8 @@
         "introduction": "Ajoute la quote de ton collègue !"
       },
       "list": {
-        "add": "Ajouter une quote"
+        "add": "Ajouter une quote",
+        "addedAt": "Quoté le {{date}}"
       }
     },
     "user": {
@@ -73,7 +74,8 @@
         "add": "Ajouter un utilisateur",
         "name": "Prénom / Nom",
         "email": "Email",
-        "role": "Choisir un rôle"
+        "role": "Rôle",
+        "actions": "Actions"
       }
     },
     "input": {

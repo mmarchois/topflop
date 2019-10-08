@@ -1,5 +1,5 @@
 {
-  "name": "client2",
+  "name": "topflop",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,7 +14,6 @@
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
-    "react-vis": "^1.11.7",
     "redux": "^4.0.4",
     "redux-form": "^8.2.6",
     "redux-persist": "^6.0.0",

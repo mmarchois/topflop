@@ -1,17 +1,18 @@
 const errorFormater = exception => {
-  if (Array.isArray(exception.message)) {
+  const message = exception.message;
+  if (Array.isArray(message)) {
     const errors = [];
 
-    for (const message of exception.message) {
-      Object.values(message.constraints).map(constraint => {
+    for (const msg of message) {
+      for (const constraint of Object.values(msg.constraints)) {
         errors.push(constraint);
-      });
+      }
     }
 
     return errors;
   }
 
-  return [exception.message];
+  return [message];
 };
 
 export default errorFormater;

@@ -10,11 +10,6 @@ const Home = Loadable({
   loading: LoadingComponent,
 });
 
-const Dashboard = Loadable({
-  loader: () => import('../modules/common/views/DashboardView'),
-  loading: LoadingComponent,
-});
-
 const Authentication = Loadable({
   loader: () => import('../modules/auth/views/AuthenticationView'),
   loading: LoadingComponent,
@@ -63,8 +58,6 @@ const Routes = () => (
         <Route exact path="/login" component={Authentication} />
         <Route exact path="/register" component={Registration} />
 
-        <SecuredRoute exact path="/dashboard" component={Dashboard} />
-
         {/* COMPANIES */}
         <SecuredRoute
           exact
@@ -91,8 +84,6 @@ const Routes = () => (
           path="/inputs/:type(flop|top)"
           component={ListInput}
         />
-
-        {/* 404 Page */}
       </Switch>
     </Layout>
   </BrowserRouter>

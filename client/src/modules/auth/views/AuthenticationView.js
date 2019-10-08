@@ -7,6 +7,7 @@ import AuthenticationForm from '../components/form/AuthenticationForm';
 import i18n from '../../../i18n';
 import { reset } from '../actions/authentication';
 import { authentication as onAuthentication } from '../middlewares/authentication';
+import ServerErrors from '../../common/components/ServerErrors';
 
 class AuthenticationView extends Component {
   handleSubmit = values => {
@@ -22,17 +23,33 @@ class AuthenticationView extends Component {
   };
 
   render() {
-    const { loading, authenticated } = this.props.authentication;
+    const { loading, authenticated, errors } = this.props.authentication;
 
     if (true === authenticated) {
-      return <Redirect to={'/dashboard'} />;
+      return <Redirect to={'/users'} />;
     }
 
     return (
       <>
-        <h1>{i18n.t('auth.authentication.title')}</h1>
-        <p>{i18n.t('auth.authentication.introduction')}</p>
-        <AuthenticationForm onSubmit={this.handleSubmit} loading={loading} />
+        <div className="page-header">
+          <h1 className="page-title">
+            {i18n.t('auth.authentication.introduction')}
+          </h1>
+        </div>
+
+        <div className="row">
+          <div className={'col-lg-12'}>
+            <ServerErrors errors={errors} />
+            <div className={'card'}>
+              <div className={'card-body text-wrap p-lg-6'}>
+                <AuthenticationForm
+                  onSubmit={this.handleSubmit}
+                  loading={loading}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </>
     );
   }
@@ -42,6 +59,7 @@ AuthenticationView.propTypes = {
   authentication: PropTypes.shape({
     loading: PropTypes.bool.isRequired,
     authenticated: PropTypes.bool.isRequired,
+    errors: PropTypes.array.isRequired,
   }).isRequired,
   onAuthentication: PropTypes.func.isRequired,
 };

@@ -16,7 +16,7 @@ const SecuredRoute = props => {
   }
 
   if (isAdmin && 'admin' !== user.role) {
-    return <Redirect to="/dashboard" />;
+    return <Redirect to="/users" />;
   }
 
   return <Route {...props} />;

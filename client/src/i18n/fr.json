@@ -19,7 +19,8 @@
         "form": {
           "email": "Adresse e-mail",
           "password": "Mot de passe",
-          "submit": "Se connecter"
+          "submit": "Se connecter",
+          "noAccount": "Tu n'as pas encore de compte ? Inscris toi !"
         }
       },
       "registration": {
@@ -30,7 +31,9 @@
           "lastName": "Nom",
           "email": "Adresse e-mail",
           "password": "Mot de passe",
+          "submit": "S'inscrire",
           "confirmPassword": "Confirme ton mot de passe",
+          "account": "Déjà un compte ? Connecte toi !",
           "errors": {
             "invalidPasswords": "Les mots de passe doivent être identiques."
           }
@@ -39,8 +42,7 @@
     },
     "compagny": {
       "add": {
-        "title": "Créér une entreprise",
-        "introduction": "Créér une entreprise et invite tes salariés à rejoindre l'application"
+        "introduction": "Créér une entreprise et invite des utilisateurs à rejoindre l'application."
       },
       "form": {
         "name": "Nom de l'entreprise"
@@ -62,7 +64,7 @@
     },
     "user": {
       "errors": {
-        "registredCompagny": "Ce compte a déjà été ajouté à ta société !"
+        "registredCompagny": "Ce compte a déjà été ajouté !"
       },
       "role": {
         "admin": "Administrateur",
@@ -78,7 +80,8 @@
         "name": "Prénom / Nom",
         "email": "Email",
         "role": "Rôle",
-        "actions": "Actions"
+        "actions": "Actions",
+        "actionsHelp": "Pour ajouter un top, flop ou une quote, utilise les boutons d'actions dans la liste ci-dessous."
       }
     },
     "input": {
@@ -86,9 +89,18 @@
         "flop": "Flops",
         "top": "Tops"
       },
+      "success": {
+        "flop": "{{user}} a bien été floppé !",
+        "top": "{{user}} a bien été toppé !"
+      },
       "list": {
-        "fromTo": "de la semaine du {{from}} au {{to}}",
-        "add": "Ajouter un {{type}}"
+        "add": "Ajouter un {{type}}",
+        "author": "Auteur",
+        "count": "Compteur",
+        "type": {
+          "flop": "Classement des FLOP de la semaine",
+          "top": "Classement des TOP de la semaine"
+        }
       }
     },
     "header": {

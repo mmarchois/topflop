@@ -16,11 +16,11 @@ const Nav = ({ authenticated }) => {
       <div className="container">
         <ul className="navbar-nav" id="menu">
           <li className="nav-item">
-            <Link className="nav-link" to={'/dashboard'}>
+            <Link className="nav-link" to={'/users'}>
               <span className="nav-icon">
-                <i className="icon fe fe-home"></i>
+                <i className="icon fe fe-users"></i>
               </span>
-              <span className="nav-text">Dashboard</span>
+              <span className="nav-text">{t('user.title')}</span>
             </Link>
           </li>
           <li className="nav-item">
@@ -45,15 +45,6 @@ const Nav = ({ authenticated }) => {
                 <i className="icon fe fe-code"></i>
               </span>
               <span className="nav-text">{t('quote.title')}</span>
-            </Link>
-          </li>
-
-          <li className="nav-item">
-            <Link className="nav-link" to={'/users'}>
-              <span className="nav-icon">
-                <i className="icon fe fe-users"></i>
-              </span>
-              <span className="nav-text">{t('user.title')}</span>
             </Link>
           </li>
         </ul>

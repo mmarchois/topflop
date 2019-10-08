@@ -4,21 +4,19 @@ import { TokenStorage } from '../../../utils/tokenStorage';
 import LoggedUser from '../../user/models/LoggedUser';
 import errorFormater from '../../../utils/errorFormater';
 
-export const registration = payload => {
-  return async (dispatch, getState, axios) => {
-    dispatch(loading(true));
+export const registration = payload => async (dispatch, getState, axios) => {
+  dispatch(loading(true));
 
-    try {
-      const response = await axios.post('register', payload);
-      const { user, apiToken } = response.data;
+  try {
+    const response = await axios.post('register', payload);
+    const { user, apiToken } = response.data;
 
-      TokenStorage.save(apiToken);
-      dispatch(loggedUser(new LoggedUser(user)));
-      dispatch(authenticated(true));
-    } catch (e) {
-      dispatch(errors(errorFormater(e)));
-    } finally {
-      dispatch(loading(false));
-    }
-  };
+    TokenStorage.save(apiToken);
+    dispatch(loggedUser(new LoggedUser(user)));
+    dispatch(authenticated(true));
+  } catch (e) {
+    dispatch(errors(errorFormater(e)));
+  } finally {
+    dispatch(loading(false));
+  }
 };

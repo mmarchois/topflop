@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import validate from './validators/authentication';
 import TextInput from '../../../common/components/Form/TextInput';
@@ -22,9 +23,16 @@ const AuthenticationForm = ({ handleSubmit, loading }) => {
         label={t('auth.authentication.form.password')}
         name="password"
       />
-      <button type="submit" disabled={loading}>
+      <button
+        type="submit"
+        className={'btn btn-primary ml-auto'}
+        disabled={loading}
+      >
         {t('auth.authentication.form.submit')}
       </button>
+      <div className={'mt-3'}>
+        <Link to={'/register'}>{t('auth.authentication.form.noAccount')}</Link>
+      </div>
     </form>
   );
 };

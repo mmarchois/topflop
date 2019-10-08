@@ -16,8 +16,8 @@ const Pagination = ({ pageCount, page, baseUrl }) => {
           <Link
             className={
               parseInt(page) === key + 1
-                ? 'btn btn-outline-primary'
-                : 'btn btn-primary'
+                ? 'btn btn-outline-primary mr-2'
+                : 'btn btn-primary mr-2'
             }
             to={item}
           >

@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { endOfWeek, startOfWeek, format } from 'date-fns';
 import { listInputs } from '../middlewares/list';
 import { reset } from '../actions/list';
+import { reset as inputReset } from '../../input/actions/add';
 import { bindActionCreators } from 'redux';
 import i18n from '../../../i18n';
-import InputChart from '../components/InputChart';
+import InputRow from '../components/InputRow';
 
 class ListInputsView extends Component {
   componentDidMount = () => {
@@ -16,6 +16,7 @@ class ListInputsView extends Component {
 
   componentWillUnmount = () => {
     this.props.reset();
+    this.props.inputReset();
   };
 
   componentDidUpdate = (prevProps, prevState) => {
@@ -30,9 +31,6 @@ class ListInputsView extends Component {
   render = () => {
     const { payload } = this.props.list;
     const { type } = this.props.match.params;
-    const current = new Date();
-    const fromDate = format(startOfWeek(current), 'dd/M/Y');
-    const toDate = format(endOfWeek(current), 'dd/M/Y');
     const icon = 'top' === type ? 'up' : 'down';
 
     return (
@@ -40,12 +38,7 @@ class ListInputsView extends Component {
         <div className="page-header">
           <h1 className="page-title">
             <i className={`icon fe fe-thumbs-${icon}`}></i>{' '}
-            {i18n.t(`input.type.${type}`)}{' '}
-            {i18n.t('input.list.fromTo', {
-              from: fromDate,
-              to: toDate,
-              interpolation: { escapeValue: false },
-            })}
+            {i18n.t(`input.list.type.${type}`)}
           </h1>
         </div>
         <div className="row">
@@ -56,8 +49,22 @@ class ListInputsView extends Component {
                   <i className="icon fe fe-plus"></i>
                   {i18n.t('input.list.add', { type })}
                 </Link>
-
-                <InputChart payload={payload} />
+                <table className="table table-sm table-striped">
+                  <thead>
+                    <tr>
+                      <th style={{ width: '70px' }}></th>
+                      <th>{i18n.t('input.list.author')}</th>
+                      <th style={{ width: '70px' }}>
+                        {i18n.t('input.list.count')}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {payload.map((input, key) => (
+                      <InputRow key={key} input={input} position={key + 1} />
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -69,6 +76,7 @@ class ListInputsView extends Component {
 
 ListInputsView.propTypes = {
   listInputs: PropTypes.func.isRequired,
+  inputReset: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
   list: PropTypes.shape({
     payload: PropTypes.array.isRequired,
@@ -80,6 +88,6 @@ export default connect(
     list: state.input.list,
   }),
   dispatch => ({
-    ...bindActionCreators({ reset, listInputs }, dispatch),
+    ...bindActionCreators({ reset, listInputs, inputReset }, dispatch),
   }),
 )(ListInputsView);

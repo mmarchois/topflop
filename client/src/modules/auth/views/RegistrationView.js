@@ -7,6 +7,7 @@ import RegistrationForm from '../components/form/RegistrationForm';
 import i18n from '../../../i18n';
 import { reset } from '../actions/registration';
 import { registration as onRegistration } from '../middlewares/registration';
+import ServerErrors from '../../common/components/ServerErrors';
 
 class RegistrationView extends Component {
   handleSubmit = values => {
@@ -25,17 +26,30 @@ class RegistrationView extends Component {
     const { registration, authenticated } = this.props;
 
     if (true === authenticated) {
-      return <Redirect to={'/dashboard'} />;
+      return <Redirect to={'/users'} />;
     }
 
     return (
       <>
-        <h1>{i18n.t('auth.registration.title')}</h1>
-        <p>{i18n.t('auth.registration.introduction')}</p>
-        <RegistrationForm
-          onSubmit={this.handleSubmit}
-          loading={registration.loading}
-        />
+        <div className="page-header">
+          <h1 className="page-title">
+            {i18n.t('auth.registration.introduction')}
+          </h1>
+        </div>
+
+        <div className="row">
+          <div className={'col-lg-12'}>
+            <ServerErrors errors={registration.errors} />
+            <div className={'card'}>
+              <div className={'card-body text-wrap p-lg-6'}>
+                <RegistrationForm
+                  onSubmit={this.handleSubmit}
+                  loading={registration.loading}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </>
     );
   }

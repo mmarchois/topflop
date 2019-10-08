@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { listUsers } from '../middlewares/list';
+import { addInput } from '../../input/middlewares/add';
 import { reset } from '../actions/list';
 import { bindActionCreators } from 'redux';
 import UserRow from '../components/UserRow';
 import i18n from '../../../i18n';
 import Pagination from '../../common/components/Pagination';
 import ServerErrors from '../../common/components/ServerErrors';
+import SuccessMessage from '../../common/components/SuccessMessage';
 
 class ListUsersView extends Component {
   componentDidMount = () => {
@@ -30,7 +32,7 @@ class ListUsersView extends Component {
 
   render = () => {
     const { payload, totalItems, pageCount } = this.props.list;
-    const { role } = this.props;
+    const { role, input, addInput } = this.props;
     const { page } = this.props.match.params;
 
     return (
@@ -45,6 +47,13 @@ class ListUsersView extends Component {
         <div className="row">
           <div className={'col-lg-12'}>
             <ServerErrors errors={[]} />
+            {input.payload && (
+              <SuccessMessage
+                message={i18n.t(`input.success.${input.payload.type}`, {
+                  user: input.payload.author.firstName,
+                })}
+              />
+            )}
             <div className={'card'}>
               <div className={'card-body text-wrap p-lg-6'}>
                 {'admin' === role && (
@@ -56,6 +65,7 @@ class ListUsersView extends Component {
                     {i18n.t('user.list.add')}
                   </Link>
                 )}
+                <p>{i18n.t('user.list.actionsHelp')}</p>
                 <table className="table card-table table-striped table-vcenter">
                   <thead>
                     <tr>
@@ -66,9 +76,14 @@ class ListUsersView extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {payload.map(user => {
-                      return <UserRow key={user.id} user={user} />;
-                    })}
+                    {payload.map(user => (
+                      <UserRow
+                        key={user.id}
+                        onFlop={() => addInput('flop', user.id)}
+                        onTop={() => addInput('top', user.id)}
+                        user={user}
+                      />
+                    ))}
                   </tbody>
                 </table>
                 <Pagination
@@ -86,6 +101,7 @@ class ListUsersView extends Component {
 }
 
 ListUsersView.propTypes = {
+  addInput: PropTypes.func.isRequired,
   listUsers: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
   role: PropTypes.string.isRequired,
@@ -100,8 +116,9 @@ export default connect(
   state => ({
     list: state.user.list,
     role: state.auth.authentication.user.role,
+    input: state.input.add,
   }),
   dispatch => ({
-    ...bindActionCreators({ listUsers, reset }, dispatch),
+    ...bindActionCreators({ listUsers, reset, addInput }, dispatch),
   }),
 )(ListUsersView);

@@ -7,6 +7,7 @@ import { reset } from '../actions/add';
 import { addQuote } from '../middlewares/add';
 import i18n from '../../../i18n';
 import QuoteForm from '../components/form/QuoteForm';
+import ServerErrors from '../../common/components/ServerErrors';
 
 class AddQuoteView extends Component {
   componentWillUnmount = () => {
@@ -20,7 +21,7 @@ class AddQuoteView extends Component {
   };
 
   render = () => {
-    const { loading, payload } = this.props.add;
+    const { loading, payload, errors } = this.props.add;
 
     if (payload) {
       return <Redirect to={'/quotes'} />;
@@ -36,6 +37,7 @@ class AddQuoteView extends Component {
 
         <div className="row">
           <div className={'col-lg-12'}>
+            <ServerErrors errors={errors} />
             <div className={'card'}>
               <div className={'card-body text-wrap p-lg-6'}>
                 <p>{i18n.t('quote.add.introduction')}</p>

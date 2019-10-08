@@ -16,7 +16,11 @@ const CompagnyForm = ({ handleSubmit, loading }) => {
         label={t('compagny.form.name')}
         name="name"
       />
-      <button type="submit" disabled={loading}>
+      <button
+        type="submit"
+        className={'btn btn-primary ml-auto'}
+        disabled={loading}
+      >
         {t('form.buttons.save')}
       </button>
     </form>

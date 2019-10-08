@@ -20,7 +20,10 @@ class Header extends React.Component {
     return (
       <header className="navbar navbar-expand-lg js-header">
         <div className="container">
-          <Link to={'/'} className="navbar-brand text-inherit mr-md-3">
+          <Link
+            to={authenticated ? '/users' : '/'}
+            className="navbar-brand text-inherit mr-md-3"
+          >
             <img
               src="/img/logo.svg"
               alt="TopFlop"

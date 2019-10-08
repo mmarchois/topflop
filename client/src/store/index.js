@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import reducers from './reducers';
-import { client, axiosMiddleware } from '../libraries/axios';
+import { client, axiosMiddleware } from '../utils/axios';
 
 const persistConfig = {
   key: 'topflop',

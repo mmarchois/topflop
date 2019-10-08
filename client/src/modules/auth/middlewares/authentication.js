@@ -5,7 +5,7 @@ import {
   errors,
 } from '../actions/authentication';
 import i18n from '../../../i18n';
-import { TokenStorage } from '../../../libraries/tokenStorage';
+import { TokenStorage } from '../../../utils/tokenStorage';
 import LoggedUser from '../../user/models/LoggedUser';
 
 export const authentication = payload => {

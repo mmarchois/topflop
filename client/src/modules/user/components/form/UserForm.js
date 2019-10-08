@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import validate from './validators/user';
 import TextInput from '../../../common/components/Form/TextInput';
+import RadioInput from '../../../common/components/Form/RadioInput';
 
 const UserForm = ({ handleSubmit, loading }) => {
   const { t } = useTranslation();
@@ -29,15 +30,30 @@ const UserForm = ({ handleSubmit, loading }) => {
         name="email"
       />
 
-      <div>
-        <Field component={'select'} name="role">
-          <option value="user">{t('user.role.user')}</option>
-          <option value="admin">{t('user.role.admin')}</option>
-        </Field>
-        <label>{t('user.list.role')}</label>
+      <div className="form-group">
+        <div className="form-label">{t('user.list.role')}</div>
+        <Field
+          component={RadioInput}
+          label={t('user.role.user')}
+          name={'role'}
+          checked={true}
+          type={'radio'}
+          value={'user'}
+        />
+        <Field
+          component={RadioInput}
+          label={t('user.role.admin')}
+          type={'radio'}
+          name={'role'}
+          value={'admin'}
+        />
       </div>
 
-      <button type="submit" disabled={loading}>
+      <button
+        type="submit"
+        className={'btn btn-primary ml-auto'}
+        disabled={loading}
+      >
         {t('form.buttons.save')}
       </button>
     </form>

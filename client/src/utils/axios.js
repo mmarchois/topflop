@@ -20,10 +20,10 @@ export const axiosMiddleware = axios => ({ dispatch }) => {
   axios.interceptors.response.use(
     response => response,
     error => {
-      const reponseURL = error.request.responseURL;
+      const { responseURL } = error.request;
       const authURL = `${API_URL}/register`;
 
-      if (401 === error.response.status && reponseURL !== authURL) {
+      if (401 === error.response.status && responseURL !== authURL) {
         return dispatch(logout());
       }
 

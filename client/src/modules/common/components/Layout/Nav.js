@@ -1,9 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
 
-const Nav = props => {
+const Nav = ({ authenticated }) => {
   const { t } = useTranslation();
+
+  if (false === authenticated) {
+    return null;
+  }
 
   return (
     <div className="d-none d-lg-block navbar navbar-expand-md">
@@ -56,4 +62,10 @@ const Nav = props => {
   );
 };
 
-export default Nav;
+Nav.propTypes = {
+  authenticated: PropTypes.bool.isRequired,
+};
+
+export default connect(state => ({
+  authenticated: state.auth.authentication.authenticated,
+}))(Nav);

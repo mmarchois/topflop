@@ -1,13 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TextInput = ({ input, label, type, meta: { touched, error } }) => (
-  <div className="form-group row">
-    <label className="col-md-3 label-control">{label}</label>
-    <input {...input} type={type} />
-    {touched && (error && <span className="error">{error}</span>)}
-  </div>
-);
+const TextInput = ({ input, label, type, meta: { touched, error } }) => {
+  const inputClass =
+    touched && error ? 'form-control is-invalid' : 'form-control';
+
+  return (
+    <div className="form-group row">
+      <label className="form-label">{label}</label>
+      <input {...input} className={inputClass} type={type} />
+      {touched && (error && <span className="invalid-feedback">{error}</span>)}
+    </div>
+  );
+};
 
 TextInput.defaultProps = {
   meta: {

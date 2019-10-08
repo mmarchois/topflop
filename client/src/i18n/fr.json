@@ -71,9 +71,9 @@
       },
       "list": {
         "add": "Ajouter un utilisateur",
-        "name": "Nom / prénom",
+        "name": "Prénom / Nom",
         "email": "Email",
-        "role": "Role"
+        "role": "Choisir un rôle"
       }
     },
     "input": {

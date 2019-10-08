@@ -1,6 +1,6 @@
 import { loading, errors } from '../actions/registration';
 import { authenticated, user as loggedUser } from '../actions/authentication';
-import { TokenStorage } from '../../../libraries/tokenStorage';
+import { TokenStorage } from '../../../utils/tokenStorage';
 import LoggedUser from '../../user/models/LoggedUser';
 
 export const registration = payload => {

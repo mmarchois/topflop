@@ -6,7 +6,7 @@ import {
   AUTH_AUTHENTICATION_LOGOUT,
   AUTH_AUTHENTICATION_USER,
 } from '../constants/authentication';
-import { TokenStorage } from '../../../libraries/tokenStorage';
+import { TokenStorage } from '../../../utils/tokenStorage';
 
 export const authenticated = authenticated => {
   return {

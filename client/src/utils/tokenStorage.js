@@ -9,11 +9,7 @@ export class TokenStorage {
     });
   };
 
-  static get = () => {
-    return Cookies.get(TOKEN_KEY);
-  };
+  static get = () => Cookies.get(TOKEN_KEY);
 
-  static remove = () => {
-    Cookies.remove(TOKEN_KEY);
-  };
+  static remove = () => Cookies.remove(TOKEN_KEY);
 }

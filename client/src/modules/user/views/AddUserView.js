@@ -26,9 +26,22 @@ class AddUserView extends Component {
 
     return (
       <>
-        <h1>{i18n.t('user.add.title')}</h1>
-        <p>{i18n.t('user.add.introduction')}</p>
-        <UserForm onSubmit={this.handleSubmit} loading={loading} />
+        <div className="page-header">
+          <h1 className="page-title">
+            <i className="icon fe fe-users"></i> {i18n.t('user.add.title')}
+          </h1>
+        </div>
+
+        <div className="row">
+          <div className={'col-lg-12'}>
+            <div className={'card'}>
+              <div className={'card-body text-wrap p-lg-6'}>
+                <p>{i18n.t('user.add.introduction')}</p>
+                <UserForm onSubmit={this.handleSubmit} loading={loading} />
+              </div>
+            </div>
+          </div>
+        </div>
       </>
     );
   };

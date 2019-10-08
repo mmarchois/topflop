@@ -82,4 +82,14 @@ export class UserCompagnyRepository implements IUserCompagnyRepository {
       .offset((filters.page - 1) * MAX_ITEMS_PER_PAGE)
       .getManyAndCount();
   };
+
+  public findByUser = async (user: User): Promise<UserCompagny[]> => {
+    return await this.repository
+      .createQueryBuilder('userCompagny')
+      .select(['userCompagny.id', 'compagny.id', 'compagny.name'])
+      .innerJoin('userCompagny.compagny', 'compagny')
+      .where('userCompagny.user = :user', { user: user.id })
+      .orderBy('compagny.name', 'ASC')
+      .getMany();
+  };
 }

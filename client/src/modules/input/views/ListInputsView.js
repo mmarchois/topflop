@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { listInputs } from '../middlewares/list';
 import { reset } from '../actions/list';
 import { reset as inputReset } from '../../input/actions/add';
@@ -45,10 +44,6 @@ class ListInputsView extends Component {
           <div className={'col-lg-12'}>
             <div className={'card'}>
               <div className={'card-body text-wrap p-lg-6'}>
-                <Link to={'/users'} className="btn btn-outline-primary mb-4">
-                  <i className="icon fe fe-plus"></i>
-                  {i18n.t('input.list.add', { type })}
-                </Link>
                 <table className="table table-sm table-striped">
                   <thead>
                     <tr>
@@ -61,7 +56,12 @@ class ListInputsView extends Component {
                   </thead>
                   <tbody>
                     {payload.map((input, key) => (
-                      <InputRow key={key} input={input} position={key + 1} />
+                      <InputRow
+                        key={key}
+                        input={input}
+                        type={type}
+                        position={key + 1}
+                      />
                     ))}
                   </tbody>
                 </table>

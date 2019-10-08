@@ -71,7 +71,7 @@ class ListUsersView extends Component {
                     <tr>
                       <th>{i18n.t('user.list.name')}</th>
                       <th>{i18n.t('user.list.email')}</th>
-                      <th>{i18n.t('user.list.role')}</th>
+                      {'admin' === role && <th>{i18n.t('user.list.role')}</th>}
                       <th>{i18n.t('user.list.actions')}</th>
                     </tr>
                   </thead>
@@ -82,6 +82,7 @@ class ListUsersView extends Component {
                         onFlop={() => addInput('flop', user.id)}
                         onTop={() => addInput('top', user.id)}
                         user={user}
+                        role={role}
                       />
                     ))}
                   </tbody>

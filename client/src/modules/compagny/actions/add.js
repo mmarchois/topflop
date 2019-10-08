@@ -22,7 +22,7 @@ export const success = payload => {
 export const errors = errors => {
   return {
     type: COMPAGNY_ADD_ERROR,
-    loading,
+    errors,
   };
 };
 

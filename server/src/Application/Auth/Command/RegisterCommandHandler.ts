@@ -24,7 +24,7 @@ export class RegisterCommandHandler {
     const { email, password, firstName, lastName } = command;
 
     if (false === (await this.canUserRegister.isSatisfiedBy(email))) {
-      throw new BadRequestException('user.already.registred');
+      throw new BadRequestException('user.errors.alreadyRegistred');
     }
 
     const encryptedPassword = this.encryptionAdapter.hash(password);

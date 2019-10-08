@@ -41,4 +41,18 @@ export class User {
   public updateCurrentCompagny = (compagny: Compagny): void => {
     this.currentCompagny = compagny;
   };
+
+  public updatePassword = (password: string): void => {
+    this.password = password;
+  };
+
+  public update = (
+    firstName: string,
+    lastName: string,
+    email: string,
+  ): void => {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+  };
 }

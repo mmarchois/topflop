@@ -22,4 +22,5 @@ export interface IUserCompagnyRepository {
     compagny: Compagny,
     filters: UserFiltersDto,
   ): Promise<[UserCompagny[], number]>;
+  findByUser(user: User): Promise<UserCompagny[]>;
 }

@@ -1,14 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const InputRow = ({ input, position }) => {
+const InputRow = ({ input, position, type }) => {
   const author = input.author;
 
   return (
     <tr>
       <td style={{ textAlign: 'center' }}>
         {position <= 3 && (
-          <img src={`/img/${position}.svg`} height={40} alt={position} />
+          <img
+            src={`/img/${position}_${type}.svg`}
+            height={40}
+            alt={position}
+          />
         )}
         {position > 3 && <span>#{position}</span>}
       </td>
@@ -21,6 +25,7 @@ const InputRow = ({ input, position }) => {
 };
 
 InputRow.propTypes = {
+  type: PropTypes.string.isRequired,
   position: PropTypes.number.isRequired,
   input: PropTypes.shape({
     author: PropTypes.shape({

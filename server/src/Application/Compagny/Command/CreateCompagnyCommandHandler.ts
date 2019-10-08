@@ -26,7 +26,7 @@ export class CreateCompagnyCommandHandler {
     if (
       (await this.compagnyRepository.findOneByName(name)) instanceof Compagny
     ) {
-      throw new BadRequestException('compagny.already.exist');
+      throw new BadRequestException('compagny.errors.alreadyExist');
     }
 
     const compagny = await this.compagnyRepository.save(new Compagny({ name }));

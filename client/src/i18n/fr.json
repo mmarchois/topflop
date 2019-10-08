@@ -41,11 +41,21 @@
       }
     },
     "compagny": {
+      "errors": {
+        "alreadyExist": "La structure existe déjà"
+      },
       "add": {
-        "introduction": "Créér une entreprise et invite des utilisateurs à rejoindre l'application."
+        "introduction": "Créér une structure et invite tes utilisateurs à la rejoindre."
       },
       "form": {
-        "name": "Nom de l'entreprise"
+        "name": "Nom de la structure"
+      },
+      "list": {
+        "title": "Liste de mes structures",
+        "add": "Ajouter une structure",
+        "name": "structure",
+        "active": "Se connecter",
+        "action": "Action"
       }
     },
     "quote": {
@@ -64,7 +74,8 @@
     },
     "user": {
       "errors": {
-        "registredCompagny": "Ce compte a déjà été ajouté !"
+        "registredCompagny": "Ce compte a déjà été ajouté !",
+        "alreadyRegistred": "Un compte existe déjà avec cet adresse email"
       },
       "role": {
         "admin": "Administrateur",
@@ -106,7 +117,7 @@
     "header": {
       "navigation": {
         "logout": "Se déconnecter",
-        "changeCompagny": "Changer de société",
+        "changeCompagny": "Changer de structure",
         "profile": "Mon profil"
       }
     },

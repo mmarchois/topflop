@@ -16,6 +16,11 @@ import { CreateUserCommandHandler } from 'src/Application/User/Command/CreateUse
 import { EncryptionAdapter } from '../Adapter/EncryptionAdapter';
 import { GetUsersByCompagnyController } from './Controller/GetUsersByCompagnyController';
 import { GetUsersByCompagnyQueryHandler } from 'src/Application/User/Query/GetUsersByCompagnyQueryHandler';
+import { UpdateMeController } from './Controller/UpdateMeController';
+import { UpdatePasswordController } from './Controller/UpdatePasswordController';
+import { UpdateMeCommandHandler } from 'src/Application/User/Command/UpdateMeCommandHandler';
+import { UpdatePasswordCommandHandler } from 'src/Application/User/Command/UpdatePasswordCommandHandler';
+import { ChangeCurrentCompagnyController } from './Controller/ChangeCurrentCompagnyController';
 
 @Module({
   imports: [
@@ -23,7 +28,13 @@ import { GetUsersByCompagnyQueryHandler } from 'src/Application/User/Query/GetUs
     AuthModule,
     TypeOrmModule.forFeature([User, UserCompagny]),
   ],
-  controllers: [CreateUserController, GetUsersByCompagnyController],
+  controllers: [
+    CreateUserController,
+    GetUsersByCompagnyController,
+    UpdateMeController,
+    UpdatePasswordController,
+    ChangeCurrentCompagnyController,
+  ],
   providers: [
     { provide: 'IUserRepository', useClass: UserRepository },
     { provide: 'IUserCompagnyRepository', useClass: UserCompagnyRepository },
@@ -35,6 +46,8 @@ import { GetUsersByCompagnyQueryHandler } from 'src/Application/User/Query/GetUs
     IsAdminOfCompagny,
     CreateUserCommandHandler,
     GetUsersByCompagnyQueryHandler,
+    UpdateMeCommandHandler,
+    UpdatePasswordCommandHandler,
   ],
 })
 export class UserModule {}

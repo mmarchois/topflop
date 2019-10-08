@@ -3,21 +3,21 @@ import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-const UserRow = ({ user, onTop, onFlop }) => {
+const UserRow = ({ user, role, onTop, onFlop }) => {
   const { t } = useTranslation();
 
   return (
     <tr>
       <td>{`${user.firstName} ${user.lastName}`}</td>
       <td>{user.email}</td>
-      <td>{t(`user.role.${user.role}`)}</td>
+      {'admin' === role && <td>{t(`user.role.${user.role}`)}</td>}
       <td>
         <button onClick={onFlop} className="btn btn-secondary btn-sm">
           <i className={'icon fe fe-thumbs-down'}></i> Flop
         </button>
         <Link
           to={`/users/${user.id}/quotes/add`}
-          className="btn btn-secondary btn-sm mr-3 ml-3"
+          className="btn btn-secondary btn-sm mr-2 ml-2"
         >
           <i className={'icon fe fe-code'}></i> Quote
         </Link>
@@ -32,6 +32,7 @@ const UserRow = ({ user, onTop, onFlop }) => {
 UserRow.propTypes = {
   onTop: PropTypes.func.isRequired,
   onFlop: PropTypes.func.isRequired,
+  role: PropTypes.string.isRequired,
   user: PropTypes.shape({
     id: PropTypes.string.isRequired,
     firstName: PropTypes.string.isRequired,

@@ -51,11 +51,11 @@ class Header extends React.Component {
                   </span>
                 </Link>
                 <div className="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                  <Link className="dropdown-item" to={'#'}>
+                  <Link className="dropdown-item" to={'/users/me/profile'}>
                     <i className="icon fe fe-user dropdown-icon"></i>
                     {i18n.t('header.navigation.profile')}
                   </Link>
-                  <Link className="dropdown-item" to={'#'}>
+                  <Link className="dropdown-item" to={'/companies'}>
                     <i className="icon fe fe-repeat dropdown-icon"></i>
                     {i18n.t('header.navigation.changeCompagny')}
                   </Link>

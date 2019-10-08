@@ -32,7 +32,12 @@ export class UserRepository implements IUserRepository {
   public findOneByApiToken = async (apiToken: string): Promise<User | null> => {
     return await this.repository
       .createQueryBuilder('user')
-      .select(['user.id', 'currentCompagny.id', 'currentCompagny.name'])
+      .select([
+        'user.id',
+        'user.email',
+        'currentCompagny.id',
+        'currentCompagny.name',
+      ])
       .leftJoin('user.currentCompagny', 'currentCompagny')
       .where('user.apiToken = :apiToken', { apiToken })
       .getOne();

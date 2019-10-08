@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { listQuotes } from '../middlewares/list';
 import { reset } from '../actions/list';
 import { bindActionCreators } from 'redux';
@@ -44,11 +43,6 @@ class ListQuoteView extends Component {
           <div className={'col-lg-12'}>
             <div className={'card'}>
               <div className={'card-body text-wrap p-lg-6'}>
-                <Link to={'/users'} className="btn btn-outline-primary mb-4">
-                  <i className="icon fe fe-plus"></i>
-                  {i18n.t('quote.list.add')}
-                </Link>
-
                 <ul className="list-group card-list-group">
                   {payload.map(quote => {
                     return <QuoteRow key={quote.id} quote={quote} />;

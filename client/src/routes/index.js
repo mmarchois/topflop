@@ -25,6 +25,11 @@ const AddCompagny = Loadable({
   loading: LoadingComponent,
 });
 
+const ListCompagny = Loadable({
+  loader: () => import('../modules/compagny/views/ListCompagnyView'),
+  loading: LoadingComponent,
+});
+
 const ListQuote = Loadable({
   loader: () => import('../modules/quote/views/ListQuoteView'),
   loading: LoadingComponent,
@@ -50,6 +55,11 @@ const AddUser = Loadable({
   loading: LoadingComponent,
 });
 
+const EditUser = Loadable({
+  loader: () => import('../modules/user/views/EditUserView'),
+  loading: LoadingComponent,
+});
+
 const Routes = () => (
   <BrowserRouter>
     <Layout>
@@ -61,10 +71,11 @@ const Routes = () => (
         {/* COMPANIES */}
         <SecuredRoute
           exact
-          path="/compagny/add"
+          path="/companies/add"
           component={AddCompagny}
           compagnyRoute={true}
         />
+        <SecuredRoute exact path="/companies" component={ListCompagny} />
 
         {/* QUOTES */}
         <SecuredRoute
@@ -77,6 +88,7 @@ const Routes = () => (
         {/* USERS */}
         <SecuredRoute exact path="/users/:page([0-9]*)?" component={ListUser} />
         <SecuredRoute isAdmin exact path="/users/add" component={AddUser} />
+        <SecuredRoute exact path="/users/me/profile" component={EditUser} />
 
         {/* INPUTS */}
         <SecuredRoute

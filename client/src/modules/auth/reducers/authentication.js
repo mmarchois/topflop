@@ -9,6 +9,7 @@ import {
 import { COMPAGNY_ADD_SUCCESS } from '../../compagny/constants/add';
 import { USER_CURRENT_COMPAGNY_SUCCESS } from '../../user/constants/currentCompagny';
 import { COMPAGNY_JOIN_SUCCESS } from '../../compagny/constants/join';
+import { USER_EDIT_SUCCESS } from '../../user/constants/edit';
 
 const initialState = {
   loading: false,
@@ -60,6 +61,17 @@ export const authenticationReducers = (state = initialState, action) => {
           ...state.user,
           role: 'admin',
           compagny: action.payload,
+        },
+      };
+
+    case USER_EDIT_SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          firstName: action.payload.firstName,
+          lastName: action.payload.lastName,
+          email: action.payload.email,
         },
       };
 

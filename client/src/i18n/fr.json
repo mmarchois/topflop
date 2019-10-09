@@ -95,6 +95,15 @@
         "introduction": "Créer un accès à un membre",
         "introduction2": "Si le membre à déjà un compte, il sera rajouté au groupe. S'il n'en a pas, son compte lui sera créé avec un mot de passe par défaut : 1234"
       },
+      "edit": {
+        "title": "Mon profil",
+        "informations": "Modifier mes informations",
+        "changePassword": "Modifier mon mot de passe",
+        "success": {
+          "password": "Mot de passe modifié avec succès",
+          "informations": "Informations modifées avec succès"
+        }
+      },
       "list": {
         "add": "Ajouter un membre",
         "name": "Prénom / Nom",

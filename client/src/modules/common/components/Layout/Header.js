@@ -30,6 +30,13 @@ class Header extends React.Component {
               className="d-none d-md-block navbar-brand-logo"
             />
             TopFlop
+            {true === authenticated && user.compagny && (
+              <>
+                <span className="text-muted d-block mt-1 ml-1 text-h6">
+                  {user.compagny.name}
+                </span>
+              </>
+            )}
           </Link>
           {true === authenticated && (
             <ul className="nav navbar-menu align-items-center order-1 order-lg-2">

@@ -15,6 +15,6 @@ export const currentCompagny = compagny => async (
   } catch (e) {
     dispatch(errors(errorFormater(e)));
   } finally {
-    dispatch(loading(true));
+    dispatch(loading(false));
   }
 };

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { listCompanies } from '../middlewares/list';
+import { currentCompagny as onCurrentCompagny } from '../../user/middlewares/currentCompagny';
 import { reset } from '../actions/list';
 import { bindActionCreators } from 'redux';
 import i18n from '../../../i18n';
@@ -18,14 +19,13 @@ class ListCompagnyView extends Component {
 
   render = () => {
     const { payload } = this.props.list;
-    const { currentUser } = this.props;
+    const { currentUser, currentCompagny, onCurrentCompagny } = this.props;
 
     return (
       <>
         <div className="page-header">
           <h1 className="page-title">
             <i className="icon fe fe-settings dropdown-icon"></i>
-
             {i18n.t('compagny.list.title')}
           </h1>
         </div>
@@ -58,7 +58,10 @@ class ListCompagnyView extends Component {
                         <td>{i18n.t(`user.role.${compagny.role}`)}</td>
                         <td>
                           {currentUser.compagny.id !== compagny.id && (
-                            <button className="btn btn-secondary btn-sm">
+                            <button
+                              onClick={() => onCurrentCompagny(compagny.id)}
+                              className="btn btn-secondary btn-sm"
+                            >
                               <i className={'icon fe fe-unlock'}></i>{' '}
                               {i18n.t('compagny.list.active')}
                             </button>
@@ -79,6 +82,8 @@ class ListCompagnyView extends Component {
 
 ListCompagnyView.propTypes = {
   listCompanies: PropTypes.func.isRequired,
+  onCurrentCompagny: PropTypes.func.isRequired,
+  currentCompagny: PropTypes.object.isRequired,
   reset: PropTypes.func.isRequired,
   currentUser: PropTypes.shape({
     compagny: PropTypes.shape({
@@ -94,9 +99,13 @@ ListCompagnyView.propTypes = {
 export default connect(
   state => ({
     list: state.compagny.list,
+    currentCompagny: state.user.currentCompagny,
     currentUser: state.auth.authentication.user,
   }),
   dispatch => ({
-    ...bindActionCreators({ listCompanies, reset }, dispatch),
+    ...bindActionCreators(
+      { listCompanies, onCurrentCompagny, reset },
+      dispatch,
+    ),
   }),
 )(ListCompagnyView);

@@ -7,6 +7,7 @@ import {
   AUTH_AUTHENTICATION_LOGOUT,
 } from '../constants/authentication';
 import { COMPAGNY_ADD_SUCCESS } from '../../compagny/constants/add';
+import { USER_CURRENT_COMPAGNY_SUCCESS } from '../../user/constants/currentCompagny';
 
 const initialState = {
   loading: false,
@@ -61,6 +62,15 @@ export const authenticationReducers = (state = initialState, action) => {
         },
       };
 
+    case USER_CURRENT_COMPAGNY_SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          role: action.payload.role,
+          compagny: action.payload.compagny,
+        },
+      };
     default:
       return state;
   }

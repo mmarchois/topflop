@@ -45,15 +45,16 @@
         "alreadyExist": "La structure existe déjà"
       },
       "add": {
-        "introduction": "Créér une structure et invite tes utilisateurs à la rejoindre."
+        "introduction": "Créér une structure et invite tes membres à la rejoindre."
       },
       "form": {
         "name": "Nom de la structure"
       },
       "list": {
-        "title": "Liste de mes structures",
+        "title": "Mes structures",
         "add": "Ajouter une structure",
         "name": "structure",
+        "role": "Rôle",
         "active": "Se connecter",
         "action": "Action"
       }
@@ -79,15 +80,15 @@
       },
       "role": {
         "admin": "Administrateur",
-        "user": "Utilisateur"
+        "user": "Membre"
       },
-      "title": "Utilisateurs",
+      "title": "Membres",
       "add": {
-        "title": "Ajouter un utilisateur",
-        "introduction": "Rajoute un utilisateur pour qu'il ait accès à l'application !"
+        "title": "Ajouter un membre",
+        "introduction": "Rajoute un membre pour qu'il ait accès à l'application !"
       },
       "list": {
-        "add": "Ajouter un utilisateur",
+        "add": "Ajouter un membre",
         "name": "Prénom / Nom",
         "email": "Email",
         "role": "Rôle",
@@ -117,7 +118,7 @@
     "header": {
       "navigation": {
         "logout": "Se déconnecter",
-        "changeCompagny": "Changer de structure",
+        "changeCompagny": "Mes structures",
         "profile": "Mon profil"
       }
     },

@@ -14,7 +14,12 @@ const InputRow = ({ input, position, type }) => {
             alt={position}
           />
         )}
-        {position > 3 && <span>#{position}</span>}
+        {position > 3 && (
+          <span>
+            <i className={'icon fe fe-hash'} />
+            {position}
+          </span>
+        )}
       </td>
       <td>{`${author.firstName} ${author.lastName}`}</td>
       <td style={{ textAlign: 'center' }}>

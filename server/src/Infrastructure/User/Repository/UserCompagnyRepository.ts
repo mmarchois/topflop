@@ -86,7 +86,7 @@ export class UserCompagnyRepository implements IUserCompagnyRepository {
   public findByUser = async (user: User): Promise<UserCompagny[]> => {
     return await this.repository
       .createQueryBuilder('userCompagny')
-      .select(['userCompagny.id', 'compagny.id', 'compagny.name'])
+      .select(['userCompagny.role', 'compagny.id', 'compagny.name'])
       .innerJoin('userCompagny.compagny', 'compagny')
       .where('userCompagny.user = :user', { user: user.id })
       .orderBy('compagny.name', 'ASC')

@@ -23,7 +23,11 @@ class ListCompagnyView extends Component {
     return (
       <>
         <div className="page-header">
-          <h1 className="page-title">{i18n.t('compagny.list.title')}</h1>
+          <h1 className="page-title">
+            <i className="icon fe fe-settings dropdown-icon"></i>
+
+            {i18n.t('compagny.list.title')}
+          </h1>
         </div>
 
         <div className="row">
@@ -41,6 +45,7 @@ class ListCompagnyView extends Component {
                   <thead>
                     <tr>
                       <th>{i18n.t('compagny.list.name')}</th>
+                      <th>{i18n.t('compagny.list.role')}</th>
                       <th style={{ width: '150px' }}>
                         {i18n.t('compagny.list.action')}
                       </th>
@@ -50,6 +55,7 @@ class ListCompagnyView extends Component {
                     {payload.map(compagny => (
                       <tr key={compagny.id}>
                         <td>{compagny.name}</td>
+                        <td>{i18n.t(`user.role.${compagny.role}`)}</td>
                         <td>
                           {currentUser.compagny.id !== compagny.id && (
                             <button className="btn btn-secondary btn-sm">

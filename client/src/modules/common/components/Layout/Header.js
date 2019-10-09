@@ -56,7 +56,7 @@ class Header extends React.Component {
                     {i18n.t('header.navigation.profile')}
                   </Link>
                   <Link className="dropdown-item" to={'/companies'}>
-                    <i className="icon fe fe-repeat dropdown-icon"></i>
+                    <i className="icon fe fe-settings dropdown-icon"></i>
                     {i18n.t('header.navigation.changeCompagny')}
                   </Link>
                   <Link

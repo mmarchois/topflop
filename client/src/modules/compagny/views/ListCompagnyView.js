@@ -19,14 +19,14 @@ class ListCompagnyView extends Component {
 
   render = () => {
     const { payload } = this.props.list;
-    const { currentUser, currentCompagny, onCurrentCompagny } = this.props;
+    const { currentUser, onCurrentCompagny } = this.props;
 
     return (
       <>
         <div className="page-header">
           <h1 className="page-title">
             <i className="icon fe fe-settings dropdown-icon"></i>
-            {i18n.t('compagny.list.title')}
+            {i18n.t('compagny.list.title')} ({payload.length})
           </h1>
         </div>
 
@@ -41,6 +41,7 @@ class ListCompagnyView extends Component {
                   <i className="icon fe fe-plus"></i>
                   {i18n.t('compagny.list.add')}
                 </Link>
+                <p>{i18n.t('compagny.list.introduction')}</p>
                 <table className="table card-table table-striped table-vcenter">
                   <thead>
                     <tr>
@@ -57,7 +58,9 @@ class ListCompagnyView extends Component {
                       <tr key={compagny.id}>
                         <td>{compagny.name}</td>
                         <td>{i18n.t(`user.role.${compagny.role}`)}</td>
-                        <td>{compagny.voucher}</td>
+                        <td>
+                          {'admin' === compagny.role ? compagny.voucher : 'N/A'}
+                        </td>
                         <td>
                           {currentUser.compagny.id !== compagny.id && (
                             <button
@@ -85,7 +88,6 @@ class ListCompagnyView extends Component {
 ListCompagnyView.propTypes = {
   listCompanies: PropTypes.func.isRequired,
   onCurrentCompagny: PropTypes.func.isRequired,
-  currentCompagny: PropTypes.object.isRequired,
   reset: PropTypes.func.isRequired,
   currentUser: PropTypes.shape({
     compagny: PropTypes.shape({
@@ -102,7 +104,6 @@ ListCompagnyView.propTypes = {
 export default connect(
   state => ({
     list: state.compagny.list,
-    currentCompagny: state.user.currentCompagny,
     currentUser: state.auth.authentication.user,
   }),
   dispatch => ({

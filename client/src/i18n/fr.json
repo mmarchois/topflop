@@ -42,17 +42,23 @@
     },
     "compagny": {
       "errors": {
-        "alreadyExist": "La structure existe déjà"
+        "alreadyExist": "La structure existe déjà",
+        "alreadyRegistred": "Tu as déjà rejoins cette structure",
+        "notFound": "Code d'accès invalide"
       },
       "add": {
-        "introduction": "Créér une structure et invite tes membres à la rejoindre."
+        "introduction": "Créér ou rejoins une structure.",
+        "new": "Créer une nouvelle structure",
+        "join": "Rejoins une structure existante grâce à son code d'accès"
       },
       "form": {
-        "name": "Nom de la structure"
+        "name": "Nom de la structure",
+        "voucher": "Code d'accès"
       },
       "list": {
         "title": "Mes structures",
-        "add": "Ajouter une structure",
+        "introduction": "Pour donner accès à une structure, partage le code d'accès ou créer un membre via le formulaire de création.",
+        "add": "Ajouter / rejoindre une structure",
         "name": "structure",
         "role": "Rôle",
         "voucher": "Code d'accès",
@@ -86,7 +92,8 @@
       "title": "Membres",
       "add": {
         "title": "Ajouter un membre",
-        "introduction": "Rajoute un membre pour qu'il ait accès à l'application !"
+        "introduction": "Créer un accès à un membre",
+        "introduction2": "Si le membre à déjà un compte, il sera rajouté à la structure. S'il n'en a pas, son compte lui sera créé avec un mot de passe par défaut : 1234"
       },
       "list": {
         "add": "Ajouter un membre",

@@ -12,6 +12,9 @@ import { GetCompaniesByUserQueryHandler } from 'src/Application/Compagny/Query/G
 import { UserCompagny } from 'src/Domain/User/UserCompagny.entity';
 import { UserCompagnyRepository } from '../User/Repository/UserCompagnyRepository';
 import { CodeGeneratorAdapter } from '../Adapter/CodeGeneratorAdapter';
+import { JoinCompagnyController } from './Controller/JoinCompagnyController';
+import { JoinCompagnyCommandHandler } from 'src/Application/Compagny/Command/JoinCompagnyCommandHandler';
+import { IsMemberOfCompagny } from 'src/Domain/User/IsMemberOfCompagny';
 
 @Module({
   imports: [
@@ -19,7 +22,11 @@ import { CodeGeneratorAdapter } from '../Adapter/CodeGeneratorAdapter';
     AuthModule,
     TypeOrmModule.forFeature([Compagny, UserCompagny]),
   ],
-  controllers: [CreateCompagnyController, GetCompaniesByUserController],
+  controllers: [
+    CreateCompagnyController,
+    GetCompaniesByUserController,
+    JoinCompagnyController,
+  ],
   providers: [
     { provide: 'ICompagnyRepository', useClass: CompagnyRepository },
     { provide: 'IUserCompagnyRepository', useClass: UserCompagnyRepository },
@@ -27,6 +34,8 @@ import { CodeGeneratorAdapter } from '../Adapter/CodeGeneratorAdapter';
     CreateCompagnyCommandHandler,
     GetCompagnyByIdQueryHandler,
     GetCompaniesByUserQueryHandler,
+    JoinCompagnyCommandHandler,
+    IsMemberOfCompagny,
   ],
 })
 export class CompagnyModule {}

@@ -28,4 +28,13 @@ export class CompagnyRepository implements ICompagnyRepository {
       .where('LOWER(compagny.name) = LOWER(:name)', { name })
       .getOne();
   };
+
+  public findOneByVoucher = async (
+    voucher: string,
+  ): Promise<Compagny | null> => {
+    return await this.repository
+      .createQueryBuilder('compagny')
+      .where('compagny.voucher = :voucher', { voucher })
+      .getOne();
+  };
 }

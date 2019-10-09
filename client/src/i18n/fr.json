@@ -123,6 +123,12 @@
         "flop": "Flops",
         "top": "Tops"
       },
+      "errors": {
+        "auto": {
+          "flop": "Tu ne peux pas te flopper toi même !",
+          "top": "Tu ne peux pas te topper toi même !"
+        }
+      },
       "success": {
         "flop": "{{user}} a bien été floppé !",
         "top": "{{user}} a bien été toppé !"

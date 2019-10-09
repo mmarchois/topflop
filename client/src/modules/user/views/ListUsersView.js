@@ -32,7 +32,7 @@ class ListUsersView extends Component {
 
   render = () => {
     const { payload, totalItems, pageCount } = this.props.list;
-    const { role, input, addInput } = this.props;
+    const { currentUser, input, addInput } = this.props;
     const { page } = this.props.match.params;
 
     return (
@@ -46,7 +46,7 @@ class ListUsersView extends Component {
 
         <div className="row">
           <div className={'col-lg-12'}>
-            <ServerErrors errors={[]} />
+            <ServerErrors errors={input.errors} />
             {input.payload && (
               <SuccessMessage
                 message={i18n.t(`input.success.${input.payload.type}`, {
@@ -56,7 +56,7 @@ class ListUsersView extends Component {
             )}
             <div className={'card'}>
               <div className={'card-body text-wrap p-lg-6'}>
-                {'admin' === role && (
+                {'admin' === currentUser.role && (
                   <Link
                     to={'/users/add'}
                     className="btn btn-outline-primary mb-4"
@@ -71,7 +71,9 @@ class ListUsersView extends Component {
                     <tr>
                       <th>{i18n.t('user.list.name')}</th>
                       <th>{i18n.t('user.list.email')}</th>
-                      {'admin' === role && <th>{i18n.t('user.list.role')}</th>}
+                      {'admin' === currentUser.role && (
+                        <th>{i18n.t('user.list.role')}</th>
+                      )}
                       <th>{i18n.t('user.list.actions')}</th>
                     </tr>
                   </thead>
@@ -82,7 +84,7 @@ class ListUsersView extends Component {
                         onFlop={() => addInput('flop', user.id)}
                         onTop={() => addInput('top', user.id)}
                         user={user}
-                        role={role}
+                        currentUser={currentUser}
                       />
                     ))}
                   </tbody>
@@ -105,7 +107,7 @@ ListUsersView.propTypes = {
   addInput: PropTypes.func.isRequired,
   listUsers: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
-  role: PropTypes.string.isRequired,
+  currentUser: PropTypes.object.isRequired,
   list: PropTypes.shape({
     payload: PropTypes.array.isRequired,
     totalItems: PropTypes.number.isRequired,
@@ -116,7 +118,7 @@ ListUsersView.propTypes = {
 export default connect(
   state => ({
     list: state.user.list,
-    role: state.auth.authentication.user.role,
+    currentUser: state.auth.authentication.user,
     input: state.input.add,
   }),
   dispatch => ({

@@ -22,7 +22,7 @@ export const success = payload => {
 export const errors = errors => {
   return {
     type: INPUT_ADD_ERROR,
-    loading,
+    errors,
   };
 };
 

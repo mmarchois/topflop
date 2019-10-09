@@ -42,24 +42,24 @@
     },
     "compagny": {
       "errors": {
-        "alreadyExist": "La structure existe déjà",
-        "alreadyRegistred": "Tu as déjà rejoins cette structure",
+        "alreadyExist": "Le groupe existe déjà",
+        "alreadyRegistred": "Tu as déjà rejoins ce groupe",
         "notFound": "Code d'accès invalide"
       },
       "add": {
-        "introduction": "Créér ou rejoins une structure.",
-        "new": "Créer une nouvelle structure",
-        "join": "Rejoins une structure existante grâce à son code d'accès"
+        "introduction": "Créér ou rejoins un groupe.",
+        "new": "Créer un nouveau groupe",
+        "join": "Rejoins un groupe existant grâce à son code d'accès"
       },
       "form": {
-        "name": "Nom de la structure",
+        "name": "Nom du groupe",
         "voucher": "Code d'accès"
       },
       "list": {
-        "title": "Mes structures",
-        "introduction": "Pour donner accès à une structure, partage le code d'accès ou créer un membre via le formulaire de création.",
-        "add": "Ajouter / rejoindre une structure",
-        "name": "structure",
+        "title": "Mes groupes",
+        "introduction": "Pour donner accès à un groupe, partage le code d'accès ou créer un membre via le formulaire de création.",
+        "add": "Ajouter / rejoindre un groupe",
+        "name": "Groupe",
         "role": "Rôle",
         "voucher": "Code d'accès",
         "active": "Se connecter",
@@ -93,7 +93,7 @@
       "add": {
         "title": "Ajouter un membre",
         "introduction": "Créer un accès à un membre",
-        "introduction2": "Si le membre à déjà un compte, il sera rajouté à la structure. S'il n'en a pas, son compte lui sera créé avec un mot de passe par défaut : 1234"
+        "introduction2": "Si le membre à déjà un compte, il sera rajouté au groupe. S'il n'en a pas, son compte lui sera créé avec un mot de passe par défaut : 1234"
       },
       "list": {
         "add": "Ajouter un membre",
@@ -126,7 +126,7 @@
     "header": {
       "navigation": {
         "logout": "Se déconnecter",
-        "changeCompagny": "Mes structures",
+        "changeCompagny": "Mes groupes",
         "profile": "Mon profil"
       }
     },

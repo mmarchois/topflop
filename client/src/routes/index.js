@@ -68,14 +68,14 @@ const Routes = () => (
         <Route exact path="/login" component={Authentication} />
         <Route exact path="/register" component={Registration} />
 
-        {/* COMPANIES */}
+        {/* GROUPS (COMPANIES) */}
         <SecuredRoute
           exact
-          path="/companies/add"
+          path="/groups/add"
           component={AddCompagny}
           compagnyRoute={true}
         />
-        <SecuredRoute exact path="/companies" component={ListCompagny} />
+        <SecuredRoute exact path="/groups" component={ListCompagny} />
 
         {/* QUOTES */}
         <SecuredRoute

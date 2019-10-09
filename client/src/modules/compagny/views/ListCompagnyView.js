@@ -35,7 +35,7 @@ class ListCompagnyView extends Component {
             <div className={'card'}>
               <div className={'card-body text-wrap p-lg-6'}>
                 <Link
-                  to={'/companies/add'}
+                  to={'/groups/add'}
                   className="btn btn-outline-primary mb-4"
                 >
                   <i className="icon fe fe-plus"></i>

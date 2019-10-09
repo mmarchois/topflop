@@ -12,7 +12,7 @@ const SecuredRoute = props => {
   }
 
   if (!compagnyRoute && !user.compagny) {
-    return <Redirect to="/companies/add" />;
+    return <Redirect to="/groups/add" />;
   }
 
   if (isAdmin && 'admin' !== user.role) {

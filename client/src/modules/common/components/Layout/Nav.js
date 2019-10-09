@@ -48,7 +48,7 @@ const Nav = ({ authenticated }) => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to={'/companies'}>
+            <Link className="nav-link" to={'/groups'}>
               <span className="nav-icon">
                 <i className="icon fe fe-settings"></i>
               </span>

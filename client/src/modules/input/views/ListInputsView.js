@@ -23,6 +23,7 @@ class ListInputsView extends Component {
     const prevType = prevProps.match.params.type;
 
     if (currentType !== prevType) {
+      this.props.reset();
       this.props.listInputs(currentType);
     }
   };

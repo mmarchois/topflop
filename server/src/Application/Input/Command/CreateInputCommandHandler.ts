@@ -34,6 +34,10 @@ export class CreateInputCommandHandler {
       throw new BadRequestException('user.errors.notMember');
     }
 
+    if (author.id === user.id) {
+      throw new BadRequestException(`input.errors.auto.${type}`);
+    }
+
     const input = await this.repository.save(
       new Input({
         type,

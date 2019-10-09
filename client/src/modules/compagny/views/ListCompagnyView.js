@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom';
 import { listCompanies } from '../middlewares/list';
 import { currentCompagny as onCurrentCompagny } from '../../user/middlewares/currentCompagny';
 import { reset } from '../actions/list';
+import { reset as resetCurrentCompagny } from '../../user/actions/currentCompagny';
 import { bindActionCreators } from 'redux';
 import i18n from '../../../i18n';
+import SuccessMessage from '../../common/components/SuccessMessage';
 
 class ListCompagnyView extends Component {
   componentDidMount = () => {
@@ -15,11 +17,12 @@ class ListCompagnyView extends Component {
 
   componentWillUnmount = () => {
     this.props.reset();
+    this.props.resetCurrentCompagny();
   };
 
   render = () => {
     const { payload } = this.props.list;
-    const { currentUser, onCurrentCompagny } = this.props;
+    const { currentUser, onCurrentCompagny, currentCompagny } = this.props;
 
     return (
       <>
@@ -32,6 +35,13 @@ class ListCompagnyView extends Component {
 
         <div className="row">
           <div className={'col-lg-12'}>
+            {currentCompagny.payload && (
+              <SuccessMessage
+                message={i18n.t('user.currentCompagny.success', {
+                  compagny: currentCompagny.payload.compagny.name,
+                })}
+              />
+            )}
             <div className={'card'}>
               <div className={'card-body text-wrap p-lg-6'}>
                 <Link
@@ -88,6 +98,7 @@ class ListCompagnyView extends Component {
 ListCompagnyView.propTypes = {
   listCompanies: PropTypes.func.isRequired,
   onCurrentCompagny: PropTypes.func.isRequired,
+  resetCurrentCompagny: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
   currentUser: PropTypes.shape({
     compagny: PropTypes.shape({
@@ -105,10 +116,11 @@ export default connect(
   state => ({
     list: state.compagny.list,
     currentUser: state.auth.authentication.user,
+    currentCompagny: state.user.currentCompagny,
   }),
   dispatch => ({
     ...bindActionCreators(
-      { listCompanies, onCurrentCompagny, reset },
+      { listCompanies, onCurrentCompagny, resetCurrentCompagny, reset },
       dispatch,
     ),
   }),

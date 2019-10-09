@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const Pagination = ({ pageCount, page, baseUrl }) => {
+  if (pageCount <= 1) {
+    return null;
+  }
+
   const pages = [];
 
   for (let i = 1; i <= pageCount; i++) {

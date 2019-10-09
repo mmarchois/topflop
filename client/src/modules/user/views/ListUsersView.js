@@ -13,12 +13,26 @@ import ServerErrors from '../../common/components/ServerErrors';
 import SuccessMessage from '../../common/components/SuccessMessage';
 
 class ListUsersView extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      search: '',
+    };
+  }
+
   componentDidMount = () => {
     this.props.listUsers(this.props.match.params.page);
   };
 
   componentWillUnmount = () => {
     this.props.reset();
+  };
+
+  handleSearch = e => {
+    e.preventDefault();
+
+    this.props.listUsers(1, this.state.search);
   };
 
   componentDidUpdate = (prevProps, prevState) => {
@@ -66,6 +80,28 @@ class ListUsersView extends Component {
                   </Link>
                 )}
                 <p>{i18n.t('user.list.actionsHelp')}</p>
+
+                <form onSubmit={this.handleSearch}>
+                  <div className="form-group">
+                    <div className="input-group">
+                      <input
+                        type={'text'}
+                        className={'form-control'}
+                        value={this.state.search}
+                        placeholder={i18n.t('user.list.searchPlaceholder')}
+                        onChange={e => {
+                          this.setState({ search: e.target.value });
+                        }}
+                      />
+                      <span className="input-group-append">
+                        <button className="btn btn-secondary" type="button">
+                          <i className={'icon fe fe-search'} />
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                </form>
+
                 <table className="table card-table table-striped table-vcenter">
                   <thead>
                     <tr>

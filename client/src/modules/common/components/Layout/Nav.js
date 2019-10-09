@@ -24,19 +24,19 @@ const Nav = ({ authenticated }) => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to={'/inputs/top'}>
-              <span className="nav-icon">
-                <i className="icon fe fe-thumbs-up"></i>
-              </span>
-              <span className="nav-text">{t('input.type.top')}</span>
-            </Link>
-          </li>
-          <li className="nav-item">
             <Link className="nav-link" to={'/inputs/flop'}>
               <span className="nav-icon">
                 <i className="icon fe fe-thumbs-down"></i>
               </span>
               <span className="nav-text">{t('input.type.flop')}</span>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to={'/inputs/top'}>
+              <span className="nav-icon">
+                <i className="icon fe fe-thumbs-up"></i>
+              </span>
+              <span className="nav-text">{t('input.type.top')}</span>
             </Link>
           </li>
           <li className="nav-item">

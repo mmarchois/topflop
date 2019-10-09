@@ -62,7 +62,7 @@ export class UserCompagnyRepository implements IUserCompagnyRepository {
     compagny: Compagny,
     filters: UserFiltersDto,
   ): Promise<[UserCompagny[], number]> => {
-    return await this.repository
+    const query = this.repository
       .createQueryBuilder('userCompagny')
       .select([
         'compagny.id',
@@ -80,8 +80,18 @@ export class UserCompagnyRepository implements IUserCompagnyRepository {
       .orderBy('user.lastName', 'ASC')
       .addOrderBy('user.firstName', 'ASC')
       .limit(MAX_ITEMS_PER_PAGE)
-      .offset((filters.page - 1) * MAX_ITEMS_PER_PAGE)
-      .getManyAndCount();
+      .offset((filters.page - 1) * MAX_ITEMS_PER_PAGE);
+
+    if (filters.search) {
+      query.andWhere(
+        '(LOWER(user.firstName) like LOWER(:search) OR LOWER(user.lastName) like LOWER(:search))',
+        {
+          search: `%${filters.search}%`,
+        },
+      );
+    }
+
+    return await query.getManyAndCount();
   };
 
   public findByUser = async (user: User): Promise<UserCompagny[]> => {

@@ -42,7 +42,7 @@ class ListQuoteView extends Component {
         <div className="row">
           <div className={'col-lg-12'}>
             <div className={'card'}>
-              <div className={'card-body text-wrap p-lg-6'}>
+              <div className={'card-body text-wrap'}>
                 <ul className="list-group card-list-group">
                   {payload.map(quote => {
                     return <QuoteRow key={quote.id} quote={quote} />;

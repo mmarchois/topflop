@@ -95,6 +95,9 @@
         "user": "Membre"
       },
       "title": "Membres",
+      "currentCompagny": {
+        "success": "Tu es désormais connecté sur {{compagny}}. Fais un tour sur le classement des tops / flops de la semaine !"
+      },
       "add": {
         "title": "Ajouter un membre",
         "introduction": "Créer un accès à un membre",
@@ -115,7 +118,8 @@
         "email": "Email",
         "role": "Rôle",
         "actions": "Actions",
-        "actionsHelp": "Pour ajouter un top, flop ou une quote, utilise les boutons d'actions dans la liste ci-dessous."
+        "actionsHelp": "Pour ajouter un top, flop ou une quote, utilise les boutons d'actions dans la liste ci-dessous.",
+        "searchPlaceholder": "Rechercher par prénom / nom ..."
       }
     },
     "input": {

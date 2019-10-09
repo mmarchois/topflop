@@ -17,15 +17,18 @@ const UserRow = ({ user, currentUser, onTop, onFlop }) => {
             <button onClick={onFlop} className="btn btn-secondary btn-sm">
               <i className={'icon fe fe-thumbs-down'}></i> Flop
             </button>
+            <button
+              onClick={onTop}
+              className="btn btn-secondary btn-sm mr-2 ml-2"
+            >
+              <i className={'icon fe fe-thumbs-up'}></i> Top
+            </button>
             <Link
               to={`/users/${user.id}/quotes/add`}
-              className="btn btn-secondary btn-sm mr-2 ml-2"
+              className="btn btn-secondary btn-sm"
             >
               <i className={'icon fe fe-code'}></i> Quote
             </Link>
-            <button onClick={onTop} className="btn btn-secondary btn-sm">
-              <i className={'icon fe fe-thumbs-up'}></i> Top
-            </button>
           </>
         )}
       </td>

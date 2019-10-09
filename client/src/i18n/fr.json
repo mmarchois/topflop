@@ -55,6 +55,7 @@
         "add": "Ajouter une structure",
         "name": "structure",
         "role": "Rôle",
+        "voucher": "Code d'accès",
         "active": "Se connecter",
         "action": "Action"
       }

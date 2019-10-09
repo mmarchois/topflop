@@ -24,7 +24,7 @@ export class ChangeCurrentCompagnyCommandHandler {
     if (
       false === (await this.isMemberOfCompagny.isSatisfiedBy(user, compagny))
     ) {
-      throw new ForbiddenException('not.member.of.compagny');
+      throw new ForbiddenException('user.errors.notMember');
     }
 
     // Used to retrieve the user role in this compagny

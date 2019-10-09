@@ -17,7 +17,7 @@ export class UserView {
     this.email = user.email;
     this.role = role;
     this.compagny = compagny
-      ? new CompagnyView(compagny.id, compagny.name)
+      ? new CompagnyView(compagny.id, compagny.name, compagny.voucher)
       : null;
   }
 }

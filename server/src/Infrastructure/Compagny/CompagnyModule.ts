@@ -11,6 +11,7 @@ import { GetCompaniesByUserController } from './Controller/GetCompaniesByUserCon
 import { GetCompaniesByUserQueryHandler } from 'src/Application/Compagny/Query/GetCompaniesByUserQueryHandler';
 import { UserCompagny } from 'src/Domain/User/UserCompagny.entity';
 import { UserCompagnyRepository } from '../User/Repository/UserCompagnyRepository';
+import { CodeGeneratorAdapter } from '../Adapter/CodeGeneratorAdapter';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { UserCompagnyRepository } from '../User/Repository/UserCompagnyRepositor
   providers: [
     { provide: 'ICompagnyRepository', useClass: CompagnyRepository },
     { provide: 'IUserCompagnyRepository', useClass: UserCompagnyRepository },
+    { provide: 'ICodeGeneratorAdapter', useClass: CodeGeneratorAdapter },
     CreateCompagnyCommandHandler,
     GetCompagnyByIdQueryHandler,
     GetCompaniesByUserQueryHandler,

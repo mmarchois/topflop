@@ -39,6 +39,7 @@
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",
     "rxjs": "^6.2.2",
+    "shortid": "^2.2.15",
     "typeorm": "^0.2.18",
     "typescript": "^3.0.1"
   },

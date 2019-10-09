@@ -8,6 +8,9 @@ export class Compagny {
   @Column({ type: 'varchar', nullable: false })
   public name: string;
 
+  @Column({ type: 'varchar', nullable: true })
+  public voucher: string;
+
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   public createdAt: Date;
 

@@ -25,13 +25,13 @@ export class CreateQuoteCommandHandler {
 
     const author = await this.userRepository.findOneById(authorId);
     if (!(author instanceof User)) {
-      throw new BadRequestException('user.not.found');
+      throw new BadRequestException('user.errors.notFound');
     }
 
     if (
       false === (await this.isMemberOfCompagny.isSatisfiedBy(author, compagny))
     ) {
-      throw new BadRequestException('user.not.member.of.compagny');
+      throw new BadRequestException('user.errors.notMember');
     }
 
     const quote = await this.repository.save(

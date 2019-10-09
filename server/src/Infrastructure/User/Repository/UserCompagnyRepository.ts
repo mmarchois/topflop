@@ -67,6 +67,7 @@ export class UserCompagnyRepository implements IUserCompagnyRepository {
       .select([
         'compagny.id',
         'compagny.name',
+        'compagny.voucher',
         'userCompagny.role',
         'user.id',
         'user.firstName',
@@ -86,7 +87,12 @@ export class UserCompagnyRepository implements IUserCompagnyRepository {
   public findByUser = async (user: User): Promise<UserCompagny[]> => {
     return await this.repository
       .createQueryBuilder('userCompagny')
-      .select(['userCompagny.role', 'compagny.id', 'compagny.name'])
+      .select([
+        'userCompagny.role',
+        'compagny.voucher',
+        'compagny.id',
+        'compagny.name',
+      ])
       .innerJoin('userCompagny.compagny', 'compagny')
       .where('userCompagny.user = :user', { user: user.id })
       .orderBy('compagny.name', 'ASC')

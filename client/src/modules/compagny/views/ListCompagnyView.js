@@ -46,6 +46,7 @@ class ListCompagnyView extends Component {
                     <tr>
                       <th>{i18n.t('compagny.list.name')}</th>
                       <th>{i18n.t('compagny.list.role')}</th>
+                      <th>{i18n.t('compagny.list.voucher')}</th>
                       <th style={{ width: '150px' }}>
                         {i18n.t('compagny.list.action')}
                       </th>
@@ -56,6 +57,7 @@ class ListCompagnyView extends Component {
                       <tr key={compagny.id}>
                         <td>{compagny.name}</td>
                         <td>{i18n.t(`user.role.${compagny.role}`)}</td>
+                        <td>{compagny.voucher}</td>
                         <td>
                           {currentUser.compagny.id !== compagny.id && (
                             <button
@@ -89,6 +91,7 @@ ListCompagnyView.propTypes = {
     compagny: PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
+      voucher: PropTypes.string,
     }),
   }),
   list: PropTypes.shape({

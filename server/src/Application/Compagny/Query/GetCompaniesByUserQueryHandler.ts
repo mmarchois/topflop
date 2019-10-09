@@ -18,8 +18,10 @@ export class GetCompaniesByUserQueryHandler {
     const compagnyViews = [];
 
     for (const result of results) {
+      const { compagny, role } = result;
+
       compagnyViews.push(
-        new CompagnyView(result.compagny.id, result.compagny.name, result.role),
+        new CompagnyView(compagny.id, compagny.name, compagny.voucher, role),
       );
     }
 

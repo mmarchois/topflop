@@ -38,6 +38,10 @@ export class CreateInputCommandHandler {
       throw new BadRequestException(`input.errors.auto.${type}`);
     }
 
+    if (false === (await this.repository.canUserAddInput(author, user, type))) {
+      throw new BadRequestException('input.errors.rateLimit');
+    }
+
     const input = await this.repository.save(
       new Input({
         type,

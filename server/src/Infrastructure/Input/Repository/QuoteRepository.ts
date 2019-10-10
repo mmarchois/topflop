@@ -19,6 +19,23 @@ export class QuoteRepository implements IQuoteRepository {
     return await this.repository.save(quote);
   };
 
+  public findById = async (id: string): Promise<Quote> => {
+    return await this.repository
+      .createQueryBuilder('quote')
+      .select([
+        'quote.id',
+        'quote.sentence',
+        'quote.createdAt',
+        'author.firstName',
+        'author.lastName',
+        'compagny.id',
+      ])
+      .where('quote.id = :id', { id })
+      .innerJoin('quote.author', 'author')
+      .innerJoin('quote.compagny', 'compagny')
+      .getOne();
+  };
+
   public findByCompagny = async (
     compagny: Compagny,
     filters: QuoteFiltersDto,

@@ -5,6 +5,7 @@ import { User } from 'src/Domain/User/User.entity';
 
 export interface IQuoteRepository {
   save(quote: Quote): Promise<Quote>;
+  findById(id: string): Promise<Quote>;
   findByCompagny(
     compagny: Compagny,
     filters: QuoteFiltersDto,

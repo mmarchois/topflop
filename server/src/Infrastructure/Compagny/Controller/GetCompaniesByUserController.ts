@@ -29,7 +29,7 @@ export class GetCompaniesByUserController {
   @Get('me/companies')
   public async index(@LoggedUser() user: User): Promise<CompagnyView[]> {
     if (!user.currentCompagny) {
-      throw new BadRequestException('user.has.not.compagny');
+      throw new BadRequestException('user.errors.noCompagny');
     }
 
     return await this.queryBus.execute(new GetCompaniesByUserQuery(user));

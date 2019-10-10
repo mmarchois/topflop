@@ -35,6 +35,11 @@ const ListQuote = Loadable({
   loading: LoadingComponent,
 });
 
+const QuoteDetail = Loadable({
+  loader: () => import('../modules/quote/views/QuoteDetailView'),
+  loading: LoadingComponent,
+});
+
 const AddQuote = Loadable({
   loader: () => import('../modules/quote/views/AddQuoteView'),
   loading: LoadingComponent,
@@ -84,6 +89,7 @@ const Routes = () => (
           component={ListQuote}
         />
         <SecuredRoute exact path="/users/:id/quotes/add" component={AddQuote} />
+        <SecuredRoute exact path="/quotes/:id/detail" component={QuoteDetail} />
 
         {/* USERS */}
         <SecuredRoute exact path="/users/:page([0-9]*)?" component={ListUser} />

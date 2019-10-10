@@ -63,10 +63,13 @@ export class CreateUserCommandHandler {
         currentCompagny: compagny,
         password: encryptedPassword,
       });
-
-      await this.userRepository.save(savedUser);
+    } else {
+      if (!savedUser.currentCompagny) {
+        savedUser.updateCurrentCompagny(compagny);
+      }
     }
 
+    await this.userRepository.save(savedUser);
     await this.userCompagnyRepository.save(
       new UserCompagny({
         user: savedUser,

@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';
 import { Compagny } from 'src/Domain/Compagny/Compagny.entity';
 import { InputFiltersDto } from '../Controller/Dto/InputFiltersDto';
+import { User } from 'src/Domain/User/User.entity';
 
 @Injectable()
 export class InputRepository implements IInputRepository {
@@ -38,5 +39,22 @@ export class InputRepository implements IInputRepository {
       .orderBy('counter', 'DESC')
       .addOrderBy('author.lastName', 'ASC')
       .execute();
+  };
+
+  public canUserAddInput = async (
+    author: User,
+    addedBy: User,
+    type: string,
+  ): Promise<boolean> => {
+    const input = await this.repository
+      .createQueryBuilder('input')
+      .select('input.id')
+      .where('input.author = :author', { author: author.id })
+      .andWhere('input.addedBy = :addedBy', { addedBy: addedBy.id })
+      .andWhere("input.createdAt >= now() - INTERVAL '10 seconds'")
+      .andWhere('input.type = :type', { type })
+      .getOne();
+
+    return !(input instanceof Input);
   };
 }

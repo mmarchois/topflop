@@ -128,6 +128,7 @@
         "top": "Tops"
       },
       "errors": {
+        "rateLimit": "Calme toi, tu ne peux voter qu'une fois toutes les 10 secondes par membre",
         "auto": {
           "flop": "Tu ne peux pas te flopper toi même !",
           "top": "Tu ne peux pas te topper toi même !"

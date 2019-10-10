@@ -7,9 +7,8 @@ export const joinCompagny = payload => async (dispatch, getState, axios) => {
 
   try {
     const response = await axios.post('companies/join', payload);
-    const compagny = new Compagny(response.data);
 
-    dispatch(success(compagny));
+    dispatch(success(new Compagny(response.data)));
   } catch (e) {
     dispatch(errors(errorFormater(e)));
   } finally {

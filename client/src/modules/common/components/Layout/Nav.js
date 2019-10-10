@@ -12,7 +12,7 @@ const Nav = ({ authenticated }) => {
   }
 
   return (
-    <div className="d-none d-lg-block navbar navbar-expand-md">
+    <div className="d-lg-block navbar navbar-expand-md">
       <div className="container">
         <ul className="navbar-nav" id="menu">
           <li className="nav-item">

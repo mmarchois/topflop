@@ -6,6 +6,7 @@ import { IQuoteRepository } from 'src/Domain/Input/Repository/IQuoteRepository';
 import { Compagny } from 'src/Domain/Compagny/Compagny.entity';
 import { MAX_ITEMS_PER_PAGE } from 'src/Application/Common/Pagination';
 import { QuoteFiltersDto } from '../Controller/Dto/QuoteFiltersDto';
+import { User } from 'src/Domain/User/User.entity';
 
 @Injectable()
 export class QuoteRepository implements IQuoteRepository {
@@ -37,5 +38,15 @@ export class QuoteRepository implements IQuoteRepository {
       .limit(MAX_ITEMS_PER_PAGE)
       .offset((filters.page - 1) * MAX_ITEMS_PER_PAGE)
       .getManyAndCount();
+  };
+
+  public deleteByUserAndCompagny = async (user: User, compagny: Compagny) => {
+    await this.repository
+      .createQueryBuilder()
+      .delete()
+      .from(Quote)
+      .where('author = :author', { author: user.id })
+      .andWhere('compagny = :compagny', { compagny: compagny.id })
+      .execute();
   };
 }

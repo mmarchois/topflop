@@ -30,7 +30,7 @@ class AddCompagnyView extends Component {
     const { add, join } = this.props;
 
     if (add.payload) {
-      return <Redirect to={'/users/add'} />;
+      return <Redirect to={'/groups'} />;
     }
 
     if (join.payload) {

@@ -68,7 +68,9 @@
         "role": "Rôle",
         "voucher": "Code d'accès",
         "active": "Se connecter",
-        "action": "Action"
+        "action": "Action",
+        "leave": "Quitter",
+        "leaveConfirm": "Est-tu sûr de vouloir quitter ce groupe ? Tes données associées seront perdu"
       }
     },
     "quote": {

@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { leaveCompagny } from '../middlewares/leave';
 import { listCompanies } from '../middlewares/list';
 import { currentCompagny as onCurrentCompagny } from '../../user/middlewares/currentCompagny';
 import { reset } from '../actions/list';
 import { reset as resetCurrentCompagny } from '../../user/actions/currentCompagny';
+import { reset as resetLeaveCompagny } from '../actions/leave';
 import { bindActionCreators } from 'redux';
 import i18n from '../../../i18n';
 import SuccessMessage from '../../common/components/SuccessMessage';
@@ -17,7 +19,14 @@ class ListCompagnyView extends Component {
 
   componentWillUnmount = () => {
     this.props.reset();
+    this.props.resetLeaveCompagny();
     this.props.resetCurrentCompagny();
+  };
+
+  handleLeave = compagnyId => {
+    if (window.confirm(i18n.t('compagny.list.leaveConfirm'))) {
+      this.props.leaveCompagny(compagnyId);
+    }
   };
 
   render = () => {
@@ -58,7 +67,7 @@ class ListCompagnyView extends Component {
                       <th>{i18n.t('compagny.list.name')}</th>
                       <th>{i18n.t('compagny.list.role')}</th>
                       <th>{i18n.t('compagny.list.voucher')}</th>
-                      <th style={{ width: '150px' }}>
+                      <th style={{ width: '250px' }}>
                         {i18n.t('compagny.list.action')}
                       </th>
                     </tr>
@@ -73,13 +82,22 @@ class ListCompagnyView extends Component {
                         </td>
                         <td>
                           {currentUser.compagny.id !== compagny.id && (
-                            <button
-                              onClick={() => onCurrentCompagny(compagny.id)}
-                              className="btn btn-secondary btn-sm"
-                            >
-                              <i className={'icon fe fe-unlock'}></i>{' '}
-                              {i18n.t('compagny.list.active')}
-                            </button>
+                            <>
+                              <button
+                                onClick={() => onCurrentCompagny(compagny.id)}
+                                className="btn btn-secondary btn-sm"
+                              >
+                                <i className={'icon fe fe-unlock'}></i>{' '}
+                                {i18n.t('compagny.list.active')}
+                              </button>
+                              <button
+                                onClick={() => this.handleLeave(compagny.id)}
+                                className="btn btn-secondary btn-sm ml-3"
+                              >
+                                <i className={'icon fe fe-delete'}></i>{' '}
+                                {i18n.t('compagny.list.leave')}
+                              </button>
+                            </>
                           )}
                         </td>
                       </tr>
@@ -96,8 +114,10 @@ class ListCompagnyView extends Component {
 }
 
 ListCompagnyView.propTypes = {
+  resetLeaveCompagny: PropTypes.func.isRequired,
   listCompanies: PropTypes.func.isRequired,
   onCurrentCompagny: PropTypes.func.isRequired,
+  leaveCompagny: PropTypes.func.isRequired,
   resetCurrentCompagny: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
   currentUser: PropTypes.shape({
@@ -120,7 +140,14 @@ export default connect(
   }),
   dispatch => ({
     ...bindActionCreators(
-      { listCompanies, onCurrentCompagny, resetCurrentCompagny, reset },
+      {
+        listCompanies,
+        onCurrentCompagny,
+        resetCurrentCompagny,
+        leaveCompagny,
+        resetLeaveCompagny,
+        reset,
+      },
       dispatch,
     ),
   }),

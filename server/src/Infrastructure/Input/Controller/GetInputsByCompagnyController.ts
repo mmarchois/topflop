@@ -34,7 +34,7 @@ export class GetInputsByCompagnyController {
     @LoggedUser() user: User,
   ): Promise<InputListView[]> {
     if (!user.currentCompagny) {
-      throw new BadRequestException('user.has.not.compagny');
+      throw new BadRequestException('user.errors.noCompagny');
     }
 
     return await this.queryBus.execute(

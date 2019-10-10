@@ -5,6 +5,7 @@
       "login": "Se connecter",
       "register": "Créer un compte"
     },
+    "back": "Retour",
     "form": {
       "buttons": {
         "save": "Sauvegarder"
@@ -85,12 +86,17 @@
       "list": {
         "add": "Ajouter une quote",
         "addedAt": "Quoté le {{date}}"
+      },
+      "errors": {
+        "notAllow": "Tu n'es pas autorisé à voir cette quote",
+        "notFound": "Quote non trouvé"
       }
     },
     "user": {
       "errors": {
         "registredCompagny": "Ce compte a déjà été ajouté !",
-        "alreadyRegistred": "Un compte existe déjà avec cet adresse email"
+        "alreadyRegistred": "Un compte existe déjà avec cet adresse email",
+        "noCompagny": "Tu n'as pas de groupe !"
       },
       "role": {
         "admin": "Administrateur",

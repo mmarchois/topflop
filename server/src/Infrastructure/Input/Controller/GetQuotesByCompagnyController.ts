@@ -35,7 +35,7 @@ export class GetQuotesByCompagnyController {
     @LoggedUser() user: User,
   ): Promise<Pagination<QuoteView>> {
     if (!user.currentCompagny) {
-      throw new BadRequestException('user.has.not.compagny');
+      throw new BadRequestException('user.errors.noCompagny');
     }
 
     return await this.queryBus.execute(

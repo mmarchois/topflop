@@ -22,7 +22,9 @@ export class LoginCommandHandler {
   public execute = async (
     command: LoginCommand,
   ): Promise<AuthenticatedView> => {
-    const user = await this.userRepository.findOneByEmail(command.email);
+    const user = await this.userRepository.findOneByEmail(
+      command.email.toLowerCase(),
+    );
 
     if (
       !(user instanceof User) ||

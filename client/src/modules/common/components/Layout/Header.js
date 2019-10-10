@@ -27,7 +27,7 @@ class Header extends React.Component {
             <img
               src="/img/logo.svg"
               alt="TopFlop"
-              className="d-none d-md-block navbar-brand-logo"
+              className="d-md-block navbar-brand-logo"
             />
             TopFlop
             {true === authenticated && user.compagny && (

@@ -23,4 +23,5 @@ export interface IUserCompagnyRepository {
     filters: UserFiltersDto,
   ): Promise<[UserCompagny[], number]>;
   findByUser(user: User): Promise<UserCompagny[]>;
+  deleteByUserAndCompagny(user: User, compagny: Compagny);
 }

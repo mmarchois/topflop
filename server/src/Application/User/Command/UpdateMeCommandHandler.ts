@@ -13,7 +13,8 @@ export class UpdateMeCommandHandler {
   ) {}
 
   public execute = async (command: UpdateMeCommand): Promise<UpdatedMeView> => {
-    const { email, firstName, lastName, user } = command;
+    const { firstName, lastName, user } = command;
+    const email = command.email.toLowerCase();
 
     if (
       email !== user.email &&

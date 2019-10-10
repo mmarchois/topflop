@@ -15,20 +15,29 @@ import { CodeGeneratorAdapter } from '../Adapter/CodeGeneratorAdapter';
 import { JoinCompagnyController } from './Controller/JoinCompagnyController';
 import { JoinCompagnyCommandHandler } from 'src/Application/Compagny/Command/JoinCompagnyCommandHandler';
 import { IsMemberOfCompagny } from 'src/Domain/User/IsMemberOfCompagny';
+import { LeaveCompagnyController } from './Controller/LeaveCompagnyController';
+import { Input } from 'src/Domain/Input/Input.entity';
+import { Quote } from 'src/Domain/Input/Quote.entity';
+import { LeaveCompagnyCommandHandler } from 'src/Application/Compagny/Command/LeaveCompagnyCommandHandler';
+import { InputRepository } from '../Input/Repository/InputRepository';
+import { QuoteRepository } from '../Input/Repository/QuoteRepository';
 
 @Module({
   imports: [
     BusModule,
     AuthModule,
-    TypeOrmModule.forFeature([Compagny, UserCompagny]),
+    TypeOrmModule.forFeature([Compagny, UserCompagny, Input, Quote]),
   ],
   controllers: [
     CreateCompagnyController,
     GetCompaniesByUserController,
     JoinCompagnyController,
+    LeaveCompagnyController,
   ],
   providers: [
     { provide: 'ICompagnyRepository', useClass: CompagnyRepository },
+    { provide: 'IInputRepository', useClass: InputRepository },
+    { provide: 'IQuoteRepository', useClass: QuoteRepository },
     { provide: 'IUserCompagnyRepository', useClass: UserCompagnyRepository },
     { provide: 'ICodeGeneratorAdapter', useClass: CodeGeneratorAdapter },
     CreateCompagnyCommandHandler,
@@ -36,6 +45,7 @@ import { IsMemberOfCompagny } from 'src/Domain/User/IsMemberOfCompagny';
     GetCompaniesByUserQueryHandler,
     JoinCompagnyCommandHandler,
     IsMemberOfCompagny,
+    LeaveCompagnyCommandHandler,
   ],
 })
 export class CompagnyModule {}

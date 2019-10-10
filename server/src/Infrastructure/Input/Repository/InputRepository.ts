@@ -57,4 +57,14 @@ export class InputRepository implements IInputRepository {
 
     return !(input instanceof Input);
   };
+
+  public deleteByUserAndCompagny = async (user: User, compagny: Compagny) => {
+    await this.repository
+      .createQueryBuilder()
+      .delete()
+      .from(Input)
+      .where('author = :author', { author: user.id })
+      .andWhere('compagny = :compagny', { compagny: compagny.id })
+      .execute();
+  };
 }

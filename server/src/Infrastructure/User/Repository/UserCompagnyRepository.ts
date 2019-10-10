@@ -108,4 +108,14 @@ export class UserCompagnyRepository implements IUserCompagnyRepository {
       .orderBy('compagny.name', 'ASC')
       .getMany();
   };
+
+  public deleteByUserAndCompagny = async (user: User, compagny: Compagny) => {
+    await this.repository
+      .createQueryBuilder()
+      .delete()
+      .from(UserCompagny)
+      .where('user = :user', { user: user.id })
+      .andWhere('compagny = :compagny', { compagny: compagny.id })
+      .execute();
+  };
 }

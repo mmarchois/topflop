@@ -7,4 +7,5 @@ export interface IInputRepository {
   save(input: Input): Promise<Input>;
   findByCompagny(compagny: Compagny, filters: InputFiltersDto);
   canUserAddInput(author: User, addedBy: User, type: string): Promise<boolean>;
+  deleteByUserAndCompagny(user: User, compagny: Compagny);
 }

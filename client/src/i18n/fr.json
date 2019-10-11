@@ -96,7 +96,7 @@
       "errors": {
         "registredCompagny": "Ce compte a déjà été ajouté !",
         "alreadyRegistred": "Un compte existe déjà avec cet adresse email",
-        "noCompagny": "Tu n'as pas de groupe !"
+        "noCompagny": "Tu n'es pas dans un groupe, créer ou rejoins en un en te rendant dans \"Mes groupes\""
       },
       "role": {
         "admin": "Administrateur",
@@ -127,7 +127,12 @@
         "role": "Rôle",
         "actions": "Actions",
         "actionsHelp": "Pour ajouter un top, flop ou une quote, utilise les boutons d'actions dans la liste ci-dessous.",
-        "searchPlaceholder": "Rechercher par prénom / nom ..."
+        "searchPlaceholder": "Rechercher par prénom / nom ...",
+        "delete": "Retirer du groupe",
+        "quote": "Quote",
+        "top": "Top",
+        "flop": "Flop",
+        "deleteConfirm": "Est-tu sûr de vouloir retirer du groupe ce membre ?"
       }
     },
     "input": {

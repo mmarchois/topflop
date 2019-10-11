@@ -7,6 +7,7 @@ import { reset as inputReset } from '../../input/actions/add';
 import { bindActionCreators } from 'redux';
 import i18n from '../../../i18n';
 import InputRow from '../components/InputRow';
+import ServerErrors from '../../common/components/ServerErrors';
 
 class ListInputsView extends Component {
   componentDidMount = () => {
@@ -29,7 +30,7 @@ class ListInputsView extends Component {
   };
 
   render = () => {
-    const { payload } = this.props.list;
+    const { payload, errors } = this.props.list;
     const { type } = this.props.match.params;
     const icon = 'top' === type ? 'up' : 'down';
 
@@ -43,6 +44,7 @@ class ListInputsView extends Component {
         </div>
         <div className="row">
           <div className={'col-lg-12'}>
+            <ServerErrors errors={errors} />
             <div className={'card'}>
               <div className={'card-body text-wrap p-lg-6'}>
                 <table className="table table-sm table-striped">
@@ -81,6 +83,7 @@ ListInputsView.propTypes = {
   reset: PropTypes.func.isRequired,
   list: PropTypes.shape({
     payload: PropTypes.array.isRequired,
+    errors: PropTypes.array.isRequired,
   }),
 };
 

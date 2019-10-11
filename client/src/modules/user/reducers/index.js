@@ -4,6 +4,7 @@ import { addReducers } from './add';
 import { editReducers } from './edit';
 import { currentCompagnyReducers } from './currentCompagny';
 import { passwordReducers } from './password';
+import { deleteReducers } from './delete';
 
 export default combineReducers({
   list: listReducers,
@@ -11,4 +12,5 @@ export default combineReducers({
   edit: editReducers,
   currentCompagny: currentCompagnyReducers,
   password: passwordReducers,
+  delete: deleteReducers,
 });

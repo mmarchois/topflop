@@ -46,8 +46,9 @@ export class UserRepository implements IUserRepository {
   public findOneById = async (id: string): Promise<User | null> => {
     return await this.repository
       .createQueryBuilder('user')
-      .select(['user.id', 'user.firstName', 'user.lastName'])
+      .select(['user.id', 'user.firstName', 'user.lastName', 'compagny.id'])
       .where('user.id = :id', { id })
+      .innerJoin('user.currentCompagny', 'compagny')
       .getOne();
   };
 

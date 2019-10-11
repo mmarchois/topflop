@@ -4,6 +4,7 @@ import {
   USER_LIST_ERROR,
   USER_LIST_SUCCESS,
 } from '../constants/list';
+import { USER_DELETE_SUCCESS } from '../constants/delete';
 
 const initialState = {
   loading: false,
@@ -33,6 +34,13 @@ export const listReducers = (state = initialState, action) => {
       return {
         ...state,
         errors: action.errors,
+      };
+
+    case USER_DELETE_SUCCESS:
+      return {
+        ...state,
+        payload: state.payload.filter(user => user.id !== action.payload),
+        totalItems: state.totalItems - 1,
       };
 
     case USER_LIST_RESET:

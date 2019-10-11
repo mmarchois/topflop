@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 import Pagination from '../../common/components/Pagination';
 import i18n from '../../../i18n';
 import QuoteRow from '../components/QuoteRow';
+import ServerErrors from '../../common/components/ServerErrors';
 
 class ListQuoteView extends Component {
   componentDidMount = () => {
@@ -27,7 +28,7 @@ class ListQuoteView extends Component {
   };
 
   render = () => {
-    const { payload, pageCount, totalItems } = this.props.list;
+    const { payload, pageCount, totalItems, errors } = this.props.list;
     const { page } = this.props.match.params;
 
     return (
@@ -41,6 +42,7 @@ class ListQuoteView extends Component {
 
         <div className="row">
           <div className={'col-lg-12'}>
+            <ServerErrors errors={errors} />
             <div className={'card'}>
               <div className={'card-body text-wrap'}>
                 <ul className="list-group card-list-group">
@@ -70,6 +72,7 @@ ListQuoteView.propTypes = {
     payload: PropTypes.array.isRequired,
     totalItems: PropTypes.number.isRequired,
     pageCount: PropTypes.number.isRequired,
+    errors: PropTypes.array.isRequired,
   }),
 };
 

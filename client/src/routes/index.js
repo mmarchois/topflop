@@ -80,7 +80,12 @@ const Routes = () => (
           component={AddCompagny}
           compagnyRoute={true}
         />
-        <SecuredRoute exact path="/groups" component={ListCompagny} />
+        <SecuredRoute
+          compagnyRoute={true}
+          exact
+          path="/groups"
+          component={ListCompagny}
+        />
 
         {/* QUOTES */}
         <SecuredRoute

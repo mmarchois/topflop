@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { listUsers } from '../middlewares/list';
 import { addInput } from '../../input/middlewares/add';
+import { reset as resetDelete } from '../actions/delete';
+import { deleteUser } from '../middlewares/delete';
+import { reset as resetInput } from '../../input/actions/add';
 import { reset } from '../actions/list';
 import { bindActionCreators } from 'redux';
 import UserRow from '../components/UserRow';
@@ -11,6 +14,7 @@ import i18n from '../../../i18n';
 import Pagination from '../../common/components/Pagination';
 import ServerErrors from '../../common/components/ServerErrors';
 import SuccessMessage from '../../common/components/SuccessMessage';
+import Search from '../components/Search';
 
 class ListUsersView extends Component {
   constructor(props) {
@@ -27,12 +31,20 @@ class ListUsersView extends Component {
 
   componentWillUnmount = () => {
     this.props.reset();
+    this.props.resetInput();
+    this.props.resetDelete();
   };
 
   handleSearch = e => {
     e.preventDefault();
 
     this.props.listUsers(1, this.state.search);
+  };
+
+  handleDelete = userId => {
+    if (window.confirm(i18n.t('user.list.deleteConfirm'))) {
+      this.props.deleteUser(userId);
+    }
   };
 
   componentDidUpdate = (prevProps, prevState) => {
@@ -45,7 +57,7 @@ class ListUsersView extends Component {
   };
 
   render = () => {
-    const { payload, totalItems, pageCount } = this.props.list;
+    const { payload, totalItems, errors, pageCount } = this.props.list;
     const { currentUser, input, addInput } = this.props;
     const { page } = this.props.match.params;
 
@@ -60,7 +72,7 @@ class ListUsersView extends Component {
 
         <div className="row">
           <div className={'col-lg-12'}>
-            <ServerErrors errors={input.errors} />
+            <ServerErrors errors={[...input.errors, ...errors]} />
             {input.payload && (
               <SuccessMessage
                 message={i18n.t(`input.success.${input.payload.type}`, {
@@ -80,27 +92,13 @@ class ListUsersView extends Component {
                   </Link>
                 )}
                 <p>{i18n.t('user.list.actionsHelp')}</p>
-
-                <form onSubmit={this.handleSearch}>
-                  <div className="form-group">
-                    <div className="input-group">
-                      <input
-                        type={'text'}
-                        className={'form-control'}
-                        value={this.state.search}
-                        placeholder={i18n.t('user.list.searchPlaceholder')}
-                        onChange={e => {
-                          this.setState({ search: e.target.value });
-                        }}
-                      />
-                      <span className="input-group-append">
-                        <button className="btn btn-secondary" type="button">
-                          <i className={'icon fe fe-search'} />
-                        </button>
-                      </span>
-                    </div>
-                  </div>
-                </form>
+                <Search
+                  handleSearch={this.handleSearch}
+                  search={this.state.search}
+                  onChange={e => {
+                    this.setState({ search: e.target.value });
+                  }}
+                />
 
                 <table className="table card-table table-striped table-vcenter">
                   <thead>
@@ -111,6 +109,7 @@ class ListUsersView extends Component {
                         <th>{i18n.t('user.list.role')}</th>
                       )}
                       <th>{i18n.t('user.list.actions')}</th>
+                      {'admin' === currentUser.role && <th></th>}
                     </tr>
                   </thead>
                   <tbody>
@@ -119,6 +118,7 @@ class ListUsersView extends Component {
                         key={user.id}
                         onFlop={() => addInput('flop', user.id)}
                         onTop={() => addInput('top', user.id)}
+                        onDelete={() => this.handleDelete(user.id)}
                         user={user}
                         currentUser={currentUser}
                       />
@@ -141,23 +141,30 @@ class ListUsersView extends Component {
 
 ListUsersView.propTypes = {
   addInput: PropTypes.func.isRequired,
+  resetInput: PropTypes.func.isRequired,
   listUsers: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
   currentUser: PropTypes.object.isRequired,
+  delete: PropTypes.object.isRequired,
   list: PropTypes.shape({
     payload: PropTypes.array.isRequired,
     totalItems: PropTypes.number.isRequired,
     pageCount: PropTypes.number.isRequired,
+    errors: PropTypes.array.isRequired,
   }),
 };
 
 export default connect(
   state => ({
+    delete: state.user.delete,
     list: state.user.list,
     currentUser: state.auth.authentication.user,
     input: state.input.add,
   }),
   dispatch => ({
-    ...bindActionCreators({ listUsers, reset, addInput }, dispatch),
+    ...bindActionCreators(
+      { listUsers, resetDelete, deleteUser, resetInput, reset, addInput },
+      dispatch,
+    ),
   }),
 )(ListUsersView);

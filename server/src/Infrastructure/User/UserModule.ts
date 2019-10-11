@@ -21,6 +21,9 @@ import { UpdatePasswordController } from './Controller/UpdatePasswordController'
 import { UpdateMeCommandHandler } from 'src/Application/User/Command/UpdateMeCommandHandler';
 import { UpdatePasswordCommandHandler } from 'src/Application/User/Command/UpdatePasswordCommandHandler';
 import { ChangeCurrentCompagnyController } from './Controller/ChangeCurrentCompagnyController';
+import { DeleteUserCompagnyController } from './Controller/DeleteUserCompagnyController';
+import { GetUserByIdQueryHandler } from 'src/Application/User/Query/GetUserByIdQueryHandler';
+import { DeleteUserCompagnyCommandHandler } from 'src/Application/User/Command/DeleteUserCompagnyCommandHandler';
 
 @Module({
   imports: [
@@ -34,6 +37,7 @@ import { ChangeCurrentCompagnyController } from './Controller/ChangeCurrentCompa
     UpdateMeController,
     UpdatePasswordController,
     ChangeCurrentCompagnyController,
+    DeleteUserCompagnyController,
   ],
   providers: [
     { provide: 'IUserRepository', useClass: UserRepository },
@@ -48,6 +52,8 @@ import { ChangeCurrentCompagnyController } from './Controller/ChangeCurrentCompa
     GetUsersByCompagnyQueryHandler,
     UpdateMeCommandHandler,
     UpdatePasswordCommandHandler,
+    GetUserByIdQueryHandler,
+    DeleteUserCompagnyCommandHandler,
   ],
 })
 export class UserModule {}

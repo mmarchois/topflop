@@ -38,7 +38,7 @@ export class User {
     Object.assign(this, user);
   }
 
-  public updateCurrentCompagny = (compagny: Compagny): void => {
+  public updateCurrentCompagny = (compagny?: Compagny): void => {
     this.currentCompagny = compagny;
   };
 

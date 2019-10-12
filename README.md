@@ -1,6 +1,6 @@
 # TopFlop
 
-Topflop is an application to top or flop your work colleagues
+Topflop is an open-source application to top, flop or quote your friends
 
 ## Getting Started
 

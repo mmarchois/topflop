@@ -155,10 +155,9 @@
         "add": "Ajouter un {{type}}",
         "author": "Auteur",
         "count": "Compteur",
-        "type": {
-          "flop": "Classement des FLOP de la semaine",
-          "top": "Classement des TOP de la semaine"
-        }
+        "classement": " Classement des {{type}}s",
+        "periodWeek": " de la semaine",
+        "periodCustom": " du {{fromDate}} au {{toDate}}"
       }
     },
     "header": {

@@ -138,6 +138,10 @@ strong {
   font-weight: bolder;
 }
 
+.react-daterange-picker__wrapper {
+  padding: 5px;
+  margin-bottom: 15px;
+}
 small {
   font-size: 80%;
 }

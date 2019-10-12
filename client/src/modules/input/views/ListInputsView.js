@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import DateRangePicker from '@wojtekmaj/react-daterange-picker';
+import { endOfWeek, startOfWeek } from 'date-fns';
 import { listInputs } from '../middlewares/list';
 import { reset } from '../actions/list';
 import { reset as inputReset } from '../../input/actions/add';
@@ -10,8 +12,24 @@ import InputRow from '../components/InputRow';
 import ServerErrors from '../../common/components/ServerErrors';
 
 class ListInputsView extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      dates: [startOfWeek(new Date()), endOfWeek(new Date())],
+      changed: false,
+    };
+  }
+
+  onChange = dates => {
+    if (dates) {
+      this.setState({ dates, changed: true });
+      this.props.listInputs(this.props.match.params.type, dates);
+    }
+  };
+
   componentDidMount = () => {
-    this.props.listInputs(this.props.match.params.type);
+    this.props.listInputs(this.props.match.params.type, this.state.dates);
   };
 
   componentWillUnmount = () => {
@@ -25,21 +43,32 @@ class ListInputsView extends Component {
 
     if (currentType !== prevType) {
       this.props.reset();
-      this.props.listInputs(currentType);
+
+      if (this.state.dates) {
+        this.props.listInputs(currentType, this.state.dates);
+      }
     }
   };
 
   render = () => {
     const { payload, errors } = this.props.list;
     const { type } = this.props.match.params;
+    const { changed, dates } = this.state;
     const icon = 'top' === type ? 'up' : 'down';
 
     return (
       <>
         <div className="page-header">
           <h1 className="page-title">
-            <i className={`icon fe fe-thumbs-${icon}`}></i>{' '}
-            {i18n.t(`input.list.type.${type}`)}
+            <i className={`icon fe fe-thumbs-${icon}`}></i>
+            {i18n.t('input.list.classement', { type })}
+            {changed === false && i18n.t('input.list.periodWeek')}
+            {changed === true &&
+              i18n.t('input.list.periodCustom', {
+                fromDate: dates[0].toLocaleDateString(),
+                toDate: dates[1].toLocaleDateString(),
+                interpolation: { escapeValue: false },
+              })}
           </h1>
         </div>
         <div className="row">
@@ -47,6 +76,11 @@ class ListInputsView extends Component {
             <ServerErrors errors={errors} />
             <div className={'card'}>
               <div className={'card-body text-wrap p-lg-6'}>
+                <DateRangePicker
+                  required={true}
+                  onChange={this.onChange}
+                  value={this.state.dates}
+                />
                 <table className="table table-sm table-striped">
                   <thead>
                     <tr>

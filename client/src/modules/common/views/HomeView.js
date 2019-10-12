@@ -1,9 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-const HomeView = () => {
+const HomeView = ({ authenticated }) => {
   const { t } = useTranslation();
+
+  if (true === authenticated) {
+    return <Redirect to={'/users'} />;
+  }
 
   return (
     <>
@@ -28,4 +33,6 @@ const HomeView = () => {
   );
 };
 
-export default HomeView;
+export default connect(state => ({
+  authenticated: state.auth.authentication.authenticated,
+}))(HomeView);

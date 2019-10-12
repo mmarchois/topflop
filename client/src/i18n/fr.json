@@ -128,11 +128,11 @@
         "actions": "Actions",
         "actionsHelp": "Pour ajouter un top, flop ou une quote, utilise les boutons d'actions dans la liste ci-dessous.",
         "searchPlaceholder": "Rechercher par prénom / nom ...",
-        "delete": "Supprimer",
+        "delete": "Retirer du groupe",
         "quote": "Quote",
         "top": "Top",
         "flop": "Flop",
-        "deleteConfirm": "Est-tu sûr de vouloir supprimer ce membre ?"
+        "deleteConfirm": "Est-tu sûr de vouloir retirer du groupe ce membre ?"
       }
     },
     "input": {

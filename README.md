@@ -41,8 +41,6 @@ TopFlop depends on the following technologies:
 -   Redux
 -   Axios
 
-# Contribution
-
 # License
 
 TopFlop is an open-sourced application licensed under the [MIT license](https://opensource.org/licenses/MIT).

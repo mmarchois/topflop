@@ -2,6 +2,8 @@ import React from 'react';
 import i18n from '../../../../i18n';
 
 const Footer = () => {
+  const date = new Date();
+
   return (
     <footer className="footer">
       <div className="container">
@@ -11,8 +13,12 @@ const Footer = () => {
               <div className="col-auto">
                 <ul className="list-inline list-inline-dots mb-0">
                   <li className="list-inline-item">
-                    {i18n.t('footer.opensource')}{' '}
-                    <a href="https://twitter.com/mmarchois" target="_blank">
+                    Copyright © {date.getFullYear()}{' '}
+                    <a
+                      href="https://twitter.com/mmarchois"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
                       Mathieu MARCHOIS
                     </a>
                   </li>

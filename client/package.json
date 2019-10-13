@@ -1,6 +1,10 @@
 {
   "name": "topflop",
-  "version": "0.1.0",
+  "author": {
+    "name": "Mathieu MARCHOIS",
+    "email": "mathieu@fairness.coop"
+  },
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@wojtekmaj/react-daterange-picker": "^2.4.0",

@@ -18,26 +18,34 @@ const UserRow = ({ user, currentUser, onTop, onFlop, onDelete }) => {
         {currentUser.email !== user.email && (
           <>
             <button onClick={onFlop} className="btn btn-secondary btn-sm">
-              <i className={'icon fe fe-thumbs-down'}></i> {t('user.list.flop')}
+              <i className={'icon fe fe-thumbs-down'}></i>{' '}
+              <span className={'d-lg-block d-none'}>{t('user.list.flop')}</span>
             </button>
             <button
               onClick={onTop}
-              className="btn btn-secondary btn-sm mr-2 ml-2"
+              className="btn btn-secondary btn-sm mr-1 ml-1"
             >
-              <i className={'icon fe fe-thumbs-up'}></i> {t('user.list.top')}
+              <i className={'icon fe fe-thumbs-up'}></i>{' '}
+              <span className={'d-lg-block d-none'}>{t('user.list.top')}</span>
             </button>
             <Link
               to={`/users/${user.id}/quotes/add`}
               className="btn btn-secondary btn-sm"
             >
-              <i className={'icon fe fe-file-text'}></i> {t('user.list.quote')}
+              <i className={'icon fe fe-file-text'}></i>{' '}
+              <span className={'d-lg-block d-none'}>
+                {t('user.list.quote')}
+              </span>
             </Link>{' '}
             {'admin' === currentUser.role && (
               <button
                 onClick={onDelete}
-                className="btn btn-secondary btn-sm mr-2 ml-2"
+                className="btn btn-secondary btn-sm mr-1 ml-1"
               >
-                <i className={'icon fe fe-delete'}></i> {t('user.list.delete')}
+                <i className={'icon fe fe-delete'}></i>{' '}
+                <span className={'d-lg-block d-none'}>
+                  {t('user.list.delete')}
+                </span>
               </button>
             )}
           </>

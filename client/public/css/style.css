@@ -1554,7 +1554,7 @@ pre code {
 }
 
 .table-bordered, .text-wrap table {
-  border: 1px solid rgba(0, 40, 100, 0.12);
+  border: 1px solid rgba(0, 40, 100, 0.12) !important;
 }
 
 .table-bordered th, .text-wrap table th,

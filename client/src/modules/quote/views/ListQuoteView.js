@@ -35,7 +35,7 @@ class ListQuoteView extends Component {
       <>
         <div className="page-header">
           <h1 className="page-title">
-            <i className="icon fe fe-code"></i> {i18n.t('quote.title')} (
+            <i className="icon fe fe-file-text"></i> {i18n.t('quote.title')} (
             {totalItems})
           </h1>
         </div>
@@ -45,12 +45,28 @@ class ListQuoteView extends Component {
             <ServerErrors errors={errors} />
             <div className={'card'}>
               <div className={'card-body text-wrap'}>
-                <ul className="list-group card-list-group">
-                  {payload.map(quote => {
-                    return <QuoteRow key={quote.id} quote={quote} />;
-                  })}
-                </ul>
-
+                {0 < payload.length && (
+                  <table className="table table-sm table-striped">
+                    <thead>
+                      <tr>
+                        <th>{i18n.t('quote.list.quote')}</th>
+                        <th style={{ width: '70px' }}>
+                          {i18n.t('quote.list.actions')}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {payload.map(quote => {
+                        return <QuoteRow key={quote.id} quote={quote} />;
+                      })}
+                    </tbody>
+                  </table>
+                )}
+                {0 === payload.length && (
+                  <div className="alert alert-primary">
+                    {i18n.t('quote.list.help')}
+                  </div>
+                )}
                 <Pagination
                   pageCount={pageCount}
                   page={page ? page : 1}

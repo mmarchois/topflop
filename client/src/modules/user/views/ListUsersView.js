@@ -73,6 +73,7 @@ class ListUsersView extends Component {
         <div className="row">
           <div className={'col-lg-12'}>
             <ServerErrors errors={[...input.errors, ...errors]} />
+
             {input.payload && (
               <SuccessMessage
                 message={i18n.t(`input.success.${input.payload.type}`, {
@@ -91,7 +92,6 @@ class ListUsersView extends Component {
                     {i18n.t('user.list.add')}
                   </Link>
                 )}
-                <p>{i18n.t('user.list.actionsHelp')}</p>
                 <Search
                   handleSearch={this.handleSearch}
                   search={this.state.search}
@@ -99,17 +99,11 @@ class ListUsersView extends Component {
                     this.setState({ search: e.target.value });
                   }}
                 />
-
-                <table className="table card-table table-striped table-vcenter">
+                <table className="table table-striped">
                   <thead>
                     <tr>
                       <th>{i18n.t('user.list.name')}</th>
-                      <th>{i18n.t('user.list.email')}</th>
-                      {'admin' === currentUser.role && (
-                        <th>{i18n.t('user.list.role')}</th>
-                      )}
                       <th>{i18n.t('user.list.actions')}</th>
-                      {'admin' === currentUser.role && <th></th>}
                     </tr>
                   </thead>
                   <tbody>

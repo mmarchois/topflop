@@ -27,12 +27,13 @@ class QuoteDetailView extends Component {
         <div className="page-header">
           {quote && (
             <h1 className="page-title">
-              <i className={'icon fe fe-code'}></i> {quote.author.firstName}{' '}
-              {quote.author.lastName}
+              <i className={'icon fe fe-file-text'}></i>{' '}
+              {i18n.t('quote.detail.author', {
+                username: `${quote.author.firstName} ${quote.author.lastName}`,
+              })}
             </h1>
           )}
         </div>
-
         <div className="row">
           <div className={'col-lg-12'}>
             <ServerErrors errors={show.errors} />
@@ -40,19 +41,14 @@ class QuoteDetailView extends Component {
               <div className={'card-body text-wrap'}>
                 {show.payload && (
                   <div className="media">
-                    <div className="media-object avatar avatar-md mr-4">
-                      {quote.author.firstName[0]}
-                    </div>
                     <div className="media-body">
                       <div className="media-heading">
                         <small className="float-right text-muted">
-                          {i18n.t('quote.list.addedAt', {
-                            date: format(new Date(quote.createdAt), 'dd/M/Y'),
-                            interpolation: { escapeValue: false },
-                          })}
+                          {i18n.t('quote.list.addedAt')}{' '}
+                          {format(new Date(quote.createdAt), 'dd/M/Y')}
                         </small>
                       </div>
-                      <div>{quote.sentence}</div>
+                      <div>&laquo; {quote.sentence} &raquo;</div>
                     </div>
                   </div>
                 )}

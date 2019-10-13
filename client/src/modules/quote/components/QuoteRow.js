@@ -9,27 +9,24 @@ const QuoteRow = ({ quote }) => {
   const { firstName, lastName } = quote.author;
 
   return (
-    <li className="list-group-item py-5">
-      <Link to={`/quotes/${quote.id}/detail`}>
-        <div className="media">
-          <div className="media-object avatar avatar-md mr-4">
-            {firstName[0]}
-          </div>
-          <div className="media-body">
-            <div className="media-heading">
-              <small className="float-right text-muted">
-                {t('quote.list.addedAt', {
-                  date: format(new Date(quote.createdAt), 'dd/M/Y'),
-                  interpolation: { escapeValue: false },
-                })}
-              </small>
-              <h5>{`${firstName} ${lastName}`}</h5>
-            </div>
-            <div>{quote.sentence}</div>
-          </div>
-        </div>
-      </Link>
-    </li>
+    <tr>
+      <td>
+        &laquo; {quote.sentence} &raquo;
+        <small className={'d-block item-except text-sm text-muted h-1x'}>
+          {t('quote.list.author', { username: `${firstName} ${lastName}` })} -{' '}
+          {format(new Date(quote.createdAt), 'dd/M/Y')}
+        </small>
+      </td>
+      <td>
+        <Link
+          to={`/quotes/${quote.id}/detail`}
+          className="btn btn-secondary btn-sm"
+        >
+          <i className={'icon fe fe-eye'}></i>
+          {t('quote.list.see')}
+        </Link>
+      </td>
+    </tr>
   );
 };
 

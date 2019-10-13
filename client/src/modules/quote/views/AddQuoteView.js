@@ -31,7 +31,7 @@ class AddQuoteView extends Component {
       <>
         <div className="page-header">
           <h1 className="page-title">
-            <i className="icon fe fe-code"></i> {i18n.t('quote.add.title')}
+            <i className="icon fe fe-file-text"></i> {i18n.t('quote.add.title')}
           </h1>
         </div>
 
@@ -40,7 +40,6 @@ class AddQuoteView extends Component {
             <ServerErrors errors={errors} />
             <div className={'card'}>
               <div className={'card-body text-wrap p-lg-6'}>
-                <p>{i18n.t('quote.add.introduction')}</p>
                 <QuoteForm loading={loading} onSubmit={this.handleSubmit} />
               </div>
             </div>

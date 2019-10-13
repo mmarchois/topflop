@@ -38,9 +38,13 @@ class AddUserView extends Component {
           <div className={'col-lg-12'}>
             <ServerErrors errors={errors} />
             <div className={'card'}>
-              <div className={'card-body text-wrap p-lg-6'}>
-                <p>{i18n.t('user.add.introduction2')}</p>
-                <UserForm onSubmit={this.handleSubmit} loading={loading} />
+              <div className={'card-body text-wrap '}>
+                <div className="alert alert-primary">
+                  {i18n.t('user.add.introduction2')}
+                </div>
+                <div className={'p-lg-3'}>
+                  <UserForm onSubmit={this.handleSubmit} loading={loading} />
+                </div>
               </div>
             </div>
           </div>

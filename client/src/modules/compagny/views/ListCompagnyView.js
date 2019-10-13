@@ -11,6 +11,7 @@ import { reset as resetLeaveCompagny } from '../actions/leave';
 import { bindActionCreators } from 'redux';
 import i18n from '../../../i18n';
 import SuccessMessage from '../../common/components/SuccessMessage';
+import CompagnyRow from '../components/form/CompagnyRow';
 
 class ListCompagnyView extends Component {
   componentDidMount = () => {
@@ -37,7 +38,7 @@ class ListCompagnyView extends Component {
       <>
         <div className="page-header">
           <h1 className="page-title">
-            <i className="icon fe fe-settings dropdown-icon"></i>
+            <i className="icon fe fe-settings"></i>{' '}
             {i18n.t('compagny.list.title')} ({payload.length})
           </h1>
         </div>
@@ -60,47 +61,33 @@ class ListCompagnyView extends Component {
                   <i className="icon fe fe-plus"></i>
                   {i18n.t('compagny.list.add')}
                 </Link>
-                <p>{i18n.t('compagny.list.introduction')}</p>
-                <table className="table card-table table-striped table-vcenter">
+                <div className="alert alert-primary">
+                  {0 === payload.length && i18n.t('compagny.list.help2')}
+                  {0 < payload.length && (
+                    <>
+                      {i18n.t('compagny.list.help')}
+                      <br />
+                      {i18n.t('compagny.list.help1')}
+                    </>
+                  )}
+                </div>
+                <table className="table table-striped">
                   <thead>
                     <tr>
                       <th>{i18n.t('compagny.list.name')}</th>
                       <th>{i18n.t('compagny.list.role')}</th>
-                      <th>{i18n.t('compagny.list.voucher')}</th>
-                      <th style={{ width: '250px' }}>
-                        {i18n.t('compagny.list.action')}
-                      </th>
+                      <th>{i18n.t('compagny.list.action')}</th>
                     </tr>
                   </thead>
                   <tbody>
                     {payload.map(compagny => (
-                      <tr key={compagny.id}>
-                        <td>{compagny.name}</td>
-                        <td>{i18n.t(`user.role.${compagny.role}`)}</td>
-                        <td>
-                          {'admin' === compagny.role ? compagny.voucher : 'N/A'}
-                        </td>
-                        <td>
-                          {currentUser.compagny.id !== compagny.id && (
-                            <>
-                              <button
-                                onClick={() => onCurrentCompagny(compagny.id)}
-                                className="btn btn-secondary btn-sm"
-                              >
-                                <i className={'icon fe fe-unlock'}></i>{' '}
-                                {i18n.t('compagny.list.active')}
-                              </button>
-                              <button
-                                onClick={() => this.handleLeave(compagny.id)}
-                                className="btn btn-secondary btn-sm ml-3"
-                              >
-                                <i className={'icon fe fe-delete'}></i>{' '}
-                                {i18n.t('compagny.list.leave')}
-                              </button>
-                            </>
-                          )}
-                        </td>
-                      </tr>
+                      <CompagnyRow
+                        key={compagny.id}
+                        compagny={compagny}
+                        currentUser={currentUser}
+                        handleLeave={() => this.handleLeave(compagny.id)}
+                        handleCurrent={() => onCurrentCompagny(compagny.id)}
+                      />
                     ))}
                   </tbody>
                 </table>

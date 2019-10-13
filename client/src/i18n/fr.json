@@ -53,17 +53,19 @@
         "notFound": "Code d'accès invalide"
       },
       "add": {
-        "introduction": "Créér ou rejoins un groupe.",
-        "new": "Créer un nouveau groupe",
-        "join": "Rejoins un groupe existant grâce à son code d'accès"
+        "introduction": "Créér ou rejoins un groupe."
       },
       "form": {
         "name": "Nom du groupe",
-        "voucher": "Code d'accès"
+        "voucher": "Code d'accès",
+        "placeholderName": "Ex: Paris Team",
+        "placeholderVoucher": "Ex: 1cd1kCH"
       },
       "list": {
         "title": "Mes groupes",
-        "introduction": "Pour donner accès à un groupe, partage le code d'accès ou créer un membre via le formulaire de création.",
+        "help": "Retrouve ici tous les groupes auxquels tu as accès ! Pour te connecter sur l'un d'entre eux, cliques sur \"Se connecter\".",
+        "help1": "Pour rajouter un membre à un groupe, partage le code d'accès ou créer le via le formulaire de création dans le menu \"Membres\".",
+        "help2": "Tu n'a pas encore de groupe. Créer un nouveau groupe ou rejoins en un grâce au code d'accès que tu as reçu.",
         "add": "Ajouter / rejoindre un groupe",
         "name": "Groupe",
         "role": "Rôle",
@@ -75,28 +77,36 @@
       }
     },
     "quote": {
-      "title": "Quotes",
+      "title": "Citations",
       "form": {
-        "sentence": "Phrase"
+        "sentence": "Citation..."
       },
       "add": {
-        "title": "Ajouter une quote",
-        "introduction": "Ajoute la quote de ton collègue !"
+        "title": "Ajouter une nouvelle citatation"
       },
       "list": {
-        "add": "Ajouter une quote",
-        "addedAt": "Quoté le {{date}}"
+        "add": "Ajouter une citatation",
+        "addedAt": "Ajouté le",
+        "quote": "Citation",
+        "actions": "Actions",
+        "see": "Voir",
+        "author": "Par {{username}}",
+        "help": "Il n'y a pas encore de citation. Deviens le premier à en rajouter en te rendant dans le menu \"Membres\"."
+      },
+      "detail": {
+        "author": "Citation de {{username}}"
       },
       "errors": {
-        "notAllow": "Tu n'es pas autorisé à voir cette quote",
-        "notFound": "Quote non trouvé"
+        "notAllow": "Tu n'es pas autorisé à voir cette citatation",
+        "notFound": "Citatation non trouvé"
       }
     },
     "user": {
       "errors": {
         "registredCompagny": "Ce compte a déjà été ajouté !",
         "alreadyRegistred": "Un compte existe déjà avec cet adresse email",
-        "noCompagny": "Tu n'es pas dans un groupe, créer ou rejoins en un en te rendant dans \"Mes groupes\""
+        "noCompagny": "Tu n'es pas dans un groupe, créer ou rejoins en un en te rendant dans \"Mes groupes\"",
+        "notFound": "Utilisateur non trouvé"
       },
       "role": {
         "admin": "Administrateur",
@@ -104,12 +114,12 @@
       },
       "title": "Membres",
       "currentCompagny": {
-        "success": "Tu es désormais connecté sur {{compagny}}. Fais un tour sur le classement des tops / flops de la semaine !"
+        "success": "Tu es désormais connecté sur {{compagny}}. Fais un tour dans le classement des tops / flops de la semaine !"
       },
       "add": {
         "title": "Ajouter un membre",
-        "introduction": "Créer un accès à un membre",
-        "introduction2": "Si le membre à déjà un compte, il sera rajouté au groupe. S'il n'en a pas, son compte lui sera créé avec un mot de passe par défaut : 1234"
+        "introduction": "Rajouter un membre",
+        "introduction2": "Si l'addresse email est déjà enregistrée sur l'application, le compte du membre sera automatiquement rattaché au groupe. Dans le cas contraire, un compte lui sera créé avec comme mot de passe par défaut 1234. Il pourra par le suite le modifier dans \"Mon profil\"."
       },
       "edit": {
         "title": "Mon profil",
@@ -122,14 +132,13 @@
       },
       "list": {
         "add": "Ajouter un membre",
-        "name": "Prénom / Nom",
+        "name": "Membre",
         "email": "Email",
         "role": "Rôle",
         "actions": "Actions",
-        "actionsHelp": "Pour ajouter un top, flop ou une quote, utilise les boutons d'actions dans la liste ci-dessous.",
         "searchPlaceholder": "Rechercher par prénom / nom ...",
         "delete": "Retirer du groupe",
-        "quote": "Quote",
+        "quote": "Citation",
         "top": "Top",
         "flop": "Flop",
         "deleteConfirm": "Est-tu sûr de vouloir retirer du groupe ce membre ?"
@@ -157,7 +166,8 @@
         "count": "Compteur",
         "classement": " Classement des {{type}}s",
         "periodWeek": " de la semaine",
-        "periodCustom": " du {{fromDate}} au {{toDate}}"
+        "periodCustom": " du {{fromDate}} au {{toDate}}",
+        "help": "Il n'y a pas de {{type}} pour la période sélectionnée. Pour {{type}}per, rends toi dans le menu \"Membres\"."
       }
     },
     "header": {
@@ -169,8 +179,7 @@
     },
     "footer": {
       "source": "Code source",
-      "twitter": "Twitter",
-      "opensource": "TopFlop est une application open-source, pour contribuer"
+      "opensource": "TopFlop est une application open-source"
     }
   }
 }

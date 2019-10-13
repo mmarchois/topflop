@@ -14,6 +14,7 @@ const CompagnyForm = ({ handleSubmit, loading }) => {
         component={TextInput}
         type="text"
         label={t('compagny.form.name')}
+        placeholder={t('compagny.form.placeholderName')}
         name="name"
       />
       <button

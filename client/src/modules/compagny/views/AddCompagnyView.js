@@ -53,7 +53,6 @@ class AddCompagnyView extends Component {
           <div className={'col-lg-6'}>
             <div className={'card'}>
               <div className={'card-body text-wrap p-lg-6'}>
-                <p>{i18n.t('compagny.add.new')}</p>
                 <CompagnyForm
                   onSubmit={this.handleSubmit}
                   loading={add.loading}
@@ -64,7 +63,6 @@ class AddCompagnyView extends Component {
           <div className={'col-lg-6'}>
             <div className={'card'}>
               <div className={'card-body text-wrap p-lg-6'}>
-                <p>{i18n.t('compagny.add.join')}</p>
                 <JoinForm
                   onSubmit={this.handleJoinSubmit}
                   loading={join.loading}

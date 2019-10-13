@@ -140,8 +140,10 @@ strong {
 
 .react-daterange-picker__wrapper {
   padding: 5px;
+  border: 1px solid #dce3e9 !important;
   margin-bottom: 15px;
 }
+
 small {
   font-size: 80%;
 }
@@ -13215,7 +13217,6 @@ a.icon:hover {
 }
 
 .nav-link:hover:not(.disabled) {
-  border-color: #6e7687;
   color: #6e7687;
 }
 

@@ -18,9 +18,11 @@ const Nav = ({ authenticated }) => {
           <li className="nav-item">
             <Link className="nav-link" to={'/users'}>
               <span className="nav-icon">
-                <i className="icon fe fe-users"></i>
+                <i className="icon fe fe-users "></i>
               </span>
-              <span className="nav-text">{t('user.title')}</span>
+              <span className="nav-text d-lg-block d-none">
+                {t('user.title')}
+              </span>
             </Link>
           </li>
           <li className="nav-item">
@@ -28,7 +30,9 @@ const Nav = ({ authenticated }) => {
               <span className="nav-icon">
                 <i className="icon fe fe-thumbs-down"></i>
               </span>
-              <span className="nav-text">{t('input.type.flop')}</span>
+              <span className="nav-text d-lg-block d-none">
+                {t('input.type.flop')}
+              </span>
             </Link>
           </li>
           <li className="nav-item">
@@ -36,15 +40,19 @@ const Nav = ({ authenticated }) => {
               <span className="nav-icon">
                 <i className="icon fe fe-thumbs-up"></i>
               </span>
-              <span className="nav-text">{t('input.type.top')}</span>
+              <span className="nav-text d-lg-block d-none">
+                {t('input.type.top')}
+              </span>
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to={'/quotes'}>
               <span className="nav-icon">
-                <i className="icon fe fe-code"></i>
+                <i className="icon fe fe-file-text"></i>
               </span>
-              <span className="nav-text">{t('quote.title')}</span>
+              <span className="nav-text d-lg-block d-none">
+                {t('quote.title')}
+              </span>
             </Link>
           </li>
           <li className="nav-item">
@@ -52,7 +60,9 @@ const Nav = ({ authenticated }) => {
               <span className="nav-icon">
                 <i className="icon fe fe-settings"></i>
               </span>
-              <span className="nav-text">{t('compagny.list.title')}</span>
+              <span className="nav-text d-lg-block d-none">
+                {t('compagny.list.title')}
+              </span>
             </Link>
           </li>
         </ul>

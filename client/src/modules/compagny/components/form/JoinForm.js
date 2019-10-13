@@ -13,6 +13,7 @@ const JoinForm = ({ handleSubmit, loading }) => {
       <Field
         component={TextInput}
         type="text"
+        placeholder={t('compagny.form.placeholderVoucher')}
         label={t('compagny.form.voucher')}
         name="voucher"
       />

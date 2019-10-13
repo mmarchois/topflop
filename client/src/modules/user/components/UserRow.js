@@ -8,9 +8,12 @@ const UserRow = ({ user, currentUser, onTop, onFlop, onDelete }) => {
 
   return (
     <tr>
-      <td>{`${user.firstName} ${user.lastName}`}</td>
-      <td>{user.email}</td>
-      {'admin' === currentUser.role && <td>{t(`user.role.${user.role}`)}</td>}
+      <td>
+        {`${user.firstName} ${user.lastName}`}
+        <small className={'d-block item-except text-sm text-muted h-1x'}>
+          {user.email} - {t(`user.role.${user.role}`)}
+        </small>
+      </td>
       <td>
         {currentUser.email !== user.email && (
           <>
@@ -27,19 +30,17 @@ const UserRow = ({ user, currentUser, onTop, onFlop, onDelete }) => {
               to={`/users/${user.id}/quotes/add`}
               className="btn btn-secondary btn-sm"
             >
-              <i className={'icon fe fe-code'}></i> {t('user.list.quote')}
-            </Link>
+              <i className={'icon fe fe-file-text'}></i> {t('user.list.quote')}
+            </Link>{' '}
+            {'admin' === currentUser.role && (
+              <button
+                onClick={onDelete}
+                className="btn btn-secondary btn-sm mr-2 ml-2"
+              >
+                <i className={'icon fe fe-delete'}></i> {t('user.list.delete')}
+              </button>
+            )}
           </>
-        )}
-      </td>
-      <td>
-        {currentUser.email !== user.email && 'admin' === currentUser.role && (
-          <button
-            onClick={onDelete}
-            className="btn btn-secondary btn-sm mr-2 ml-2"
-          >
-            <i className={'icon fe fe-delete'}></i> {t('user.list.delete')}
-          </button>
         )}
       </td>
     </tr>

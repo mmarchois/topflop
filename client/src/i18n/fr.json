@@ -66,7 +66,7 @@
       "list": {
         "title": "Mes groupes",
         "help": "Retrouve ici tous les groupes auxquels tu as accès ! Pour te connecter sur l'un d'entre eux, cliques sur \"Se connecter\".",
-        "help1": "Pour rajouter un ami à un groupe, envoi lui le code d'accès ou créer son compte le via le formulaire de création dans le menu \"Mes amis\".",
+        "help1": "Pour rajouter un ami à un groupe, envoi lui le code d'accès ou créer son compte via le formulaire de création dans le menu \"Mes amis\".",
         "help2": "Tu n'a pas encore de groupe. Créer un nouveau groupe ou rejoins en un grâce au code d'accès que tu as reçu.",
         "add": "Ajouter / rejoindre un groupe",
         "name": "Groupe",

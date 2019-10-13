@@ -38,6 +38,8 @@ TopFlop depends on the following technologies:
 ### App stack
 
 -   React.js
+-   Redux
+-   Axios
 
 # Contribution
 

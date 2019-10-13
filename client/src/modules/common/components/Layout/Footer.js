@@ -11,14 +11,16 @@ const Footer = () => {
               <div className="col-auto">
                 <ul className="list-inline list-inline-dots mb-0">
                   <li className="list-inline-item">
-                    {i18n.t('footer.opensource')}
+                    {i18n.t('footer.opensource')}{' '}
+                    <a href="https://twitter.com/mmarchois" target="_blank">
+                      Mathieu MARCHOIS
+                    </a>
                   </li>
                   <li className="list-inline-item">
                     <a
                       href="https://github.com/mmarchois/topflop"
                       className="btn btn-sm btn-outline-primary"
                       target="_blank"
-                      rel="noopener noreferrer"
                     >
                       <i className="icon fe fe-github mr-2"></i>
                       {i18n.t('footer.source')}

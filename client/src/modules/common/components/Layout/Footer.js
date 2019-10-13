@@ -26,6 +26,7 @@ const Footer = () => {
                     <a
                       href="https://github.com/mmarchois/topflop"
                       className="btn btn-sm btn-outline-primary"
+                      rel="noopener noreferrer"
                       target="_blank"
                     >
                       <i className="icon fe fe-github mr-2"></i>

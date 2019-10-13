@@ -71,26 +71,28 @@ class ListCompagnyView extends Component {
                     </>
                   )}
                 </div>
-                <table className="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>{i18n.t('compagny.list.name')}</th>
-                      <th>{i18n.t('compagny.list.role')}</th>
-                      <th>{i18n.t('compagny.list.action')}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {payload.map(compagny => (
-                      <CompagnyRow
-                        key={compagny.id}
-                        compagny={compagny}
-                        currentUser={currentUser}
-                        handleLeave={() => this.handleLeave(compagny.id)}
-                        handleCurrent={() => onCurrentCompagny(compagny.id)}
-                      />
-                    ))}
-                  </tbody>
-                </table>
+                <div className={'table-responsive'}>
+                  <table className="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>{i18n.t('compagny.list.name')}</th>
+                        <th>{i18n.t('compagny.list.role')}</th>
+                        <th>{i18n.t('compagny.list.action')}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {payload.map(compagny => (
+                        <CompagnyRow
+                          key={compagny.id}
+                          compagny={compagny}
+                          currentUser={currentUser}
+                          handleLeave={() => this.handleLeave(compagny.id)}
+                          handleCurrent={() => onCurrentCompagny(compagny.id)}
+                        />
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>

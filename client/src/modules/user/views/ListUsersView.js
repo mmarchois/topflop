@@ -99,26 +99,28 @@ class ListUsersView extends Component {
                     this.setState({ search: e.target.value });
                   }}
                 />
-                <table className="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>{i18n.t('user.list.name')}</th>
-                      <th>{i18n.t('user.list.actions')}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {payload.map(user => (
-                      <UserRow
-                        key={user.id}
-                        onFlop={() => addInput('flop', user.id)}
-                        onTop={() => addInput('top', user.id)}
-                        onDelete={() => this.handleDelete(user.id)}
-                        user={user}
-                        currentUser={currentUser}
-                      />
-                    ))}
-                  </tbody>
-                </table>
+                <div className={'table-responsive'}>
+                  <table className="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>{i18n.t('user.list.name')}</th>
+                        <th>{i18n.t('user.list.actions')}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {payload.map(user => (
+                        <UserRow
+                          key={user.id}
+                          onFlop={() => addInput('flop', user.id)}
+                          onTop={() => addInput('top', user.id)}
+                          onDelete={() => this.handleDelete(user.id)}
+                          user={user}
+                          currentUser={currentUser}
+                        />
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
                 <Pagination
                   pageCount={pageCount}
                   page={page ? page : 1}

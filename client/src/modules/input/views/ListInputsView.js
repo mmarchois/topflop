@@ -81,29 +81,31 @@ class ListInputsView extends Component {
                   onChange={this.onChange}
                   value={this.state.dates}
                 />
-                {0 < payload.length && (
-                  <table className="table table-sm table-striped">
-                    <thead>
-                      <tr>
-                        <th style={{ width: '70px' }}></th>
-                        <th>{i18n.t('input.list.author')}</th>
-                        <th style={{ width: '70px' }}>
-                          {i18n.t('input.list.count')}
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {payload.map((input, key) => (
-                        <InputRow
-                          key={key}
-                          input={input}
-                          type={type}
-                          position={key + 1}
-                        />
-                      ))}
-                    </tbody>
-                  </table>
-                )}
+                <div className={'table-responsive'}>
+                  {0 < payload.length && (
+                    <table className="table table-sm table-striped">
+                      <thead>
+                        <tr>
+                          <th style={{ width: '70px' }}></th>
+                          <th>{i18n.t('input.list.author')}</th>
+                          <th style={{ width: '70px' }}>
+                            {i18n.t('input.list.count')}
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {payload.map((input, key) => (
+                          <InputRow
+                            key={key}
+                            input={input}
+                            type={type}
+                            position={key + 1}
+                          />
+                        ))}
+                      </tbody>
+                    </table>
+                  )}
+                </div>
                 {0 === payload.length && (
                   <div className="alert alert-primary">
                     {i18n.t('input.list.help', {

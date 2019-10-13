@@ -45,23 +45,25 @@ class ListQuoteView extends Component {
             <ServerErrors errors={errors} />
             <div className={'card'}>
               <div className={'card-body text-wrap'}>
-                {0 < payload.length && (
-                  <table className="table table-sm table-striped">
-                    <thead>
-                      <tr>
-                        <th>{i18n.t('quote.list.quote')}</th>
-                        <th style={{ width: '70px' }}>
-                          {i18n.t('quote.list.actions')}
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {payload.map(quote => {
-                        return <QuoteRow key={quote.id} quote={quote} />;
-                      })}
-                    </tbody>
-                  </table>
-                )}
+                <div className={'table-responsive'}>
+                  {0 < payload.length && (
+                    <table className="table table-sm table-striped">
+                      <thead>
+                        <tr>
+                          <th>{i18n.t('quote.list.quote')}</th>
+                          <th style={{ width: '70px' }}>
+                            {i18n.t('quote.list.actions')}
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {payload.map(quote => {
+                          return <QuoteRow key={quote.id} quote={quote} />;
+                        })}
+                      </tbody>
+                    </table>
+                  )}
+                </div>
                 {0 === payload.length && (
                   <div className="alert alert-primary">
                     {i18n.t('quote.list.help')}

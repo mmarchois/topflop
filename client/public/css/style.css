@@ -11748,7 +11748,7 @@ body.fixed-header .page {
   margin: 0;
   font-size: 1.5rem;
   font-weight: 400;
-  line-height: 1.7rem;
+  line-height: 1.7rem !important;
 }
 
 .page-title-icon {

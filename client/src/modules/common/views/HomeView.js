@@ -21,9 +21,9 @@ const HomeView = ({ authenticated }) => {
         <div className={'col-lg-12'}>
           <div className={'card'}>
             <div className={'card-body text-wrap p-lg-6'}>
-              <div className="text-center mt-5">{t('home.welcome3')}</div>
-              <div className="text-center">{t('home.welcome4')}</div>
-              <div className="text-center">{t('home.welcome5')}</div>
+              <div className="text-center">{t('home.welcome3')}</div>
+              <div className="text-center mt-3">{t('home.welcome4')}</div>
+              <div className="text-center mt-3">{t('home.welcome5')}</div>
               <div className="mt-5 text-center">
                 <Link to={'/register'} className="btn btn-primary mr-2">
                   {t('home.register')}

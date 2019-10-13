@@ -1,9 +1,13 @@
 {
   "translation": {
     "home": {
-      "welcome": "Bienvenue sur TopFlop, défie tes amis et devient le roi / la reine des tops / flops",
-      "login": "Se connecter",
-      "register": "Créer un compte"
+      "welcome": "TopFlop !",
+      "welcome2": "L'application gratuite pour devenir le roi ou la reine du TopFlop !",
+      "welcome3": "Affronte tes amis semaines après semaines lors d'une guerre acharnée des meilleures (top) ou des pires (flop) vannes.",
+      "welcome4": "Un classement hebdomadaire te permettra de suivre ta progression et de te situer par rapport à tes amis ! Attention de ne pas te faire flopper !",
+      "welcome5": "Les perles pourront bien évidemment être historisées sur le Wall of Shame !",
+      "login": "Connecte-toi",
+      "register": "Créer ton compte"
     },
     "back": "Retour",
     "form": {
@@ -17,7 +21,7 @@
     },
     "auth": {
       "authentication": {
-        "title": "Se connecter",
+        "title": "Connecte-toi",
         "introduction": "Te revoilà, saisis ton adresse e-mail et ton mot de passe.",
         "failure": {
           "title": "Ton adresse email ou mot de passe est incorrect."
@@ -25,13 +29,11 @@
         "form": {
           "email": "Adresse e-mail",
           "password": "Mot de passe",
-          "submit": "Se connecter",
           "noAccount": "Tu n'as pas encore de compte ? Inscris toi !"
         }
       },
       "registration": {
-        "title": "Créer un compte",
-        "introduction": "Créer ton compte dès maintenant pour utiliser Topflop",
+        "title": "Créer ton compte",
         "form": {
           "firstName": "Prénom",
           "lastName": "Nom",
@@ -64,7 +66,7 @@
       "list": {
         "title": "Mes groupes",
         "help": "Retrouve ici tous les groupes auxquels tu as accès ! Pour te connecter sur l'un d'entre eux, cliques sur \"Se connecter\".",
-        "help1": "Pour rajouter un membre à un groupe, partage le code d'accès ou créer le via le formulaire de création dans le menu \"Membres\".",
+        "help1": "Pour rajouter un ami à un groupe, partage le code d'accès ou créer le via le formulaire de création dans le menu \"Mes amis\".",
         "help2": "Tu n'a pas encore de groupe. Créer un nouveau groupe ou rejoins en un grâce au code d'accès que tu as reçu.",
         "add": "Ajouter / rejoindre un groupe",
         "name": "Groupe",
@@ -77,27 +79,27 @@
       }
     },
     "quote": {
-      "title": "Citations",
+      "title": "Perles",
       "form": {
-        "sentence": "Citation..."
+        "sentence": "Perle..."
       },
       "add": {
-        "title": "Ajouter une nouvelle citatation"
+        "title": "Ajouter une nouvelle perle"
       },
       "list": {
-        "add": "Ajouter une citatation",
+        "add": "Ajouter une perle",
         "addedAt": "Ajouté le",
-        "quote": "Citation",
+        "quote": "Perles",
         "actions": "Actions",
         "see": "Voir",
         "author": "Par {{username}}",
-        "help": "Il n'y a pas encore de citation. Deviens le premier à en rajouter en te rendant dans le menu \"Membres\"."
+        "help": "Il n'y a pas encore de perle. Deviens le premier à en rajouter en te rendant dans le menu \"Mes amis\"."
       },
       "detail": {
-        "author": "Citation de {{username}}"
+        "author": "Perle de {{username}}"
       },
       "errors": {
-        "notAllow": "Tu n'es pas autorisé à voir cette citatation",
+        "notAllow": "Tu n'es pas autorisé à voir cette perle",
         "notFound": "Citatation non trouvé"
       }
     },
@@ -110,16 +112,16 @@
       },
       "role": {
         "admin": "Administrateur",
-        "user": "Membre"
+        "user": "Utilisateur"
       },
-      "title": "Membres",
+      "title": "Mes amis",
       "currentCompagny": {
         "success": "Tu es désormais connecté sur {{compagny}}. Fais un tour dans le classement des tops / flops de la semaine !"
       },
       "add": {
-        "title": "Ajouter un membre",
-        "introduction": "Rajouter un membre",
-        "introduction2": "Si l'addresse email est déjà enregistrée sur l'application, le compte du membre sera automatiquement rattaché au groupe. Dans le cas contraire, un compte lui sera créé avec comme mot de passe par défaut 1234. Il pourra par le suite le modifier dans \"Mon profil\"."
+        "title": "Ajouter un ami",
+        "introduction": "Rajouter un ami",
+        "introduction2": "Si l'addresse email est déjà enregistrée sur l'application, le compte de ton ami sera automatiquement rattaché au groupe. Dans le cas contraire, un compte lui sera créé avec comme mot de passe par défaut 1234. Il pourra par le suite le modifier dans \"Mon profil\"."
       },
       "edit": {
         "title": "Mon profil",
@@ -131,17 +133,17 @@
         }
       },
       "list": {
-        "add": "Ajouter un membre",
-        "name": "Membre",
+        "add": "Ajouter un ami",
+        "name": "Amis",
         "email": "Email",
         "role": "Rôle",
         "actions": "Actions",
         "searchPlaceholder": "Rechercher par prénom / nom ...",
         "delete": "Retirer du groupe",
-        "quote": "Citation",
+        "quote": "Perle",
         "top": "Top",
         "flop": "Flop",
-        "deleteConfirm": "Est-tu sûr de vouloir retirer du groupe ce membre ?"
+        "deleteConfirm": "Est-tu sûr de vouloir retirer cet ami du groupe ?"
       }
     },
     "input": {
@@ -150,7 +152,7 @@
         "top": "Tops"
       },
       "errors": {
-        "rateLimit": "Calme toi, tu ne peux voter qu'une fois toutes les 10 secondes par membre",
+        "rateLimit": "Calme toi, tu ne peux voter qu'une seule fois toutes les 10 secondes par ami.",
         "auto": {
           "flop": "Tu ne peux pas te flopper toi même !",
           "top": "Tu ne peux pas te topper toi même !"
@@ -167,7 +169,7 @@
         "classement": " Classement des {{type}}s",
         "periodWeek": " de la semaine",
         "periodCustom": " du {{fromDate}} au {{toDate}}",
-        "help": "Il n'y a pas de {{type}} pour la période sélectionnée. Pour {{type}}per, rends toi dans le menu \"Membres\"."
+        "help": "Il n'y a pas de {{type}} pour la période sélectionnée. Pour {{type}}per, rends toi dans le menu \"Mes amis\"."
       }
     },
     "header": {

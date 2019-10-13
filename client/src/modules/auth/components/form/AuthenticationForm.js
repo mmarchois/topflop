@@ -28,7 +28,7 @@ const AuthenticationForm = ({ handleSubmit, loading }) => {
         className={'btn btn-primary ml-auto'}
         disabled={loading}
       >
-        {t('auth.authentication.form.submit')}
+        {t('auth.authentication.title')}
       </button>
       <div className={'mt-3'}>
         <Link to={'/register'}>{t('auth.authentication.form.noAccount')}</Link>

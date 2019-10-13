@@ -32,9 +32,7 @@ class RegistrationView extends Component {
     return (
       <>
         <div className="page-header">
-          <h1 className="page-title">
-            {i18n.t('auth.registration.introduction')}
-          </h1>
+          <h1 className="page-title">{i18n.t('auth.registration.title')}</h1>
         </div>
 
         <div className="row">

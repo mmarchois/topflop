@@ -442,7 +442,7 @@ hr {
 
 small,
 .small {
-  font-size: 87.5%;
+  font-size: 85% !important;
   font-weight: 400;
 }
 
@@ -1553,6 +1553,9 @@ pre code {
   padding: 0.3rem;
 }
 
+.table th, .text-wrap table th, .table td, .text-wrap table td {
+  padding: 0.5rem;
+}
 .table-bordered, .text-wrap table {
   border: 1px solid rgba(0, 40, 100, 0.12) !important;
 }

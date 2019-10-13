@@ -22,7 +22,7 @@ const CompagnyForm = ({ handleSubmit, loading }) => {
         className={'btn btn-primary ml-auto'}
         disabled={loading}
       >
-        {t('form.buttons.save')}
+        {t('compagny.form.create')}
       </button>
     </form>
   );

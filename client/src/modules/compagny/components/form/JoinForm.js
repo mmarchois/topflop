@@ -22,7 +22,7 @@ const JoinForm = ({ handleSubmit, loading }) => {
         className={'btn btn-primary ml-auto'}
         disabled={loading}
       >
-        {t('form.buttons.save')}
+        {t('compagny.form.join')}
       </button>
     </form>
   );

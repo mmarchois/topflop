@@ -3,7 +3,7 @@
     "home": {
       "welcome": "TopFlop !",
       "welcome2": "L'application gratuite pour devenir le roi ou la reine du TopFlop !",
-      "welcome3": "Affronte tes amis semaines après semaines lors d'une guerre acharnée des meilleures (top) ou des pires (flop) vannes.",
+      "welcome3": "Affronte tes amis semaine après semaine lors d'une guerre acharnée des meilleures (top) ou des pires (flop) vannes.",
       "welcome4": "Un classement hebdomadaire te permettra de suivre ta progression et de te situer par rapport à tes amis ! Attention de ne pas te faire flopper !",
       "welcome5": "Les perles pourront bien évidemment être historisées sur le Wall of Shame !",
       "login": "Connecte-toi",
@@ -55,19 +55,21 @@
         "notFound": "Code d'accès invalide"
       },
       "add": {
-        "introduction": "Créér ou rejoins un groupe."
+        "introduction": "Crée ou rejoins un groupe."
       },
       "form": {
         "name": "Nom du groupe",
         "voucher": "Code d'accès",
         "placeholderName": "Ex: Paris Team",
-        "placeholderVoucher": "Ex: 1cd1kCH"
+        "placeholderVoucher": "Ex: 1cd1kCH",
+        "create": "Créer",
+        "join": "Rejoindre"
       },
       "list": {
         "title": "Mes groupes",
-        "help": "Retrouve ici tous les groupes auxquels tu as accès ! Pour te connecter sur l'un d'entre eux, cliques sur \"Se connecter\".",
-        "help1": "Pour rajouter un ami à un groupe, envoi lui le code d'accès ou créer son compte via le formulaire de création dans le menu \"Mes amis\".",
-        "help2": "Tu n'a pas encore de groupe. Créer un nouveau groupe ou rejoins en un grâce au code d'accès que tu as reçu.",
+        "help": "Retrouve ici tous les groupes auxquels tu as accès ! Pour te connecter sur l'un d'entre eux, clique sur \"Se connecter\".",
+        "help1": "Pour rajouter un ami à un groupe, envoie lui le code d'accès ou crée son compte via le formulaire de création dans le menu \"Mes amis\".",
+        "help2": "Tu n'as pas encore de groupe. Crée un nouveau groupe ou rejoins en un grâce au code d'accès que tu as reçu.",
         "add": "Ajouter / rejoindre un groupe",
         "name": "Groupe",
         "role": "Rôle",
@@ -75,7 +77,7 @@
         "active": "Se connecter",
         "action": "Action",
         "leave": "Quitter",
-        "leaveConfirm": "Est-tu sûr de vouloir quitter ce groupe ? Tes données associées seront perdu"
+        "leaveConfirm": "Es-tu sûr de vouloir quitter ce groupe ? Tes données associées seront perdu"
       }
     },
     "quote": {
@@ -143,7 +145,7 @@
         "quote": "Perle",
         "top": "Top",
         "flop": "Flop",
-        "deleteConfirm": "Est-tu sûr de vouloir retirer cet ami du groupe ?"
+        "deleteConfirm": "Es-tu sûr de vouloir retirer cet ami du groupe ?"
       }
     },
     "input": {

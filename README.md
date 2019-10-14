@@ -6,13 +6,24 @@ Topflop is an open-source application to top, flop or quote your friends
 
 ### Server side
 
+#### Setup docker
+
 ```bash
-$ cd server
+$ cd server/
 $ docker-compose -p topflop up -d
 ```
 
 -   API is available on https://api.topflop.local/
 -   API doc is available on https://api.topflop.local/_doc
+
+/!\ Don't forget to update your /etc/hosts
+
+#### Setup database
+
+```bash
+$ cd server/
+$ docker-compose -p topflop run api npm run migration:migrate
+```
 
 ### App side
 

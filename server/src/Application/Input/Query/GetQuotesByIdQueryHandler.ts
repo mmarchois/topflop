@@ -5,12 +5,14 @@ import { GetQuotesByIdQuery } from './GetQuotesByIdQuery';
 import { Quote } from 'src/Domain/Input/Quote.entity';
 import { QuoteView } from '../View/QuoteView';
 import { UsernameView } from 'src/Application/User/View/UsernameView';
+import { IsMemberOfCompagny } from 'src/Domain/User/IsMemberOfCompagny';
 
 @QueryHandler(GetQuotesByIdQuery)
 export class GetQuotesByIdQueryHandler {
   constructor(
     @Inject('IQuoteRepository')
     private readonly repository: IQuoteRepository,
+    private readonly isMemberOfCompagny: IsMemberOfCompagny,
   ) {}
 
   public execute = async (query: GetQuotesByIdQuery): Promise<QuoteView> => {
@@ -20,9 +22,11 @@ export class GetQuotesByIdQueryHandler {
     if (!(quote instanceof Quote)) {
       throw new NotFoundException('quote.errors.notFound');
     }
-    const { author, compagny } = quote;
 
-    if (compagny.id !== user.currentCompagny.id) {
+    const { author, compagny } = quote;
+    if (
+      false === (await this.isMemberOfCompagny.isSatisfiedBy(user, compagny))
+    ) {
       throw new ForbiddenException('quote.errors.notAllow');
     }
 

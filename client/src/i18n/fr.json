@@ -78,7 +78,7 @@
         "action": "Action",
         "leave": "Quitter",
         "leaveConfirm": "Es-tu sûr de vouloir quitter ce groupe ? Tes données associées seront perdu",
-        "inputConfirm": "Es-tu sûr de vouloir le {{type}}per ?"
+        "inputConfirm": "Es-tu sûr de vouloir {{type}}per {{user}} ?"
       }
     },
     "quote": {
@@ -94,7 +94,9 @@
         "addedAt": "Ajouté le",
         "quote": "Perles",
         "actions": "Actions",
+        "deleteConfirm": "Es-tu sûr de vouloir supprimer cette perle ?",
         "see": "Voir",
+        "delete": "Supprimer",
         "author": "Par {{username}}",
         "help": "Il n'y a pas encore de perle. Deviens le premier à en rajouter en te rendant dans le menu \"Mes amis\"."
       },

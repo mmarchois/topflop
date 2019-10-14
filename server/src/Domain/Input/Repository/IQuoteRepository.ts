@@ -11,4 +11,5 @@ export interface IQuoteRepository {
     filters: QuoteFiltersDto,
   ): Promise<[Quote[], number]>;
   deleteByUserAndCompagny(user: User, compagny: Compagny);
+  delete(quote: Quote);
 }

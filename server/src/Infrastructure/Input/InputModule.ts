@@ -21,6 +21,9 @@ import { GetInputsByCompagnyController } from './Controller/GetInputsByCompagnyC
 import { GetInputsByCompagnyQueryHandler } from 'src/Application/Input/Query/GetInputsByCompagnyQueryHandler';
 import { GetQuoteController } from './Controller/GetQuoteController';
 import { GetQuotesByIdQueryHandler } from 'src/Application/Input/Query/GetQuotesByIdQueryHandler';
+import { DeleteQuoteCommandHandler } from 'src/Application/Input/Command/DeleteQuoteCommandHandler';
+import { DeleteQuoteController } from './Controller/DeleteQuoteController';
+import { IsAdminOfCompagny } from 'src/Domain/User/IsAdminOfCompagny';
 
 @Module({
   imports: [
@@ -34,6 +37,7 @@ import { GetQuotesByIdQueryHandler } from 'src/Application/Input/Query/GetQuotes
     CreateInputController,
     GetInputsByCompagnyController,
     GetQuoteController,
+    DeleteQuoteController,
   ],
   providers: [
     { provide: 'IQuoteRepository', useClass: QuoteRepository },
@@ -41,11 +45,13 @@ import { GetQuotesByIdQueryHandler } from 'src/Application/Input/Query/GetQuotes
     { provide: 'IUserCompagnyRepository', useClass: UserCompagnyRepository },
     { provide: 'IUserRepository', useClass: UserRepository },
     IsMemberOfCompagny,
+    IsAdminOfCompagny,
     CreateQuoteCommandHandler,
     GetQuotesByCompagnyQueryHandler,
     CreateInputCommandHandler,
     GetInputsByCompagnyQueryHandler,
     GetQuotesByIdQueryHandler,
+    DeleteQuoteCommandHandler,
   ],
 })
 export class InputModule {}

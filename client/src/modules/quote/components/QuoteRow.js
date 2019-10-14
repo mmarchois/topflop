@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { format } from 'date-fns';
 import { useTranslation } from 'react-i18next';
 
-const QuoteRow = ({ quote }) => {
+const QuoteRow = ({ quote, onDelete, currentUser }) => {
   const { t } = useTranslation();
   const { firstName, lastName } = quote.author;
 
@@ -25,12 +25,24 @@ const QuoteRow = ({ quote }) => {
           <i className={'icon fe fe-eye'}></i>
           {t('quote.list.see')}
         </Link>
+        {'admin' === currentUser.role && (
+          <button
+            onClick={onDelete}
+            className="btn btn-secondary btn-sm mr-1 ml-1"
+          >
+            <i className={'icon fe fe-trash-2'}></i>{' '}
+            <span className={'d-lg-block d-none'}>
+              {t('quote.list.delete')}
+            </span>
+          </button>
+        )}
       </td>
     </tr>
   );
 };
 
 QuoteRow.propTypes = {
+  onDelete: PropTypes.func.isRequired,
   quote: PropTypes.shape({
     author: PropTypes.shape({
       lastName: PropTypes.string.isRequired,

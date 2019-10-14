@@ -4,6 +4,7 @@ import {
   QUOTES_LIST_ERROR,
   QUOTES_LIST_RESET,
 } from '../constants/list';
+import { QUOTES_DELETE_SUCCESS } from '../constants/delete';
 
 const initialState = {
   payload: [],
@@ -22,15 +23,23 @@ export const listReducers = (state = initialState, action) => {
         pageCount: action.payload.pageCount,
         totalItems: action.payload.totalItems,
       };
+
     case QUOTES_LIST_LOADING:
       return {
         ...state,
         loading: action.loading,
       };
+
     case QUOTES_LIST_ERROR:
       return {
         ...state,
         errors: action.errors,
+      };
+
+    case QUOTES_DELETE_SUCCESS:
+      return {
+        ...state,
+        payload: state.payload.filter(quote => quote.id !== action.payload),
       };
 
     case QUOTES_LIST_RESET:

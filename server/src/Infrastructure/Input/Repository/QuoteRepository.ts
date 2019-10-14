@@ -66,4 +66,8 @@ export class QuoteRepository implements IQuoteRepository {
       .andWhere('compagny = :compagny', { compagny: compagny.id })
       .execute();
   };
+
+  public delete = async (quote: Quote) => {
+    await this.repository.remove(quote);
+  };
 }

@@ -47,9 +47,16 @@ class ListUsersView extends Component {
     }
   };
 
-  handleInput = (type, id) => {
-    if (window.confirm(i18n.t('compagny.list.inputConfirm', { type }))) {
-      this.props.addInput(type, id);
+  handleInput = (type, user) => {
+    if (
+      window.confirm(
+        i18n.t('compagny.list.inputConfirm', {
+          type,
+          user: user.firstName,
+        }),
+      )
+    ) {
+      this.props.addInput(type, user.id);
     }
   };
 
@@ -117,8 +124,8 @@ class ListUsersView extends Component {
                       {payload.map(user => (
                         <UserRow
                           key={user.id}
-                          onFlop={() => this.handleInput('flop', user.id)}
-                          onTop={() => this.handleInput('top', user.id)}
+                          onFlop={() => this.handleInput('flop', user)}
+                          onTop={() => this.handleInput('top', user)}
                           onDelete={() => this.handleDelete(user.id)}
                           user={user}
                           currentUser={currentUser}

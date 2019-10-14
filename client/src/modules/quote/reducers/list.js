@@ -40,6 +40,7 @@ export const listReducers = (state = initialState, action) => {
       return {
         ...state,
         payload: state.payload.filter(quote => quote.id !== action.payload),
+        totalItems: state.totalItems - 1,
       };
 
     case QUOTES_LIST_RESET:

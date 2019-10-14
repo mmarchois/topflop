@@ -23,7 +23,7 @@ const QuoteRow = ({ quote, onDelete, currentUser }) => {
           className="btn btn-secondary btn-sm"
         >
           <i className={'icon fe fe-eye'}></i>
-          {t('quote.list.see')}
+          <span className={'d-lg-block d-none'}>{t('quote.list.see')}</span>
         </Link>
         {'admin' === currentUser.role && (
           <button

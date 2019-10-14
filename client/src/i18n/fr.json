@@ -77,7 +77,8 @@
         "active": "Se connecter",
         "action": "Action",
         "leave": "Quitter",
-        "leaveConfirm": "Es-tu sûr de vouloir quitter ce groupe ? Tes données associées seront perdu"
+        "leaveConfirm": "Es-tu sûr de vouloir quitter ce groupe ? Tes données associées seront perdu",
+        "inputConfirm": "Es-tu sûr de vouloir le {{type}}per ?"
       }
     },
     "quote": {

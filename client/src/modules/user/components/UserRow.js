@@ -42,7 +42,7 @@ const UserRow = ({ user, currentUser, onTop, onFlop, onDelete }) => {
                 onClick={onDelete}
                 className="btn btn-secondary btn-sm mr-1 ml-1"
               >
-                <i className={'icon fe fe-delete'}></i>{' '}
+                <i className={'icon fe fe-trash-2'}></i>{' '}
                 <span className={'d-lg-block d-none'}>
                   {t('user.list.delete')}
                 </span>

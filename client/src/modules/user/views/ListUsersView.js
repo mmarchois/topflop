@@ -47,6 +47,12 @@ class ListUsersView extends Component {
     }
   };
 
+  handleInput = (type, id) => {
+    if (window.confirm(i18n.t('compagny.list.inputConfirm', { type }))) {
+      this.props.addInput(type, id);
+    }
+  };
+
   componentDidUpdate = (prevProps, prevState) => {
     const currentPage = this.props.match.params.page;
     const prevPage = prevProps.match.params.page;
@@ -58,7 +64,7 @@ class ListUsersView extends Component {
 
   render = () => {
     const { payload, totalItems, errors, pageCount } = this.props.list;
-    const { currentUser, input, addInput } = this.props;
+    const { currentUser, input } = this.props;
     const { page } = this.props.match.params;
 
     return (
@@ -111,8 +117,8 @@ class ListUsersView extends Component {
                       {payload.map(user => (
                         <UserRow
                           key={user.id}
-                          onFlop={() => addInput('flop', user.id)}
-                          onTop={() => addInput('top', user.id)}
+                          onFlop={() => this.handleInput('flop', user.id)}
+                          onTop={() => this.handleInput('top', user.id)}
                           onDelete={() => this.handleDelete(user.id)}
                           user={user}
                           currentUser={currentUser}

@@ -26,13 +26,18 @@ const CompagnyRow = ({ compagny, currentUser, handleCurrent, handleLeave }) => {
               className="btn btn-secondary btn-sm"
             >
               <i className={'icon fe fe-unlock'}></i>{' '}
-              {t('compagny.list.active')}
+              <span className={'d-lg-block d-none'}>
+                {t('compagny.list.active')}
+              </span>
             </button>
             <button
               onClick={handleLeave}
               className="btn btn-secondary btn-sm ml-3"
             >
-              <i className={'icon fe fe-delete'}></i> {t('compagny.list.leave')}
+              <i className={'icon fe fe-trash-2'}></i>{' '}
+              <span className={'d-lg-block d-none'}>
+                {t('compagny.list.leave')}
+              </span>
             </button>
           </>
         )}

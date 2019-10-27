@@ -9,6 +9,6 @@ down:
 ps:
 	docker-compose -p topflop ps
 logs:
-	docker-compose -p topflop logs -f api
+	docker-compose -p topflop logs -f node
 init-database:
-	docker-compose -p topflop run api npm run migration:migrate
+	docker-compose -p topflop run node npm run migration:migrate

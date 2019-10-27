@@ -1,4 +1,4 @@
-# TopFlop
+# :rocket: TopFlop :rocket:
 
 Topflop is an open-source application to top, flop or quote your friends
 
@@ -10,7 +10,7 @@ Topflop is an open-source application to top, flop or quote your friends
 
 ```bash
 $ cd server/
-$ docker-compose -p topflop up -d
+$ make start
 ```
 
 -   API is available on https://api.topflop.local/
@@ -22,7 +22,7 @@ $ docker-compose -p topflop up -d
 
 ```bash
 $ cd server/
-$ docker-compose -p topflop run api npm run migration:migrate
+$ make init-database
 ```
 
 ### App side

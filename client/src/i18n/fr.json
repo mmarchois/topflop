@@ -163,6 +163,10 @@
           "top": "Tu ne peux pas te topper toi même !"
         }
       },
+      "notify": {
+        "flop": "{{user}} vient de se faire flopper !",
+        "top": "{{user}} vient de se faire topper !"
+      },
       "success": {
         "flop": "{{user}} a bien été floppé !",
         "top": "{{user}} a bien été toppé !"

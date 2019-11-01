@@ -24,6 +24,8 @@ import { GetQuotesByIdQueryHandler } from 'src/Application/Input/Query/GetQuotes
 import { DeleteQuoteCommandHandler } from 'src/Application/Input/Command/DeleteQuoteCommandHandler';
 import { DeleteQuoteController } from './Controller/DeleteQuoteController';
 import { IsAdminOfCompagny } from 'src/Domain/User/IsAdminOfCompagny';
+import { NotifierAdapter } from '../Adapter/NotifierAdapter';
+import { InputNotifier } from 'src/Domain/Input/Notifier/InputNotifier';
 
 @Module({
   imports: [
@@ -44,6 +46,8 @@ import { IsAdminOfCompagny } from 'src/Domain/User/IsAdminOfCompagny';
     { provide: 'IInputRepository', useClass: InputRepository },
     { provide: 'IUserCompagnyRepository', useClass: UserCompagnyRepository },
     { provide: 'IUserRepository', useClass: UserRepository },
+    { provide: 'INotifierAdapter', useClass: NotifierAdapter },
+
     IsMemberOfCompagny,
     IsAdminOfCompagny,
     CreateQuoteCommandHandler,
@@ -52,6 +56,7 @@ import { IsAdminOfCompagny } from 'src/Domain/User/IsAdminOfCompagny';
     GetInputsByCompagnyQueryHandler,
     GetQuotesByIdQueryHandler,
     DeleteQuoteCommandHandler,
+    InputNotifier,
   ],
 })
 export class InputModule {}

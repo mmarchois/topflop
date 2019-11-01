@@ -1,6 +1,6 @@
 # :rocket: TopFlop :rocket:
 
-Topflop is an open-source application to top, flop or quote your friends
+Topflop is an open-source realtime application to top, flop or quote your friends
 
 ## Getting Started
 
@@ -10,29 +10,22 @@ Topflop is an open-source application to top, flop or quote your friends
 
 ```bash
 $ cd server/
+$ make init-database
 $ make start
 ```
 
--   API is available on https://api.topflop.local/
--   API doc is available on https://api.topflop.local/_doc
-
-/!\ Don't forget to update your /etc/hosts
-
-#### Setup database
-
-```bash
-$ cd server/
-$ make init-database
-```
+-   API is available on http://localhost:3000/
+-   API doc is available on http://localhost:3000/_doc
+-   Mercure hub available on http://localhost:1337
 
 ### App side
 
 ```bash
-$ cd client
-$ yarn start
+$ cd client/
+$ make start
 ```
 
--   App available on http://localhost:3000
+-   App available on http://localhost:3001
 
 ## Technical stack
 
@@ -40,17 +33,18 @@ TopFlop depends on the following technologies:
 
 ### Backend stack
 
--   Node.js
--   Nestjs
--   Typescript
--   Docker
--   PostgreSQL
+-   [Node.js](https://nodejs.org)
+-   [Nestjs](https://nestjs.com/)
+-   [Typescript](https://www.typescriptlang.org/)
+-   [Docker](https://www.docker.com/)
+-   [PostgreSQL](https://www.postgresql.org/)
+-   [Mercure](https://mercure.rocks)
 
 ### App stack
 
--   React.js
--   Redux
--   Axios
+-   [React.js](https://fr.reactjs.org/)
+-   [Redux](https://redux.js.org/)
+-   [Axios](https://github.com/axios/axios)
 
 # License
 

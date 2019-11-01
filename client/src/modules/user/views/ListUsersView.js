@@ -13,7 +13,6 @@ import UserRow from '../components/UserRow';
 import i18n from '../../../i18n';
 import Pagination from '../../common/components/Pagination';
 import ServerErrors from '../../common/components/ServerErrors';
-import SuccessMessage from '../../common/components/SuccessMessage';
 import Search from '../components/Search';
 
 class ListUsersView extends Component {
@@ -87,13 +86,6 @@ class ListUsersView extends Component {
           <div className={'col-lg-12'}>
             <ServerErrors errors={[...input.errors, ...errors]} />
 
-            {input.payload && (
-              <SuccessMessage
-                message={i18n.t(`input.success.${input.payload.type}`, {
-                  user: input.payload.author.firstName,
-                })}
-              />
-            )}
             <div className={'card'}>
               <div className={'card-body text-wrap p-lg-6'}>
                 {'admin' === currentUser.role && (

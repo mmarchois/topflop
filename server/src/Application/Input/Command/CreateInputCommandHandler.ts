@@ -8,6 +8,7 @@ import { IInputRepository } from 'src/Domain/Input/Repository/IInputRepository';
 import { Input } from 'src/Domain/Input/Input.entity';
 import { InputView } from '../View/InputView';
 import { UsernameView } from 'src/Application/User/View/UsernameView';
+import { InputNotifier } from 'src/Domain/Input/Notifier/InputNotifier';
 
 @CommandHandler(CreateInputCommand)
 export class CreateInputCommandHandler {
@@ -16,6 +17,7 @@ export class CreateInputCommandHandler {
     private readonly repository: IInputRepository,
     @Inject('IUserRepository')
     private readonly userRepository: IUserRepository,
+    private readonly inputNotifier: InputNotifier,
     private readonly isMemberOfCompagny: IsMemberOfCompagny,
   ) {}
 
@@ -50,6 +52,8 @@ export class CreateInputCommandHandler {
         addedBy: user,
       }),
     );
+
+    this.inputNotifier.notify(input);
 
     return new InputView(
       input.id,

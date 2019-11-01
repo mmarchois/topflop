@@ -1,6 +1,6 @@
 # :rocket: TopFlop :rocket:
 
-Topflop is a realtime open-source application to top, flop or quote your friends
+Topflop is a realtime open-source application to top, flop or quote your friends.
 
 ## Getting Started
 

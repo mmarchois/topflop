@@ -4,7 +4,6 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import reducers from './reducers';
 import { client, axiosMiddleware } from '../utils/axios';
-import { mercureMiddleware } from '../utils/mercure';
 
 const persistConfig = {
   key: 'topflop',
@@ -23,11 +22,7 @@ export default () => {
   let store = createStore(
     persistedReducer,
     composeEnhancers(
-      applyMiddleware(
-        thunk.withExtraArgument(client),
-        axiosMiddleware(client),
-        mercureMiddleware,
-      ),
+      applyMiddleware(thunk.withExtraArgument(client), axiosMiddleware(client)),
     ),
   );
 

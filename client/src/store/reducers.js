@@ -5,7 +5,6 @@ import compagny from '../modules/compagny/reducers';
 import quote from '../modules/quote/reducers';
 import user from '../modules/user/reducers';
 import input from '../modules/input/reducers';
-import notifier from '../modules/notifier/reducers';
 
 export default combineReducers({
   auth,
@@ -13,6 +12,5 @@ export default combineReducers({
   quote,
   user,
   input,
-  notifier,
   form: formReducer,
 });

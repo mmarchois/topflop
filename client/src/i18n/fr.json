@@ -83,6 +83,7 @@
     },
     "quote": {
       "title": "Perles",
+      "notify": "{{user}} a fait une nouvelle perle !",
       "form": {
         "sentence": "Perle..."
       },

@@ -1,10 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Header from './Header';
 import Footer from './Footer';
 import Nav from './Nav';
 import Notification from '../../../notifier/components/Notification';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, authenticated }) => {
   return (
     <>
       <div className={'flex-fill'}>
@@ -12,7 +13,7 @@ const Layout = ({ children }) => {
         <Nav />
         <div className={'my-3 my-md-5'}>
           <div className={'container'}>
-            <Notification />
+            {authenticated && <Notification />}
             {children}
           </div>
         </div>
@@ -22,4 +23,6 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export default connect(state => ({
+  authenticated: state.auth.authentication.authenticated,
+}))(Layout);

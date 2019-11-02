@@ -26,6 +26,7 @@ import { DeleteQuoteController } from './Controller/DeleteQuoteController';
 import { IsAdminOfCompagny } from 'src/Domain/User/IsAdminOfCompagny';
 import { NotifierAdapter } from '../Adapter/NotifierAdapter';
 import { InputNotifier } from 'src/Domain/Input/Notifier/InputNotifier';
+import { QuoteNotifier } from 'src/Domain/Input/Notifier/QuoteNotifier';
 
 @Module({
   imports: [
@@ -57,6 +58,7 @@ import { InputNotifier } from 'src/Domain/Input/Notifier/InputNotifier';
     GetQuotesByIdQueryHandler,
     DeleteQuoteCommandHandler,
     InputNotifier,
+    QuoteNotifier,
   ],
 })
 export class InputModule {}

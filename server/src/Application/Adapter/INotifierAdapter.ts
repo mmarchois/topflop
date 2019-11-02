@@ -1,3 +1,5 @@
+import { Compagny } from 'src/Domain/Compagny/Compagny.entity';
+
 export interface INotifierAdapter {
-  notify(topic: string, payload: any): void;
+  notify(compagny: Compagny, topic: string, payload: any): void;
 }

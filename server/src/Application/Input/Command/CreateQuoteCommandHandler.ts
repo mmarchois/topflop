@@ -8,6 +8,7 @@ import { User } from 'src/Domain/User/User.entity';
 import { Quote } from 'src/Domain/Input/Quote.entity';
 import { QuoteView } from '../View/QuoteView';
 import { UsernameView } from 'src/Application/User/View/UsernameView';
+import { QuoteNotifier } from 'src/Domain/Input/Notifier/QuoteNotifier';
 
 @CommandHandler(CreateQuoteCommand)
 export class CreateQuoteCommandHandler {
@@ -16,6 +17,7 @@ export class CreateQuoteCommandHandler {
     private readonly repository: IQuoteRepository,
     @Inject('IUserRepository')
     private readonly userRepository: IUserRepository,
+    private readonly quoteNotifier: QuoteNotifier,
     private readonly isMemberOfCompagny: IsMemberOfCompagny,
   ) {}
 
@@ -42,6 +44,8 @@ export class CreateQuoteCommandHandler {
         addedBy: user,
       }),
     );
+
+    this.quoteNotifier.notify(quote);
 
     return new QuoteView(
       quote.id,

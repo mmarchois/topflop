@@ -59,7 +59,7 @@ class ListUsersView extends Component {
     }
   };
 
-  componentDidUpdate = (prevProps, prevState) => {
+  componentDidUpdate = prevProps => {
     const currentPage = this.props.match.params.page;
     const prevPage = prevProps.match.params.page;
 

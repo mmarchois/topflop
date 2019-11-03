@@ -25,6 +25,9 @@ class Notification extends React.Component {
       this.setState({
         message: i18n.t(payload.key, { user: payload.user }),
       });
+      setTimeout(() => {
+        this.setState({ message: '' });
+      }, 4000);
     };
   };
 

@@ -10,6 +10,7 @@ export const mercureSubscriber = compagnyId => {
       },
     },
     process.env.REACT_APP_MERCURE_JWT,
+    { noTimestamp: true },
   );
 
   const url = new URL(process.env.REACT_APP_MERCURE_SUBSCRIBER);

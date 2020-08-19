@@ -1,4 +1,4 @@
 export interface IEncryptionAdapter {
-  hash(payload: string): string;
-  compare(payload: string, withPayload: string): boolean;
+  hash(payload: string): Promise<string>;
+  compare(hash: string, payload: string): Promise<boolean>;
 }

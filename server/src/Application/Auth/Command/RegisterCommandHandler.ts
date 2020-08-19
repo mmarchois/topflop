@@ -28,8 +28,10 @@ export class RegisterCommandHandler {
       throw new BadRequestException('user.errors.alreadyRegistred');
     }
 
-    const encryptedPassword = this.encryptionAdapter.hash(password);
-    const apiToken = this.encryptionAdapter.hash(email + Date.now().toString());
+    const encryptedPassword = await this.encryptionAdapter.hash(password);
+    const apiToken = await this.encryptionAdapter.hash(
+      email + Date.now().toString(),
+    );
 
     const user = new User({
       firstName,

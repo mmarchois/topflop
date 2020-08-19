@@ -28,7 +28,8 @@ export class LoginCommandHandler {
 
     if (
       !(user instanceof User) ||
-      false === this.encryptionAdapter.compare(command.password, user.password)
+      false ===
+        (await this.encryptionAdapter.compare(command.password, user.password))
     ) {
       throw new UnauthorizedException();
     }

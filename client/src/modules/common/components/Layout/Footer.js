@@ -22,17 +22,6 @@ const Footer = () => {
                       Mathieu MARCHOIS
                     </a>
                   </li>
-                  <li className="list-inline-item">
-                    <a
-                      href="https://github.com/mmarchois/topflop"
-                      className="btn btn-sm btn-outline-primary"
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      <i className="icon fe fe-github mr-2"></i>
-                      {i18n.t('footer.source')}
-                    </a>
-                  </li>
                 </ul>
               </div>
             </div>

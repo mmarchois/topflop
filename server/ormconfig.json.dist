@@ -7,7 +7,7 @@
   "database": "topflop",
   "synchronize": false,
   "logging": false,
-  "entities": ["src/Domain/**/*.entity.ts", "src/Domain/**/*.entity{.ts,.js}"],
-  "migrations": ["migrations/**/*.ts", "dist/migrations/**/*{.ts,.js}"],
+  "entities": ["dist/src/Domain/**/*.entity{.ts,.js}"],
+  "migrations": ["dist/migrations/**/*{.ts,.js}"],
   "migrationsTableName": "migrations"
 }

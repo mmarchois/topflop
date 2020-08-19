@@ -50,8 +50,10 @@ export class CreateUserCommandHandler {
 
     if (!(savedUser instanceof User)) {
       const defaultPassword = process.env.DEFAULT_PASSWORD;
-      const encryptedPassword = this.encryptionAdapter.hash(defaultPassword);
-      const apiToken = this.encryptionAdapter.hash(
+      const encryptedPassword = await this.encryptionAdapter.hash(
+        defaultPassword,
+      );
+      const apiToken = await this.encryptionAdapter.hash(
         email + Date.now().toString(),
       );
 

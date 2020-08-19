@@ -16,7 +16,7 @@ export class UpdatePasswordCommandHandler {
   public execute = async (command: UpdatePasswordCommand): Promise<void> => {
     const { password, user } = command;
 
-    user.updatePassword(this.encryptionAdapter.hash(password));
+    user.updatePassword(await this.encryptionAdapter.hash(password));
 
     await this.userRepository.save(user);
   };

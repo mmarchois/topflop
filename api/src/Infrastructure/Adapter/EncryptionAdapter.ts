@@ -6,7 +6,7 @@ export class EncryptionAdapter implements IEncryptionAdapter {
     return argon2.hash(payload);
   }
 
-  public compare(hash: string, payload: string): Promise<boolean> {
+  public compare(payload: string, hash: string): Promise<boolean> {
     return argon2.verify(hash, payload);
   }
 }

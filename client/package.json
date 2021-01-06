@@ -8,7 +8,7 @@
   "private": true,
   "dependencies": {
     "@wojtekmaj/react-daterange-picker": "^2.4.0",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "date-fns": "^2.4.1",
     "event-source-polyfill": "^1.0.9",
     "i18next": "^17.0.18",
